@@ -1,0 +1,16 @@
+.js-inview{
+    
+    .js-animates--opacity{
+        opacity: 0;
+        @include transform(scale(0.7));
+
+        &.in{
+            -webkit-transition: opacity 1.2s ease-out 0.2s, -webkit-transform 0.3s ease-out 0.2s;
+            -moz-transition: opacity 1.2s ease-out 0.2s, -moz-transform 0.3s ease-out 0.2s;
+            transition: opacity 1.2s ease-out 0.2s, transform 0.3s ease-out 0.2s;
+            @include transform(scale(1));
+            opacity: 1;
+        }
+    }
+
+}

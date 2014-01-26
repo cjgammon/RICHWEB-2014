@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <style>
+            html, body{
+                margin: 0;
+                overflow: hidden;
+                background: black;
+            }
+
+        </style>
+    </head>
+    <body>
+
+		<canvas id="scene"></canvas>
+
+        <script src="js/easeljs/lib/easeljs-0.6.1.min.js"></script>
+        <script src="js/greensock/TweenMax.js"></script>
+        <script>
+            var step = 0,
+                canvas,
+                stage,
+                spritesheet,
+                spritesheetImage,
+                sprite,
+                spriteAnimation,
+                bg1,
+                bgImage1,
+                bg2,
+                bgImage2,
+                bg3,
+                bgImage3,
+                bg4,
+                bgImage4,
+                _width = window.innerWidth,
+                _height = window.innerHeight,
+                animating = false,
+                parallax = false;
+
+            spritesheetImage = new Image();
+            bgImage1 = new Image();
+            bgImage2 = new Image();
+            bgImage3 = new Image();
+            bgImage4 = new Image();
+            
+            spritesheetImage.src = "images/enemy_full.png";
+            bgImage1.src = "images/bgGame.jpg";
+            bgImage2.src = "images/bgGame2.png";
+            bgImage3.src = "images/bgGame3.png";
+            bgImage4.src = "images/bgGame4.png";
+
+            canvas = document.getElementById('scene');
+            canvas.width = _width;
+            canvas.height = _height;
+
+            stage = new createjs.Stage(canvas);
+            createjs.Ticker.init();
+            createjs.Ticker.setFPS(60);
+            createjs.Ticker.addEventListener("tick", render);
+
+            spritesheetImage.onload = trigger;
+
+            function trigger() {
+                step += 1;
+                
+                switch (step) {
+                case 1:
+
+                    spritesheet = new createjs.Bitmap(spritesheetImage);
+                    spritesheet.x = (_width / 2) - (spritesheet.image.width / 2) + (107 / 2);
+                    spritesheet.y = (_height / 2) - (spritesheet.image.height / 3);
+                    stage.addChild(spritesheet);
+
+                    break;
+                case 2:
+                    
+                    new TweenMax.to(spritesheet, 1, {
+                        x: _width / 2 - (107 / 2), 
+                        y: _height / 2, 
+                        alpha: 0.2, 
+                        onComplete: this.trigger.bind(this)
+                    });
+
+                    break;
+                case 3:
+
+                    spriteAnimation = new createjs.SpriteSheet({
+                        "animations":
+                        {
+                            "fly": [0, 30],
+                            "die": [31, 43, 'dead'],
+                            "dead": [43]
+                        },
+                        "images": [spritesheetImage],
+                        "frames": [[0,0,107,62,0,0,0],[107,0,107,62,0,0,0],[214,0,107,62,0,0,0],[321,0,107,62,0,0,0],[0,62,107,62,0,0,0],[107,62,107,62,0,0,0],[214,62,107,62,0,0,0],[321,62,107,62,0,0,0],[0,124,107,62,0,0,0],[107,124,107,62,0,0,0],[214,124,107,62,0,0,0],[321,124,107,62,0,0,0],[0,186,107,62,0,0,0],[107,186,107,62,0,0,0],[214,186,107,62,0,0,0],[321,186,107,62,0,0,0],[0,248,107,62,0,0,0],[107,248,107,62,0,0,0],[214,248,107,62,0,0,0],[321,248,107,62,0,0,0],[0,310,107,62,0,0,0],[107,310,107,62,0,0,0],[214,310,107,62,0,0,0],[321,310,107,62,0,0,0],[0,372,107,62,0,0,0],[107,372,107,62,0,0,0],[214,372,107,62,0,0,0],[321,372,107,62,0,0,0],[0,434,107,62,0,0,0],[107,434,107,62,0,0,0],[214,434,107,62,0,0,0],[321,434,107,62,0,0,0],[0,496,107,62,0,0,0],[107,496,107,62,0,0,0],[214,496,107,62,0,0,0],[321,496,107,62,0,0,0],[0,558,107,62,0,0,0],[107,558,107,62,0,0,0],[214,558,107,62,0,0,0],[321,558,107,62,0,0,0],[0,620,107,62,0,0,0],[107,620,107,62,0,0,0],[214,620,107,62,0,0,0]]
+                    });
+
+                    sprite = new createjs.BitmapAnimation(spriteAnimation);
+                    sprite.alpha = 0;
+                    sprite.x = _width / 2 - (107 / 2);
+                    sprite.y = _height / 2;
+                    stage.addChild(sprite);
+                    sprite.gotoAndStop(0);
+
+                    new TweenMax.to(sprite, .2, {alpha: 1});
+
+                    break;
+                case 4:
+
+                    new TweenMax.to(spritesheet, .2, {alpha: 0});
+                    sprite.gotoAndPlay('fly');
+
+                    break;
+                case 5:
+                    new TweenMax.to(sprite, 1, {scaleX: -1});
+                    
+                    bg1 = new createjs.Shape();
+                    bg1.graphics.beginBitmapFill(bgImage1).drawRect(0, 0, _width + bgImage1.width, _height);
+                    bg1.tileW = bgImage1.width;
+                    stage.addChildAt(bg1, 0);
+
+                    bg2 = new createjs.Shape();
+                    bg2.graphics.beginBitmapFill(bgImage2).drawRect(0, 0, _width + bgImage2.width, _height);
+                    bg2.tileW = bgImage2.width;
+                    stage.addChildAt(bg2, 1);
+
+                    bg3 = new createjs.Shape();
+                    bg3.graphics.beginBitmapFill(bgImage3).drawRect(0, 0, _width + bgImage3.width, _height);
+                    bg3.tileW = bgImage3.width;
+                    stage.addChildAt(bg3, 2);
+
+                    bg4 = new createjs.Shape();
+                    bg4.graphics.beginBitmapFill(bgImage4).drawRect(0, 0, _width + bgImage4.width, _height);
+                    bg4.tileW = bgImage4.width;
+                    stage.addChildAt(bg4, 2);
+
+                    break;
+                case 6:
+                    this.animating = true;
+                    break;
+                case 7:
+                    this.parallax = true;
+                    break;
+                case 8:
+                    sprite.gotoAndPlay('die');
+                    break;
+
+                }
+            };
+
+            function render(e) {
+                if (animating == true) {
+                    delta = e.delta / 1000;
+
+                    if (parallax == true) {
+                        bg1.x = (bg1.x - this.delta * 400) % bg1.tileW;
+                        bg2.x = (bg2.x - this.delta * 500) % bg2.tileW;
+                        bg3.x = (bg3.x - this.delta * 600) % bg3.tileW;
+                        bg4.x = (bg4.x - this.delta * 700) % bg4.tileW;
+                    } else {
+                        bg1.x = (bg1.x - this.delta * 400) % bg1.tileW;
+                        bg2.x = (bg2.x - this.delta * 400) % bg2.tileW;
+                        bg3.x = (bg3.x - this.delta * 400) % bg3.tileW;
+                        bg4.x = (bg4.x - this.delta * 400) % bg4.tileW;
+                    }
+                }
+                
+                stage.update(e);
+            };
+        </script>
+    </body>
+</html>

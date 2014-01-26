@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="157.94px" height="224.383px" viewBox="0 0 157.94 224.383" enable-background="new 0 0 157.94 224.383"
+	 xml:space="preserve">
+<polygon fill="#E5E5E5" points="105.436,164.248 57.608,137.245 10.08,189.062 57.908,216.065 "/>
+<g>
+	<polygon fill="#E7F4EA" points="104.388,91.957 56.56,64.954 95.991,26.669 143.819,53.672 	"/>
+	<polygon fill="#CBDBD5" points="104.388,91.957 104.754,165.533 144.185,127.248 143.819,53.672 	"/>
+	<polygon fill="#AFBCB7" points="105.436,164.248 57.608,137.245 57.227,65.434 105.054,92.437 	"/>
+	<polygon fill="#7B556D" points="87.925,156.296 76.831,150.033 76.743,128.515 87.836,134.779 	"/>
+</g>
+<g>
+	<path fill="#4B75BA" d="M113.066,12.794c0-0.875-0.709-1.584-1.584-1.584H70.901c-0.875,0-1.584,0.709-1.584,1.584v34.048
+		c0,0.875,0.709,1.584,1.584,1.584h25.347l16.768,14.896L113.066,12.794z"/>
+	<g>
+		<circle fill="#FFFEF8" cx="91.36" cy="23.467" r="4.355"/>
+		<circle fill="#ACC5E7" cx="101.654" cy="28.02" r="3.322"/>
+		<circle fill="#ACC5E7" cx="81.067" cy="28.02" r="3.322"/>
+		<path fill="#A4BFE4" d="M87.406,35.725c-1.513-1.437-3.78-2.353-6.316-2.353c-2.501,0-4.738,0.892-6.251,2.295v2.837h12.567
+			V35.725z"/>
+		<path fill="#A4BFE4" d="M108.183,35.725c-1.513-1.437-3.78-2.353-6.316-2.353c-2.501,0-4.738,0.892-6.251,2.295v2.837h12.567
+			V35.725z"/>
+		<g>
+			<defs>
+				<rect id="SVGID_1_" x="81.965" y="28.717" width="18.888" height="9.787"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+			<ellipse clip-path="url(#SVGID_2_)" fill="#FFFEF8" cx="91.36" cy="40.689" rx="12.399" ry="9.898"/>
+		</g>
+	</g>
+</g>
+</svg>

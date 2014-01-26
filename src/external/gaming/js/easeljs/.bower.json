@@ -1,0 +1,13 @@
+{
+  "name": "easeljs",
+  "homepage": "https://github.com/CreateJS/EaselJS",
+  "_release": "3d595e153b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "3d595e153b6f46a2fe8e4f0075b6c9c335803d79"
+  },
+  "_source": "git://github.com/CreateJS/EaselJS.git",
+  "_target": "*",
+  "_direct": true
+}

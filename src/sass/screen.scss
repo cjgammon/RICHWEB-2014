@@ -1,0 +1,216 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+$yellowish: #f1bc04;
+$orangeish:  #d77604;
+$yellow: #eed932;
+$teal: #0cb4a8;
+$navy: #020d17;
+
+
+/* customize ui variables */
+$menu-item-selected-color: $teal;
+$menu-item-primed-color: darken($teal, 15%);
+$menu-item-color: darken($teal, 30%);
+$menu-input-text-color: $teal;
+$menu-input-bg-color: white;
+$progress-holder-color: $navy;
+$progress-bar-color: lighten($navy, 10%);
+$hud-bg-color: $navy;
+$spinner-color: $teal;
+
+@mixin flexbox{
+	display: -webkit-flex;
+	-webkit-flex-direction: column;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: -moz-flex;
+	-moz-flex-direction: column;
+	-moz-align-items: center;
+	-moz-justify-content: center;
+}
+
+/* import base css */
+@import "compass/reset";
+@import "compass/css3";
+@import "pres/pres";
+@import "components/buttons";
+@import "components/iframe";
+
+/* custom styles */
+body{
+	font-family: "Futura PT", "futura-pt", sans-serif;
+	font-size: 2rem;
+	color: white;
+}
+
+h2, h3, h4{
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 700;
+	text-align: center;
+	letter-spacing: .1em;
+	margin-bottom: 1rem;
+}
+
+h2{
+	font-size: 6rem;
+}
+
+h3{
+	font-size: 4rem;
+}
+
+h4{
+	font-size: 2rem;	
+}
+
+a{
+	color: $orangeish;
+	text-decoration: none;
+	font-size: 1.5rem;
+	font-weight: 500;
+	
+	&:hover{
+		color: white;
+	};
+}
+
+ol{
+	font-size: 3rem;
+	text-transform: uppercase;
+	list-style-type: decimal;
+}
+
+li{
+	line-height: 1.5;
+}
+
+header{
+	position: absolute;
+	margin-top: 2rem;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;	
+	font-weight: 700;
+	font-size: 1.2rem;
+	line-height: 1.5;
+	
+	small{
+		font-size: .8rem;
+	}
+}
+
+footer{
+	position: absolute;
+	margin-bottom: 1rem;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;	
+	font-weight: 700;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+blockquote{
+	padding: 1em;
+	font-size: 4rem;
+	color: #ccc;
+	line-height: 1.5;
+}
+
+em{
+	font-weight: bold;
+	font-style: italic;
+	color: #fff;
+}
+
+.slide{
+	-webkit-box-sizing: border-box;
+	padding: 1rem;
+}
+
+.slide--orange{
+	background: #f0a964;
+}
+
+.slide--orange-swirl{
+	background-image: url(../assets/images/patterns/wild-sea.png);
+}
+
+.slide--black{
+	color: white;
+	background: #222;
+}
+
+.slide--iframe{
+	background: #f2f2f2;
+	
+	h2{
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		height: 100px;
+		color: white;
+		z-index: 2;
+	}
+	
+	header{
+        color: black;
+    }
+
+	a{
+		color: $teal;
+		&:hover{
+			color: black;
+		};
+	}
+}
+
+.slide--full{
+	padding: 0;
+	
+	iframe{
+		width: 100vw;
+		height: 100vh;
+        pointer-events: none;
+	}
+}
+
+#fixed{
+	font-family: helvetica, sans-serif;
+}
+
+#cover{
+	background-image: url(../assets/images/patterns/kale-salad.jpg);
+}
+
+#hi{
+	background-image: url(../assets/images/point-reyes.jpg);
+	background-position: 30%;
+	background-size: cover;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.head-shot{
+	width: 200px;
+	margin-bottom: 1em;
+	-webkit-clip-path: circle(50%);
+}
+
+#myst{
+	background-image: url(../assets/images/myst.jpeg);
+	background-size: cover;
+}

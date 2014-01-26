@@ -1,0 +1,27 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@mixin flexbox{
+	display: -webkit-flex;
+	-webkit-flex-direction: column;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: -moz-flex;
+	-moz-flex-direction: column;
+	-moz-align-items: center;
+	-moz-justify-content: center;
+}
+
+/* import base css */
+@import "compass/reset";
+@import "compass/css3";
+@import "screen/screen";
+@import "screen/inview";
+@import "screen/queries";
+

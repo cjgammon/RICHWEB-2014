@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				background: black;
+				margin: 0;
+			}
+			canvas{
+				width: 100%;
+			    image-rendering: optimizeSpeed;
+			    image-rendering: -moz-crisp-edges;
+			    image-rendering: -webkit-optimize-contrast;
+			    image-rendering: -o-crisp-edges;
+			    image-rendering: optimize-contrast;
+			    -ms-interpolation-mode: nearest-neighbor;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		
+		<script>
+			var canvas = document.getElementById('myCanvas'),
+				ctx = myCanvas.getContext('2d'),
+				spritesheet = new Image(),
+				bg = new Image(),
+				pattern,
+				loadcount = 0,
+				delta = 0,
+				speed = 5,
+				frame = 0,
+				columns = 3,
+				rows = 2,
+				frameWidth = 19,
+				frameHeight = 30,
+				offsetX = 0,
+				offsetY = 0,
+				_x = (myCanvas.width / 2) - (frameWidth / 2),
+				_y = (myCanvas.height / 4) - (frameHeight / 2) + 100,
+				showSheet = true;
+			
+			spritesheet.src = "mario_sprite.png";
+			spritesheet.addEventListener('load', handle_LOAD);
+			
+			bg.src = "bg1.png";
+			bg.addEventListener('load', handle_LOAD);
+			
+			function animate() {
+				
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.webkitImageSmoothingEnabled = false;
+				ctx.imageSmoothingEnabled = false;
+
+				offsetX += frameWidth;
+
+				if (offsetX / frameWidth > columns - 1) {
+					offsetX = 0;
+					offsetY += frameHeight;
+				}
+
+				if (offsetY / frameHeight > rows - 1) {
+					offsetX = 0;
+					offsetY = 0;
+				}
+						
+				ctx.translate(-delta * speed, -193);
+				ctx.beginPath();		
+				ctx.fillStyle = pattern;
+				ctx.fillRect(delta * speed, 193, canvas.width, canvas.height);
+				ctx.fill();
+				ctx.closePath();
+				ctx.translate(delta * speed, 193);
+				
+				ctx.drawImage(spritesheet, offsetX, offsetY, frameWidth, frameHeight, _x, _y, frameWidth, frameHeight);	
+
+				frame += 1;
+				delta += 1;
+				
+				setTimeout(animate, 100);
+			}
+
+			function handle_LOAD() {
+				loadcount += 1;
+				
+				if (loadcount == 2) {
+					pattern = ctx.createPattern(bg, 'repeat-x');					
+					animate();
+				}
+			}
+
+		</script>
+	</body>
+</html>

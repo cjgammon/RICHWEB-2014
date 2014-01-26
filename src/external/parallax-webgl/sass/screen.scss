@@ -1,0 +1,170 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+$yellowish: #ffffff;
+$orangeish:  #d77604;
+$yellow: #eed932;
+$teal: #0cb4a8;
+$navy: #020d17;
+
+/* customize ui variables */
+$menu-item-selected-color: $teal;
+$menu-item-primed-color: darken($teal, 15%);
+$menu-item-color: darken($teal, 30%);
+
+$menu-input-text-color: $teal;
+$menu-input-bg-color: white;
+
+$progress-holder-color: $navy;
+$progress-bar-color: lighten($navy, 10%);
+
+$hud-bg-color: $navy;
+
+$spinner-color: $teal;
+
+/* import base css */
+@import "compass/reset";
+@import "compass/css3";
+@import "pres/pres";
+
+/* custom styles */
+body{
+	font-family: open-sans, sans-serif;
+	overflow-x: hidden;
+	color: white;
+}
+
+h2{
+	position: relative;
+	text-transform: uppercase;
+	font-family: open-sans-condensed, sans-serif;
+	font-size: 3rem;
+	font-weight: 100;
+	letter-spacing: .1em;
+	margin: 0 0 .5rem 0;
+	text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+a{
+	color: $orangeish;
+	text-decoration: none;
+	font-size: 1.5rem;
+	font-weight: 500;
+	
+	&:hover{
+		color: white;
+	};
+}
+
+ol{
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: $yellow;
+	list-style-type: decimal;
+}
+
+li{
+	line-height: 1.5;
+}
+
+figure{
+	position: relative;
+	padding: 50px 80px;
+	width: 400px;
+	opacity: 0;
+	-webkit-clip-path: polygon(180.758px 85.892px, 180.128px 88.285px, 181.837px 90.958px, 185.885px 90.958px, 189.752px 90.536px, 191.281px 91.381px, 195.329px 90.677px, 195.329px 87.651px, 196.138px 85.462px, 192.001px 83.922px, 188.898px 85.462px, 186.874px 83.922px, 183.366px 85.462px);
+	@include transition(-webkit-clip-path 1s, opacity .2s);
+	
+	canvas{
+		position: absolute;
+		top: 0;
+		@include transform(scale(0));
+		@include transition(-webkit-transform .5s);
+	}
+	
+	&.in{
+		opacity: 1;
+		-webkit-clip-path: polygon(-105.931px 17.51px, -131.035px 112.902px, -62.898px 219.517px, 98.479px 219.517px, 252.684px 202.683px, 313.649px 236.351px, 475.026px 208.295px, 475.026px 87.651px, 507.301px 0.356px, 342.338px -61.049px, 218.616px 0.356px, 137.927px -61.049px, -1.933px 0.356px);	
+		
+		canvas{
+			@include transform(scale(1));
+		}
+		
+		figcaption{
+			opacity: 1;
+			-webkit-clip-path: polygon(-105.931px 17.51px, -131.035px 112.902px, -62.898px 219.517px, 98.479px 219.517px, 252.684px 202.683px, 313.649px 236.351px, 475.026px 208.295px, 475.026px 87.651px, 507.301px 0.356px, 342.338px -61.049px, 218.616px 0.356px, 137.927px -61.049px, -1.933px 0.356px);	
+		}
+	}
+	
+	&.right{
+		float: right;
+		
+		canvas{
+			left: 0;
+		}
+		
+		figcaption{
+			border-left: 2px solid white;
+			text-align: left;
+		}
+	}
+	
+	&.left{
+		float: left;
+		
+		canvas{
+			right: 0;
+		}
+		
+		figcaption{
+			border-right: 2px solid white;
+			text-align: right;
+		}
+	}
+}
+
+figcaption{
+	position: relative;
+	padding: 0 10px;
+	z-index: 1;
+	text-transform: uppercase;
+	font-family: open-sans-condensed, sans-serif;
+	font-size: 1.3rem;
+	opacity: 0;
+	-webkit-clip-path: polygon(180.758px 85.892px, 180.128px 88.285px, 181.837px 90.958px, 185.885px 90.958px, 189.752px 90.536px, 191.281px 91.381px, 195.329px 90.677px, 195.329px 87.651px, 196.138px 85.462px, 192.001px 83.922px, 188.898px 85.462px, 186.874px 83.922px, 183.366px 85.462px);
+	@include transition(-webkit-clip-path 1s, opacity 1s);
+	
+	p{
+		line-height: 1.5;	
+	}
+}
+
+.section{
+	width: 100vw;
+	height: 100vh;
+}
+
+.slide{
+	-webkit-box-sizing: border-box;
+	padding: 1rem;
+}
+
+#title{
+	margin-top: -100px;
+}
+
+#scroll-btn{
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	margin-left: -54px;
+	opacity: 1;
+	@include transition(opacity .2s);
+	@include transform(translateZ(0));
+	
+	&.out{
+		opacity: 0;
+	}
+}

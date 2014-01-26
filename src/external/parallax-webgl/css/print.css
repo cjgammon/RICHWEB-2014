@@ -1,0 +1,401 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* customize ui variables */
+/* import base css */
+/* line 17, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 3, ../sass/pres/_pres.scss */
+html, body {
+  height: 100%;
+  width: 100vw;
+}
+
+/* line 8, ../sass/pres/_pres.scss */
+body {
+  position: relative;
+  -webkit-perspective-origin: center center;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* line 14, ../sass/pres/_pres.scss */
+aside {
+  display: none;
+}
+
+/* line 18, ../sass/pres/_pres.scss */
+#ground {
+  position: fixed;
+  pointer-events: none;
+  width: 100%;
+}
+
+/* line 24, ../sass/pres/_pres.scss */
+#deck {
+  -webkit-perspective-origin: center center;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* line 29, ../sass/pres/_pres.scss */
+#hud {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #020d17;
+}
+
+/* line 37, ../sass/pres/_pres.scss */
+#preloader {
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+}
+
+/* line 48, ../sass/pres/_pres.scss */
+.spinner {
+  width: 50px;
+  height: 50px;
+  background: #0cb4a8;
+  border-radius: 50px;
+  -webkit-animation: rotate 0.5s infinite linear;
+}
+
+/* line 56, ../sass/pres/_pres.scss */
+.slide {
+  position: relative;
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* line 66, ../sass/pres/_pres.scss */
+.hud-input {
+  position: absolute;
+  top: 0;
+  height: 5rem;
+  width: 100%;
+  padding: .5rem;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 5rem;
+  color: #0cb4a8;
+  background-color: white;
+  z-index: 20;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-transform: translateZ(0) rotateX(-90deg);
+  -moz-transform: translateZ(0) rotateX(-90deg);
+  -ms-transform: translateZ(0) rotateX(-90deg);
+  -o-transform: translateZ(0) rotateX(-90deg);
+  transform: translateZ(0) rotateX(-90deg);
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center;
+}
+/* line 82, ../sass/pres/_pres.scss */
+.hud-input.in {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* line 87, ../sass/pres/_pres.scss */
+.hud-list {
+  position: relative;
+  -webkit-perspective: 10000;
+  z-index: 0;
+}
+
+/* line 93, ../sass/pres/_pres.scss */
+.hud-list-item {
+  position: relative;
+  padding: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 100;
+  color: white;
+  background-color: #022522;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  z-index: 1;
+}
+/* line 108, ../sass/pres/_pres.scss */
+.hud-list-item.prev {
+  -webkit-transform: scale(1) rotateX(60deg);
+  -moz-transform: scale(1) rotateX(60deg);
+  -ms-transform: scale(1) rotateX(60deg);
+  -o-transform: scale(1) rotateX(60deg);
+  transform: scale(1) rotateX(60deg);
+}
+/* line 112, ../sass/pres/_pres.scss */
+.hud-list-item.next {
+  -webkit-transform: scale(1) rotateX(-60deg);
+  -moz-transform: scale(1) rotateX(-60deg);
+  -ms-transform: scale(1) rotateX(-60deg);
+  -o-transform: scale(1) rotateX(-60deg);
+  transform: scale(1) rotateX(-60deg);
+}
+/* line 116, ../sass/pres/_pres.scss */
+.hud-list-item.primed {
+  background-color: #076c65;
+  z-index: 5;
+}
+/* line 121, ../sass/pres/_pres.scss */
+.hud-list-item.selected {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+  background-color: #0cb4a8;
+  z-index: 10;
+}
+
+/* custom styles */
+/* line 33, ../sass/print.scss */
+body {
+  font-family: "futura-pt", sans-serif;
+}
+
+/* line 37, ../sass/print.scss */
+h2 {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: .1em;
+  margin-bottom: 1rem;
+  color: #f1bc04;
+}
+
+/* line 48, ../sass/print.scss */
+a {
+  color: #d77604;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+/* line 54, ../sass/print.scss */
+a:hover {
+  color: white;
+}
+
+/* line 59, ../sass/print.scss */
+ol {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #eed932;
+  list-style-type: decimal;
+}
+
+/* line 66, ../sass/print.scss */
+li {
+  line-height: 1.5;
+}
+
+/* line 70, ../sass/print.scss */
+header {
+  position: absolute;
+  margin-top: 2rem;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #eed932;
+}
+/* line 82, ../sass/print.scss */
+header small {
+  font-size: .8rem;
+}
+
+/* line 87, ../sass/print.scss */
+footer {
+  position: absolute;
+  margin-bottom: 2rem;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #eed932;
+}
+
+/* line 100, ../sass/print.scss */
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* line 109, ../sass/print.scss */
+.slide {
+  -webkit-box-sizing: border-box;
+  padding: 1rem;
+  display: block;
+}
+
+/* line 115, ../sass/print.scss */
+.slide--green {
+  color: white;
+  background: #0cb4a8;
+}
+/* line 119, ../sass/print.scss */
+.slide--green a {
+  color: white;
+}
+/* line 121, ../sass/print.scss */
+.slide--green a:hover {
+  color: #d77604;
+}
+
+/* line 127, ../sass/print.scss */
+.slide--yellow {
+  color: white;
+  background: #eed932;
+}
+/* line 131, ../sass/print.scss */
+.slide--yellow a {
+  color: white;
+}
+/* line 133, ../sass/print.scss */
+.slide--yellow a:hover {
+  color: #0cb4a8;
+}
+/* line 138, ../sass/print.scss */
+.slide--yellow h2 {
+  color: #0cb4a8;
+}
+
+/* line 143, ../sass/print.scss */
+.slide--orange {
+  color: white;
+  background: #e96233;
+}
+/* line 147, ../sass/print.scss */
+.slide--orange a {
+  color: white;
+}
+/* line 149, ../sass/print.scss */
+.slide--orange a:hover {
+  color: #0cb4a8;
+}
+/* line 154, ../sass/print.scss */
+.slide--orange h2 {
+  color: white;
+}
+
+/* line 159, ../sass/print.scss */
+.slide--white {
+  color: #ccc;
+  background: black;
+}
+/* line 163, ../sass/print.scss */
+.slide--white h2 {
+  color: white;
+}
+
+/* line 168, ../sass/print.scss */
+#whitepanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}

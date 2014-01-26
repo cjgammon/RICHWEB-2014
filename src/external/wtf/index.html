@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+		html{
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+		
+		body{
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			overflow: hidden;
+			display: -webkit-flex;
+			-webkit-flex-direction: column;
+			-webkit-align-items: center;
+			-webkit-justify-content: center;
+		}
+		
+		video{
+			display: none;
+		}
+		
+		canvas{
+			text-align: center;
+			margin: auto;
+		}
+		
+		#ui{
+			padding: 1rem;
+			margin: .5rem;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			background: #333;
+			color: white;
+			font-family: 'source-sans', helvetica, sans-serif;
+			border-radius: .5em;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id="ui">
+			Blending:
+			<select id="blend">
+				<option value="normal">Normal</option>
+				<option value="screen">Screen</option>
+				<option value="multiply">Multiply</option>
+				<option value="overlay">Overlay</option>
+				<option value="difference">Difference</option>
+			</select>
+			<input id="col" type="color" name="favcolor" value="#0000FF">
+		</div>
+		
+		<video id="myVideo" src="wtf_greenscreen_combined.mov" autoplay loop></video>
+		<canvas id="myCanvas" width="1000" height="560"></canvas>
+	<script>
+		
+		var maskcanvas = document.createElement('canvas'),
+			videocanvas = document.createElement('canvas'),
+			tmpcanvas = document.createElement('canvas'),			
+			canvas = document.getElementById('myCanvas'),
+			myVideo = document.getElementById('myVideo'),
+			maskctx = maskcanvas.getContext('2d'),
+			videoctx = videocanvas.getContext('2d'),
+			tmpctx = tmpcanvas.getContext('2d'),
+			ctx = canvas.getContext('2d'),
+			blendmode = 'normal',
+			color = 'blue';
+		
+		frame = 0;
+		myVideo.volume = 0;
+		myVideo.pause();
+		myVideo.addEventListener('canplaythrough', handle_CANPLAYTHROUGH);
+		
+		tmpcanvas.width = 1000;
+		tmpcanvas.height = 720;
+		maskcanvas.width = 1000;
+		maskcanvas.height = 720;
+		videocanvas.width = 1000;
+		videocanvas.height = 720;
+		
+		function handle_CANPLAYTHROUGH(e) {
+			myVideo.play();	
+		}
+		
+		function handle_blend_CHANGE(e) {
+			blendmode = blend.value;
+		};
+		
+		function handle_col_CHANGE(e) {
+			color = col.value;
+		};
+		
+		//update video playhead
+		function update() {
+			frame += 0.1; //0.05;
+						
+			if (frame > myVideo.duration) {
+				frame = 0;
+			}
+			
+			if (myVideo.currentTime) {
+				myVideo.currentTime = frame;
+			}
+		};
+		
+		//draw onto canvas
+		function draw() {
+			
+			videoctx.drawImage(myVideo, 0, 0);		
+			maskctx.drawImage(myVideo, -1000 / 2, 0);
+			
+			var imgd = maskctx.getImageData(0, 0, 1000 / 2, 720),
+				pix = imgd.data,
+				i;
+				
+			for (i = 0, n = pix.length; i < n; i += 4) {
+				if (pix[i] < 250) {
+					pix[i + 3] = 0;
+				}
+				if(pix[i+1] < 100){ 
+				   pix[i + 3] = 0;
+				}
+			}
+			
+			tmpctx.putImageData(imgd, 0, 0);
+
+			tmpctx.globalCompositeOperation = 'source-in';						
+			tmpctx.drawImage(videocanvas, 0, 0);
+		
+			//draw on canvas
+			if (blendmode != 'normal') {
+				ctx.globalAlpha = 0.05;
+				ctx.fillStyle = color;
+				ctx.rect(0, 0, 1000, 560);
+				ctx.globalCompositeOperation = blendmode;		
+				ctx.fill();			
+			}
+			
+			ctx.globalAlpha = 1;
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.save();
+			ctx.scale(2, 2);
+			ctx.drawImage(tmpcanvas, 0, -40);
+			ctx.restore();
+			
+			//show original
+			ctx.save();
+			ctx.scale(.3, .3);
+			ctx.drawImage(myVideo, 0, 40, 2000 / 2, 280, 0, 0, 2000 / 2, 300);
+			ctx.restore();
+			
+			requestAnimationFrame(draw);
+		}
+		
+		//setInterval(update, 100);
+		requestAnimationFrame(draw);
+		
+		blend.addEventListener('change', handle_blend_CHANGE);
+		col.addEventListener('change', handle_col_CHANGE);
+				
+	</script>
+	</body>
+</html>

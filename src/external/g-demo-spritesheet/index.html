@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				background: black;
+				margin: 0;
+			}
+			canvas{
+				width: 100%;
+			    image-rendering: optimizeSpeed;
+			    image-rendering: -moz-crisp-edges;
+			    image-rendering: -webkit-optimize-contrast;
+			    image-rendering: -o-crisp-edges;
+			    image-rendering: optimize-contrast;
+			    -ms-interpolation-mode: nearest-neighbor;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		
+		<script>
+			var canvas = document.getElementById('myCanvas'),
+				ctx = myCanvas.getContext('2d'),
+				spritesheet = new Image(),
+				frame = 0,
+				columns = 3,
+				rows = 2,
+				frameWidth = 77,
+				frameHeight = 120,
+				offsetX = 0,
+				offsetY = 0,
+				_x = (myCanvas.width / 2) - (frameWidth / 2),
+				_y = (myCanvas.height / 4) - (frameHeight / 2),
+				showSheet = true;
+			
+			spritesheet.src = "mario_sprite.png";
+			spritesheet.addEventListener('load', handle_LOAD);
+			
+			function animate() {
+				
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.webkitImageSmoothingEnabled = false;
+				ctx.imageSmoothingEnabled = false;
+
+				offsetX += frameWidth;
+
+				if (offsetX / frameWidth > columns - 1) {
+					offsetX = 0;
+					offsetY += frameHeight;
+				}
+
+				if (offsetY / frameHeight > rows - 1) {
+					offsetX = 0;
+					offsetY = 0;
+				}
+
+				ctx.globalAlpha = 0.2;
+				ctx.drawImage(spritesheet, 0, 0, spritesheet.width, spritesheet.height, _x - offsetX, _y - offsetY, spritesheet.width, spritesheet.height);	
+
+				ctx.globalAlpha = 1;
+
+				ctx.beginPath();
+				ctx.strokeStyle = "white";
+				ctx.lineWidth = 1;
+				ctx.rect(_x, _y, frameWidth, frameHeight);
+				ctx.stroke();
+				ctx.closePath();
+				
+				ctx.drawImage(spritesheet, offsetX, offsetY, frameWidth, frameHeight, _x, _y, frameWidth, frameHeight);	
+
+				frame += 1;
+				
+				setTimeout(animate, 200);
+			}
+
+			function handle_LOAD() {
+				animate();
+			}
+
+		</script>
+	</body>
+</html>

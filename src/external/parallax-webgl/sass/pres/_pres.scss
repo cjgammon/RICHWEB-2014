@@ -1,0 +1,126 @@
+
+
+html, body{
+	height: 100%;
+	width: 100vw;
+}
+
+body{
+	position: relative;
+	-webkit-perspective-origin: center center;
+	-webkit-transform-style: preserve-3d;
+}
+
+aside{
+	display: none;
+}
+
+#ground{
+	position: fixed;
+	pointer-events: none;
+	width: 100%;
+}
+
+#deck{
+	-webkit-perspective-origin: center center;
+	-webkit-transform-style: preserve-3d;
+}
+
+#hud{
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: $hud-bg-color;
+}
+
+#preloader{
+	display: -webkit-flex;
+	-webkit-flex-direction: column;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #efefef;
+}
+
+.spinner{
+	width: 50px;
+	height: 50px;
+	background: $spinner-color;
+	border-radius: 50px;
+	-webkit-animation: rotate 0.5s infinite linear;
+}
+
+.slide{
+	position: relative;
+	display: -webkit-flex;
+	-webkit-flex-direction: column;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.hud-input{
+	position: absolute;
+	top: 0;
+	height: 5rem;
+	width: 100%;
+	padding: .5rem;
+	font-size: 4rem;
+	font-weight: 800;
+	line-height: 5rem;
+	color: $menu-input-text-color;
+	background-color: $menu-input-bg-color;
+	z-index: 20;
+	@include transition(all .2s ease-out);
+	@include transform(translateZ(0) rotateX(-90deg));
+	@include transform-origin(top, center);
+	
+	&.in{
+		@include transform(translateZ(0));
+	}
+}
+
+.hud-list{
+	position: relative;
+	-webkit-perspective: 10000;
+	z-index: 0;
+}
+
+.hud-list-item{
+	position: relative;
+	
+	padding: 1rem;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 4rem;
+	font-weight: 100;
+	color: white;
+	
+	background-color: $menu-item-color;
+	@include transform(scale(.9));
+	@include transition(all .2s linear);
+	z-index: 1;
+	
+	&.prev{
+		@include transform(scale(1) rotateX(60deg));
+	}
+	
+	&.next{
+		@include transform(scale(1) rotateX(-60deg));
+	}
+	
+	&.primed{
+		background-color: $menu-item-primed-color;
+		z-index: 5;
+	}
+	
+	&.selected{
+		@include transform(scale(1.2));
+		background-color: $menu-item-selected-color;
+		z-index: 10;
+	}
+}

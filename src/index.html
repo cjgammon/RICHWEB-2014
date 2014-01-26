@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Rich Web</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/images/icons/apple-touch-icon-57x57-precomposed.png"/>
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/images/icons/apple-touch-icon-72x72-precomposed.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/images/icons/apple-touch-icon-114x114-precomposed.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="assets/images/icons/apple-touch-icon-144x144-precomposed.png" />
+
+        <link href="css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="css/print.css" media="print" rel="stylesheet" type="text/css" />
+    
+	<!--[if IE]>
+        <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+		
+        <script src="js/vendor/modernizr-2.6.2.js"></script>
+    </head>
+    <body>
+	
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+		<canvas id="ground"></canvas>
+				
+		<div id="deck">
+			<section id="cover" class="cover slide" data-class="basic">
+				<h2>Rich Web Experiences</h2>
+				<h4>and the Future of the Web</h4>
+				<header>
+					<div>March 7, 2014 &mdash; SXSW INTERACTIVE &mdash; Austin, TX., U.S.A.</div>
+                </header>
+			</section>
+			
+			<section id="hi" class="slide" data-class="basic">
+				<img class="head-shot" src="assets/images/headshot.jpg"/>
+				<h2>Hi</h2>
+				<p>I'm CJ Gammon</p>
+				<p>a Creative Technologist @ Adobe</p>
+			</section>
+			
+			<section id="rich" class="slide slide--black" data-class="basic">
+				<h2>rich web experiences</h2>
+			</section>
+			
+			<section id="definition" class="slide slide--black" data-class="basic">
+				<blockquote>
+					“<em>interactive mixed media</em> leveraging the <em>web</em> for <em>art</em>, <em>entertainment</em>, <em>education</em> or <em>escapism</em>”
+				</blockquote>
+			</section>
+			
+			<section id="video-games" class="slide slide--black" data-class="basic">
+				<h2>video games</h2>
+			</section>
+			
+			<section id="sprite-sheets" class="slide slide--iframe slide--full" data-class="iframe-full">
+				<iframe src="about:blank" width="100%" height="100%" data-src="external/g-demo-spritesheet/index.html"></iframe>
+				<h2>sprite sheets</h2>
+			</section>
+			
+            <section id="viewport-camera" class="slide slide--iframe slide--full" data-class="iframe-full">
+				<iframe src="about:blank" width="100%" height="100%" data-src="external/g-demo-camera/index.html"></iframe>
+				<h2>camera</h2>
+			</section>
+			
+			<section id="parallax" class="slide slide--iframe slide--full" data-class="iframe-full">
+				<iframe src="about:blank" width="100%" height="100%" data-src="external/gaming/index.html"></iframe>
+                <h2>parallax</h2>
+			</section>
+			
+			<section id="myst" class="slide slide--black" data-class="basic">
+				<h2>MYST</h2>
+			</section>
+            
+            <section id="web" class="slide slide--black" data-class="basic">
+				<h2>SIMPLE WEB</h2>
+            </section>
+
+            <section id="flash" class="slide slide--black" data-class="basic">
+				<h2>FLASH</h2>
+			</section>
+            
+            <section id="mobile" class="slide slide--black" data-class="basic">
+				<h2>Mobile</h2>
+			</section>
+            
+            <section id="compromise" class="slide slide--black" data-class="basic">
+				<h2>Compromise</h2>
+			</section>
+
+			<section id="css" class="slide slide--orange">
+                <h2>CSS</h2>
+                <div class="button-holder"> 
+                    <div id="ui-button-css">
+                        <div class="ui-button-css-front ui-button-css-side">Hi.</div>
+                        <div class="ui-button-css-back ui-button-css-side">Hi.</div>
+                    </div>
+                    <div id="ui-button-css-mask"></div>
+                    <div id="ui-button-css-blend"></div>
+                </div>
+			</section>
+            
+            <section id="filters" class="slide slide--black" data-class="basic">
+				<h2>filters</h2>
+			</section>
+			
+			<section id="blend" class="slide slide--black" data-class="basic">
+				<h2>blend modes</h2>
+			</section>
+            
+            <section id="masks" class="slide slide--black" data-class="basic">
+				<h2>masks</h2>
+			</section>
+
+            <section id="svg" class="slide slide--orange">
+                <h2>SVG</h2>
+                <div class="button-holder"> 
+                    <svg id="ui-button-svg">
+                        <circle class="ui-button-svg-bg" fill="#FFFFFF" cx="100" cy="100" r="100"/>
+                        <circle class="ui-button-svg-stroke" fill="none" stroke="#939393" stroke-width="14" stroke-miterlimit="10" cx="100" cy="100" r="79.291"/>
+                        <polygon class="ui-button-svg-icon" fill="#E96231" points="128.376,62.806 81.043,62.806 68.376,96.806 91.709,96.806 77.376,125.472 95.376,125.472 85.709,153.472 127.709,108.139 108.376,108.139 132.376,80.139 112.265,80.139 "/>
+                    </svg>
+                    <svg id="ui-button-svg-1">
+                        <circle class="ui-button-svg-bg" fill="#FFFFFF" cx="100" cy="100" r="100"/>
+                        <g class="ui-button-svg-group">
+                            <ellipse class="ui-button-svg-stroke" transform="matrix(0.8757 0.4829 -0.4829 0.8757 61.0532 -35.7691)" fill="none" stroke="#09A0B8" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="4.007,8.014" cx="100" cy="100.697" rx="68.765" ry="25.773"/>
+                            <ellipse class="ui-button-svg-stroke" transform="matrix(-0.8744 0.4851 -0.4851 -0.8744 236.2961 140.2369)" fill="none" stroke="#09A0B8" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="4.007,8.014" cx="100" cy="100.697" rx="68.765" ry="25.773"/>
+                            <ellipse class="ui-button-svg-stroke" fill="none" stroke="#09A0B8" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="4.007,8.014" cx="100" cy="100.697" rx="25.773" ry="68.765"/>
+                            <circle class="ui-button-svg-icon" fill="#E96231" cx="0" cy="0" r="5.639">
+                                <animateMotion path="M100,169.462c-14.234,0-25.773-30.787-25.773-68.765S85.766,31.933,100,31.933s25.773,30.787,25.773,68.765S114.234,169.462,100,169.462" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                            <circle class="ui-button-svg-icon" fill="#E96231" cx="0" cy="0" r="5.639">
+                                <animateMotion path="M39.87,134.058c-6.905-12.447,14.418-37.473,47.627-55.897s65.728-23.27,72.634-10.824c6.906,12.447-14.418,37.473-47.627,55.897S46.775,146.505,39.87,134.058" dur="5s" repeatCount="indefinite" />
+                            </circle>
+                            <circle class="ui-button-svg-icon" fill="#E96231" cx="0" cy="0" r="5.639">
+                                <animateMotion path="M39.783,67.494c6.873-12.465,39.405-7.703,72.662,10.635s54.645,43.308,47.772,55.773c-6.873,12.465-39.405,7.703-72.662-10.635S32.91,79.958,39.783,67.494" dur="4s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                    </svg>
+                    <div id="ui-button-svg-2"></div>
+                </div>
+            </section>
+
+            <section id="svg-css" class="slide slide--black">
+				<h2>svg + css</h2>
+            </section>
+            
+            <section id="snap" class="slide slide--black">
+				<h2>snap.svg</h2>
+            </section>
+
+            <section id="generative" class="slide slide--black">
+				<h2>generative art</h2>
+            </section>
+            
+            <section id="svg-animation" class="slide slide--black">
+				<h2>animation</h2>
+            </section>
+            
+            <section id="svg-animation-demo" class="slide slide--black">
+				<h2>[display ad here]</h2>
+            </section>
+
+            <section id="canvas" class="slide slide--orange">
+                <h2>2d canvas</h2>
+                <div class="button-holder"> 
+                    <canvas id="ui-button-canvas" width="200" height="200"></canvas>
+                    <canvas id="ui-button-canvas-blend" width="200" height="200"></canvas>
+                    <canvas id="ui-button-canvas-video" width="200" height="200"></canvas>
+                </div>
+            </section>
+            
+            <section id="canvas-blend" class="slide slide--black" data-class="basic">
+				<h2>blend modes</h2>
+			</section>
+
+            <section id="pixi" class="slide slide--black" data-class="basic">
+				<h2>pixi.js</h2>
+			</section>
+
+            <section id="canvas-blend-demo" class="slide slide--iframe slide--full" data-class="iframe-full">
+				<iframe src="about:blank" width="100%" height="100%" data-src="external/canvas-blend/index.html"></iframe>
+			</section>
+
+            <section id="dynamic-masks" class="slide slide--black" data-class="basic">
+				<h2>masks++</h2>
+			</section>
+            
+            <section id="dynamic-mask-demo" class="slide slide--iframe" data-class="iframe">
+                <h2>dynamic mask demo</h2>
+			</section>
+
+            <section id="webgl" class="slide slide--orange">
+                <h2>webgl</h2>
+                <div class="button-holder">
+                    <canvas id="ui-button-webgl" width="200" height="200"></canvas>
+                    <canvas id="ui-button-webgl-light" width="200" height="200"></canvas>
+                    <canvas id="ui-button-webgl-shader" width="200" height="200"></canvas>
+                </div>
+            </section>
+            
+            <section id="invaders" class="slide slide--iframe" data-class="iframe">
+				<iframe src="about:blank" width="100%" height="100%" data-src="http://space.site"></iframe>
+			</section>
+
+            <section id="video" class="slide slide--black" data-class="basic">
+				<h2>video</h2>
+			</section>
+							
+			<section id="video-alpha" class="slide slide--black" data-class="basic">
+				<h2>alpha video</h2>
+			</section>
+			
+			<section id="motion-graphics" class="slide slide--black" data-class="basic">
+				<h2>motion graphics</h2>
+			</section>
+            
+            <section id="ok-go" class="slide slide--iframe" data-class="iframe">
+				<iframe src="about:blank" width="100%" height="100%" data-src="external/wtf/index.html"></iframe>
+			</section>
+
+			<section id="semantics" class="slide slide--black" data-class="basic">
+                <h2>semantics</h2>
+			</section>
+
+			<section id="parallax-canvas" class="slide slide--iframe" data-class="iframe">
+				<iframe src="about:blank" width="100%" height="100%" data-src="external/parallax-canvas/index.html"></iframe>
+			</section>
+			
+			<section id="parallax-webgl" class="slide slide--iframe" data-class="iframe">
+				<iframe src="about:blank" width="100%" height="100%" data-src="external/parallax-webgl/index.html"></iframe>
+			</section>
+			
+			<section id="content1" class="slide" data-class="basic" data-pos="0">
+				<h2>Hmmm.</h2>
+			</section>
+			
+			<section id="content" class="slide" data-class="basic" data-pos="0.2">
+				
+			</section>
+			
+			<section id="content2" class="slide" data-class="basic" data-pos="0.45">
+				<h2>ok</h2>
+			</section>
+			
+			<section id="comm" class="slide" data-class="basic" data-pos="0.7">
+				<h2>communication</h2>
+			</section>
+			
+            <section id="webrtc" class="slide" data-class="basic" data-pos="0.8">
+                <h2>webRTC</h2>
+                <a href="http://mechrtc.heroku.com/">demo</a>
+			</section>
+            
+            <section id="trends" class="slide slide--orange-swirl" data-class="basic">
+				<h2>trends</h2>
+			</section>
+
+			<section id="thanks" class="slide" data-class="basic" data-pos="0.97">
+				<h2>thanks</h2>
+				<h4><a href="http://www.twitter.com/cjgammon">@cjgammon</a></h4>
+			</section>
+			
+			<section id="attr" class="slide" data-class="basic">
+				<h2>attribution</h2>
+			</section>
+		</div>
+		
+		<div id="fixed">
+			<a href="http://www.twitter.com/cjgammon">@cjgammon</a>
+		</div>
+        
+		<div id="hud">
+        </div>
+
+        <div id="progressHolder">
+            <div id="progressBar"></div>
+        </div>
+		
+		<div id="preloader">
+			<div class="spinner"></div>
+        </div>
+
+        <div id="warning">
+			<p>Hi, this site tries to show off some cutting edge features that are not supported in your browser. Maybe try viewing it in <a href="https://www.google.com/intl/en/chrome/browser/?&brand=CHMB&utm_campaign=en&utm_source=en-ha-na-us-sk&utm_medium=ha" target="blank">chrome</a>.<br/> Thanks.<p>
+		</div>
+
+        <script data-main="js/main" src="./js/vendor/requirejs/require.js"></script>
+		
+    </body>
+</html>

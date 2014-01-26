@@ -1,0 +1,262 @@
+.button-holder{
+    display: -webkit-flex;
+    width: 100vw;
+    -webkit-flex-direction: row;
+	-webkit-justify-content: space-around;
+}
+
+#ui-button-css{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    @include perspective(1000);
+    
+    .ui-button-css-side{
+        display: -webkit-flex;
+        -webkit-justify-content: center;
+	    -webkit-align-items: center;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        font-size: 3rem;
+        font-weight: 600;
+        -webkit-backface-visibility: hidden;
+        @include transition(-webkit-transform 1s);
+    }
+
+    .ui-button-css-front{
+        background: white;
+        color: black;
+        @include transform(rotateX(0deg));
+    }
+
+    .ui-button-css-back{
+        background: black;
+        color: white;
+        @include transform(rotateX(-180deg));
+    }
+
+    &:hover{
+        .ui-button-css-front{
+            @include transform(rotateX(180deg));
+        }
+
+        .ui-button-css-back{
+            @include transform(rotateX(0deg));
+        }
+    }
+}
+
+#ui-button-css-mask{
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    background-image: url(../assets/images/buttons/yosemite_1.jpg);
+    background-size: auto 100%;
+    background-position: center center;
+    cursor: pointer;
+	outline: 0px rgba(255, 255, 255, 0.5) solid;
+    @include transition(outline .2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s);
+    @include transform(translateZ(0));
+
+    &:hover{
+        -webkit-filter: sepia(0.5) saturate(1) contrast(1.7);
+        // @include transform(rotate(30deg) translateZ(0));
+		outline: 10px rgba(255, 255, 255, 0.75) solid;
+        background-position: 20% center;
+        background-size: auto 150%;
+    }
+}
+
+#ui-button-css-blend{
+    width: 200px;
+    height: 200px;
+    background-color: #ed1f24;
+    background-image: url(../assets/images/buttons/yosemite_2.jpg);
+    background-size: auto 100%;
+    background-position: 100% center;
+    background-blend-mode: hard-light;
+    border-radius: 100px;
+    cursor: pointer;
+    @include transition(background-color 1s, background-position 1s);
+
+    &:hover{
+        background-color: #eaeaea;
+        background-position: center center;
+    }
+}
+
+#ui-button-svg{
+	display: none;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+
+    .ui-button-svg-bg{
+        @include transition(fill .6s);
+    }
+
+    .ui-button-svg-stroke{
+        @include transition(stroke .4s, stroke-width .4s);
+    }
+
+    .ui-button-svg-icon{
+        @include transition(fill .2s, -webkit-transform .2s ease-in);
+        @include transform(scale(1));
+        @include transform-origin(center, center);
+    }
+
+    &:hover{
+        .ui-button-svg-bg{
+            fill: #939393;
+        }
+
+        .ui-button-svg-stroke{
+            stroke: #E96231;
+            stroke-width: 3;
+        }
+
+        .ui-button-svg-icon{
+            fill: white;
+            @include transform(scale(0.5));
+        }
+    }
+}
+
+@-webkit-keyframes rotate{
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+#ui-button-svg-1{
+	display: none;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+
+    .ui-button-svg-bg{
+        @include transition(fill 2s);
+    }
+
+    .ui-button-svg-stroke{
+        @include transition(stroke .4s, stroke-width .4s);
+    }
+
+    .ui-button-svg-icon{
+        @include transition(fill .2s);
+        @include transform-origin(center, center);
+    }
+    
+    .ui-button-svg-group{
+        @include transform-origin(center, center);
+    }
+
+    &:hover{
+        .ui-button-svg-bg{
+            fill: #333;
+        }
+
+        .ui-button-svg-stroke{
+            stroke: #E96231;
+            stroke-width: 3;
+        }
+
+        .ui-button-svg-icon{
+            fill: white;
+        }
+
+        // .ui-button-svg-group{
+        //     -webkit-animation: rotate 5s linear infinite;
+        // }
+    }
+}
+
+#ui-button-svg-2{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+
+    svg{
+        pointer-events: none;
+    }
+
+    circle:nth-child(3){
+        @include transition(fill 1s);
+    }
+
+    &:hover{
+        circle:nth-child(3){
+            fill: #ccc;
+            stroke: none;
+        }
+    }
+}
+
+#ui-button-canvas{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+	opacity: 0;
+}
+
+#ui-button-canvas-blend{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+	opacity: 0;
+}
+
+#ui-button-canvas-video{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+	opacity: 0;
+}
+
+#ui-button-webgl{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    background: white;
+	opacity: 0;
+}
+
+#ui-button-webgl-light{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    background: white;
+	opacity: 0;
+}
+
+#ui-button-webgl-shader{
+    background: white;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+	opacity: 0;
+}
+
+.button_base {
+    margin: 0;
+    border: 0;
+    font-size: 18px;
+    position: relative;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.button_base:hover {
+    cursor: pointer;
+}

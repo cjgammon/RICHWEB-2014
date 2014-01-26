@@ -1,0 +1,175 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+$yellowish: #f1bc04;
+$orangeish:  #d77604;
+$yellow: #eed932;
+$teal: #0cb4a8;
+$navy: #020d17;
+
+/* customize ui variables */
+$menu-item-selected-color: $teal;
+$menu-item-primed-color: darken($teal, 15%);
+$menu-item-color: darken($teal, 30%);
+
+$menu-input-text-color: $teal;
+$menu-input-bg-color: white;
+
+$progress-holder-color: $navy;
+$progress-bar-color: lighten($navy, 10%);
+
+$hud-bg-color: $navy;
+
+$spinner-color: $teal;
+
+/* import base css */
+@import "compass/reset";
+@import "compass/css3";
+@import "pres/pres";
+
+/* custom styles */
+body{
+	font-family: "futura-pt", sans-serif;
+}
+
+h2{
+	position: relative;
+	text-transform: uppercase;
+	font-size: 6rem;
+	font-weight: 700;
+	text-align: center;
+	letter-spacing: .1em;
+	margin-bottom: 1rem;
+	color: $yellowish;
+}
+
+a{
+	color: $orangeish;
+	text-decoration: none;
+	font-size: 1.5rem;
+	font-weight: 500;
+	
+	&:hover{
+		color: white;
+	};
+}
+
+ol{
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: $yellow;
+	list-style-type: decimal;
+}
+
+li{
+	line-height: 1.5;
+}
+
+header{
+	position: absolute;
+	margin-top: 2rem;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;	
+	font-weight: 700;
+	font-size: 1.2rem;
+	line-height: 1.5;
+	color: $yellow;
+	
+	small{
+		font-size: .8rem;
+	}
+}
+
+footer{
+	position: absolute;
+	margin-bottom: 2rem;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;	
+	font-weight: 700;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: $yellow;
+}
+
+iframe{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 0;
+}
+
+.slide{
+	-webkit-box-sizing: border-box;
+	padding: 1rem;
+	display: block;
+}
+
+.slide--green{
+	color: white;
+	background: $teal;
+	
+	a{
+		color: white;
+		&:hover{
+			color: $orangeish;
+		};
+	}
+}
+
+.slide--yellow{
+	color: white;
+	background: $yellow;
+	
+	a{
+		color: white;
+		&:hover{
+			color: $teal;
+		};
+	}
+	
+	h2{
+		color: $teal;
+	}
+}
+
+.slide--orange{
+	color: white;
+	background: #e96233;
+	
+	a{
+		color: white;
+		&:hover{
+			color: $teal;
+		};
+	}
+	
+	h2{
+		color: white;
+	}
+}
+
+.slide--white{
+	color: #ccc;
+	background: black;
+	
+	h2{
+		color: white;
+	}	
+}
+
+#whitepanel{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: white;
+}

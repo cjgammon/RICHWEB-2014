@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <style>
+            html, body{
+                margin: 0;
+                overflow: hidden;
+                background: black;
+            }
+
+        </style>
+    </head>
+    <body>
+
+		<canvas id="scene"></canvas>
+
+        <script src="js/three.min.js"></script>
+        <script src="js/greensock/TweenMax.js"></script>
+        <script>
+            var step = 0,
+                delta = 0,
+				loadedImages = 0,
+				zoom = 10,
+                canvas,
+                renderer,
+                camera,
+                scene,
+                ss,
+                sprite,
+                bg1,
+                bg2,
+                bg3,
+                bg4,
+                sstexture,
+                stexture,
+                bgtexture1,
+                bgtexture2,
+                bgtexture3,
+                bgtexture4,
+                bgparallax = false,
+                bganimating = false,
+                spriteanimating = false,
+                _width = window.innerWidth,
+                _height = window.innerHeight;
+
+            canvas = document.getElementById('scene');
+            canvas.width = _width;
+            canvas.height = _height;
+
+			renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+			renderer.setClearColor(0x000000);
+			
+			/* camera = new THREE.OrthographicCamera( window.innerWidth / - zoom, window.innerWidth / zoom, window.innerHeight / zoom, window.innerHeight / - zoom, -500, 10000 ); */
+			camera = new THREE.PerspectiveCamera(10, _width / _height, 0.1, 10000);
+			scene = new THREE.Scene();
+
+            sstexture = new THREE.ImageUtils.loadTexture("./images/enemy_full.png", {}, handle_img_LOAD);
+            stexture = new THREE.ImageUtils.loadTexture("./images/enemy_full.png", {}, handle_img_LOAD);
+            
+            bgtexture1 = new THREE.ImageUtils.loadTexture("./images/bgGame.jpg", {}, handle_img_LOAD);
+            bgtexture1.wrapS = bgtexture1.wrapT = THREE.RepeatWrapping;
+            bgtexture1.repeat.set( 1, 1 );
+            bgtexture2 = new THREE.ImageUtils.loadTexture("./images/bgGame2.png", {}, handle_img_LOAD);
+            bgtexture2.wrapS = bgtexture2.wrapT = THREE.RepeatWrapping;
+            bgtexture2.repeat.set( 1, 1 );
+            bgtexture3 = new THREE.ImageUtils.loadTexture("./images/bgGame3.png", {}, handle_img_LOAD);
+            bgtexture3.wrapS = bgtexture3.wrapT = THREE.RepeatWrapping;
+            bgtexture3.repeat.set( 1, 1 );
+            bgtexture4 = new THREE.ImageUtils.loadTexture("./images/bgGame4.png", {}, handle_img_LOAD);
+            bgtexture4.wrapS = bgtexture4.wrapT = THREE.RepeatWrapping;
+            bgtexture4.repeat.set( 1, 1 );
+
+            render();
+
+			function handle_img_LOAD() {
+                loadedImages += 1;
+                if (loadedImages == 6) {
+                    trigger();
+				}
+			}
+			
+            function trigger() {
+                step += 1;
+                
+                switch (step) {
+                case 1:
+                    //wait
+                    break;
+                case 2:
+                    //sprite sheet
+                    var ssmaterial = new THREE.MeshBasicMaterial({map: sstexture, transparent: true, opacity: 0});
+                    var geometry = new THREE.PlaneGeometry(428 / 2, 682 / 2, 1, 1);
+                    
+                    ss = new THREE.Mesh(geometry, ssmaterial);
+                    ss.rotation.z = Math.PI;
+                    ss.position.z = -1000;
+                    ss.scale.set(0.1, 0.1, 0.1);
+                    scene.add(ss);
+
+                    TweenMax.to(ss.scale, 1.5, {x: 0.3, y: 0.3, z: 0.3, ease: Bounce.easeOut});
+                    TweenMax.to(ss.material, 1, {opacity: 1});
+                    break;
+                case 3:
+                    //sprite animation
+                    spriteAnimation = new TextureAnimator(stexture, 4, 11, 30, 1); // texture, #horiz, #vert, #total, duration.
+
+                    var smaterial = new THREE.MeshBasicMaterial({map: stexture, transparent: true});
+                    var geometry= new THREE.PlaneGeometry(106 / 2, 61 / 2, 1, 1);
+
+                    sprite = new THREE.Mesh(geometry, smaterial);
+                    sprite.position.x = -24;
+                    sprite.position.y = 46.5;
+                    sprite.position.z = -1000;
+
+                    sprite.rotation.z = Math.PI;
+                    sprite.scale.set(0.3, 0.3, 0.3); 
+                    scene.add(sprite)
+
+                    TweenMax.to(ss.material, 0.5, {opacity: 0.3});
+                    TweenMax.to(sprite.scale, 2, {x: 0.5, y: 0.5, z: 0.5, ease: Back.easeOut});
+                    TweenMax.to(sprite.position, 3, {x: 0, y: 0, onComplete: function () {
+                        spriteanimating = true;
+                    }});
+                    break;
+                case 4:
+                    //animation focus
+                    TweenMax.to(ss.material, 0.5, {opacity: 0});
+                    break;
+                case 5:
+                    //add bg
+                    var bgmaterial1 = new THREE.MeshBasicMaterial({map: bgtexture1, transparent: true, opacity: 0});
+                    var geometry= new THREE.PlaneGeometry(792 / 4, 612 / 4, 1, 1);
+                    bg1 = new THREE.Mesh(geometry, bgmaterial1);
+                    bg1.position.z = -1600;
+                    scene.add(bg1);
+                    
+                    var bgmaterial2 = new THREE.MeshBasicMaterial({map: bgtexture2, transparent: true, opacity: 0});
+                    bg2 = new THREE.Mesh(geometry, bgmaterial2);
+                    bg2.position.z = -1600;
+                    scene.add(bg2);
+                    
+                    var bgmaterial3 = new THREE.MeshBasicMaterial({map: bgtexture3, transparent: true, opacity: 0});
+                    bg3 = new THREE.Mesh(geometry, bgmaterial3);
+                    bg3.position.z = -1600;
+                    scene.add(bg3);
+                    
+                    var bgmaterial4 = new THREE.MeshBasicMaterial({map: bgtexture4, transparent: true, opacity: 0});
+                    bg4 = new THREE.Mesh(geometry, bgmaterial4);
+                    bg4.position.z = -1600;
+                    scene.add(bg4);
+
+                    TweenMax.to(bg1.material, 1, {opacity: 1});
+                    TweenMax.to(bg2.material, 1, {opacity: 1});
+                    TweenMax.to(bg3.material, 1, {opacity: 1});
+                    TweenMax.to(bg4.material, 1, {opacity: 1});
+
+                    break;
+                case 6:
+                    TweenMax.to(bg1.position, 1, {z: -500});
+                    TweenMax.to(bg2.position, 1, {z: -500});
+                    TweenMax.to(bg3.position, 1, {z: -500});
+                    TweenMax.to(bg4.position, 1, {z: -500});
+                    TweenMax.to(sprite.position, 1, {z: -499});
+                    TweenMax.to(sprite.scale, 1, {x: 0.2, y: 0.2, z: 0.2, onComplete: function () {
+                        bganimating = true;
+                    }});
+
+                    break;
+                case 7:
+                    TweenMax.to(camera, 1, {perspective: 300});
+                    TweenMax.to(camera.rotation, 1, {x: -0.1, y: 0.15});
+                    TweenMax.to(camera.position, 1, {x: 100, y: 100, z: 200});
+
+                    TweenMax.to(bg1.position, 1, {z: -2000});
+                    TweenMax.to(bg2.position, 1, {z: -1500});
+                    TweenMax.to(bg3.position, 1, {z: -1000});
+                    TweenMax.to(bg4.position, 1, {z: -600});
+
+                    break;
+                case 8:
+                    bgparallax = true;
+
+                    TweenMax.to(bg1.position, 1, {z: -500});
+                    TweenMax.to(bg2.position, 1, {z: -500});
+                    TweenMax.to(bg3.position, 1, {z: -500});
+                    TweenMax.to(bg4.position, 1, {z: -500});
+
+                    TweenMax.to(camera, 1, {perspective: 10});
+                    TweenMax.to(camera.rotation, 1, {x: 0, y: 0});
+                    TweenMax.to(camera.position, 1, {x: 0, y: 0, z: 0});
+
+                    break;
+
+                case 9:
+                    TweenMax.to(sprite.position, 1, {x: 40, y: -40, ease: Quad.easeInOut});
+                    TweenMax.to(sprite.material, 0.5, {opacity: 0});
+                    break;
+                }
+            };
+
+            function render(e) {
+                
+                if (spriteanimating !== false) {
+	                spriteAnimation.update(1);
+                }
+
+                if (bgparallax !== false) {
+                    bgtexture1.offset.x += 0.001;
+                    bgtexture2.offset.x += 0.002;
+                    bgtexture3.offset.x += 0.004;
+                    bgtexture4.offset.x += 0.005;
+                } else if (bganimating !== false) {
+                    bgtexture1.offset.x += 0.005;
+                    bgtexture2.offset.x += 0.005;
+                    bgtexture3.offset.x += 0.005;
+                    bgtexture4.offset.x += 0.005;
+                }
+
+				renderer.render(scene, camera);
+                requestAnimationFrame(render);
+            };
+
+            function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDuration) {	
+                // note: texture passed by reference, will be updated by the update function.
+                this.tilesHorizontal = tilesHoriz;
+                this.tilesVertical = tilesVert;
+                // how many images does this spritesheet contain?
+                //  usually equals tilesHoriz * tilesVert, but not necessarily,
+                //  if there at blank tiles at the bottom of the spritesheet. 
+                this.numberOfTiles = numTiles;
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping; 
+                texture.repeat.set( 1 / this.tilesHorizontal, 1 / this.tilesVertical );
+
+                // how long should each image be displayed?
+                this.tileDisplayDuration = tileDispDuration;
+
+                // how long has the current image been displayed?
+                this.currentDisplayTime = 0;
+
+                // which image is currently being displayed?
+                this.currentTile = 0;
+                    
+                this.update = function( milliSec )
+                {
+                    this.currentDisplayTime += milliSec;
+                    while (this.currentDisplayTime > this.tileDisplayDuration)
+                    {
+                        this.currentDisplayTime -= this.tileDisplayDuration;
+                        this.currentTile++;
+                        if (this.currentTile == this.numberOfTiles)
+                            this.currentTile = 0;
+                        var currentColumn = this.currentTile % this.tilesHorizontal;
+                        texture.offset.x = currentColumn / this.tilesHorizontal;
+                        var currentRow = Math.floor( this.currentTile / this.tilesHorizontal );
+                        texture.offset.y = currentRow / this.tilesVertical;
+                    }
+                };
+            }
+
+        </script>
+    </body>
+</html>
