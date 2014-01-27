@@ -748,15 +748,68 @@ iframe.focus {
   cursor: auto;
 }
 
+/* line 2, ../sass/components/_filter.scss */
+#filter-list-container {
+  text-align: center;
+  color: #ccc;
+}
+/* line 6, ../sass/components/_filter.scss */
+#filter-list-container img {
+  cursor: pointer;
+  display: block;
+  margin: .5rem auto;
+  width: 500px;
+}
+/* line 13, ../sass/components/_filter.scss */
+#filter-list-container #filter-list {
+  margin: 1em auto;
+  width: 70vw;
+  font-size: 2rem;
+}
+/* line 18, ../sass/components/_filter.scss */
+#filter-list-container #filter-list .filter-item {
+  display: inline-block;
+  position: relative;
+  padding: 0.3em 0.3em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #ccc;
+  color: white;
+  border-radius: .2em;
+  -webkit-transition: background 0.2s, color 0.2s;
+  -moz-transition: background 0.2s, color 0.2s;
+  -o-transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
+}
+/* line 30, ../sass/components/_filter.scss */
+#filter-list-container #filter-list .filter-item.out {
+  color: #ccc;
+  background: transparent;
+}
+/* line 35, ../sass/components/_filter.scss */
+#filter-list-container #filter-list .filter-item span {
+  pointer-events: none;
+}
+
+/* line 42, ../sass/components/_filter.scss */
+#filter-list-image {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
 /* custom styles */
-/* line 47, ../sass/screen.scss */
+/* line 48, ../sass/screen.scss */
 body {
   font-family: "Futura PT", "futura-pt", sans-serif;
   font-size: 2rem;
   color: white;
 }
 
-/* line 53, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 h2, h3, h4 {
   position: relative;
   text-transform: uppercase;
@@ -766,46 +819,46 @@ h2, h3, h4 {
   margin-bottom: 1rem;
 }
 
-/* line 62, ../sass/screen.scss */
+/* line 63, ../sass/screen.scss */
 h2 {
   font-size: 6rem;
 }
 
-/* line 66, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 h3 {
   font-size: 4rem;
 }
 
-/* line 70, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 h4 {
   font-size: 2rem;
 }
 
-/* line 74, ../sass/screen.scss */
+/* line 75, ../sass/screen.scss */
 a {
   color: #d77604;
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 500;
 }
-/* line 80, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 a:hover {
   color: white;
 }
 
-/* line 85, ../sass/screen.scss */
+/* line 86, ../sass/screen.scss */
 ol {
   font-size: 3rem;
   text-transform: uppercase;
   list-style-type: decimal;
 }
 
-/* line 91, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 li {
   line-height: 1.5;
 }
 
-/* line 95, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 header {
   position: absolute;
   margin-top: 2rem;
@@ -817,12 +870,12 @@ header {
   font-size: 1.2rem;
   line-height: 1.5;
 }
-/* line 106, ../sass/screen.scss */
+/* line 107, ../sass/screen.scss */
 header small {
   font-size: .8rem;
 }
 
-/* line 111, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 footer {
   position: absolute;
   margin-bottom: 1rem;
@@ -835,7 +888,7 @@ footer {
   line-height: 1.5;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 124, ../sass/screen.scss */
 blockquote {
   padding: 1em;
   font-size: 4rem;
@@ -843,40 +896,40 @@ blockquote {
   line-height: 1.5;
 }
 
-/* line 130, ../sass/screen.scss */
+/* line 131, ../sass/screen.scss */
 em {
   font-weight: bold;
   font-style: italic;
   color: #fff;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 .slide {
   -webkit-box-sizing: border-box;
   padding: 1rem;
 }
 
-/* line 141, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 .slide--orange {
   background: #f0a964;
 }
 
-/* line 145, ../sass/screen.scss */
+/* line 146, ../sass/screen.scss */
 .slide--orange-swirl {
   background-image: url(../assets/images/patterns/wild-sea.png);
 }
 
-/* line 149, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .slide--black {
   color: white;
   background: #222;
 }
 
-/* line 154, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .slide--iframe {
   background: #f2f2f2;
 }
-/* line 157, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 .slide--iframe h2 {
   position: absolute;
   top: 0;
@@ -888,41 +941,41 @@ em {
   color: white;
   z-index: 2;
 }
-/* line 169, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 .slide--iframe header {
   color: black;
 }
-/* line 173, ../sass/screen.scss */
+/* line 174, ../sass/screen.scss */
 .slide--iframe a {
   color: #0cb4a8;
 }
-/* line 175, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 .slide--iframe a:hover {
   color: black;
 }
 
-/* line 181, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 .slide--full {
   padding: 0;
 }
-/* line 184, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 .slide--full iframe {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
 }
 
-/* line 191, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 #fixed {
   font-family: helvetica, sans-serif;
 }
 
-/* line 195, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 #cover {
   background-image: url(../assets/images/patterns/kale-salad.jpg);
 }
 
-/* line 199, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 #hi {
   background-image: url(../assets/images/point-reyes.jpg);
   background-position: 30%;
@@ -931,14 +984,20 @@ em {
   font-weight: bold;
 }
 
-/* line 207, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 .head-shot {
   width: 200px;
   margin-bottom: 1em;
   -webkit-clip-path: circle(50%);
 }
 
-/* line 213, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
+#video-games {
+  background-image: url(../assets/images/pacman.jpg);
+  background-size: cover;
+}
+
+/* line 219, ../sass/screen.scss */
 #myst {
   background-image: url(../assets/images/myst.jpeg);
   background-size: cover;

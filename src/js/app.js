@@ -11,6 +11,7 @@ define(function (require) {
 		IframeView = require('app/views/iframe-view'),
 		IframeFullView = require('app/views/iframe-full-view'),
 		GameView = require('app/views/game-view'),
+        FilterDemoView = require('app/views/filter-demo-view'),
 		UIButtonSVGView = require('app/views/ui-button-svg-view'),
 		UIButtonCanvasView = require('app/views/ui-button-canvas-view'),
 		UIButtonWebglView = require('app/views/ui-button-webgl-view'),
@@ -25,7 +26,8 @@ define(function (require) {
 			{cl: 'iframe', view: IframeView},
 			{id: 'svg', view: UIButtonSVGView},
 			{id: 'canvas', view: UIButtonCanvasView},
-			{id: 'webgl', view: UIButtonWebglView}
+			{id: 'webgl', view: UIButtonWebglView},
+            {id: 'filters', view: FilterDemoView}
 		],
 	
         initialize: function () {

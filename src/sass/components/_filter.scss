@@ -1,0 +1,44 @@
+
+#filter-list-container{
+	text-align: center;
+	color: #ccc;
+		
+	img{
+		cursor: pointer;
+		display: block;
+		margin: .5rem auto;
+		width: 500px;
+	}
+	
+	#filter-list{
+		margin: 1em auto;
+		width: 70vw;
+		font-size: 2rem;
+		
+		.filter-item{
+			display: inline-block;
+			position: relative;
+			padding: 0.3em 0.3em;
+			overflow: hidden;
+			white-space: nowrap;
+			cursor: pointer;
+			background: #ccc;
+			color: white;
+			border-radius: .2em;
+			@include transition(background .2s, color .2s);
+			
+			&.out{
+				color: #ccc;
+				background: transparent;
+			}
+			
+			span{
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+#filter-list-image{
+	@include transform(translateZ(0));
+}

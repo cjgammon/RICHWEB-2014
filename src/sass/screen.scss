@@ -42,6 +42,7 @@ $spinner-color: $teal;
 @import "pres/pres";
 @import "components/buttons";
 @import "components/iframe";
+@import "components/filter";
 
 /* custom styles */
 body{
@@ -208,6 +209,11 @@ em{
 	width: 200px;
 	margin-bottom: 1em;
 	-webkit-clip-path: circle(50%);
+}
+
+#video-games{
+    background-image: url(../assets/images/pacman.jpg);
+	background-size: cover;
 }
 
 #myst{
