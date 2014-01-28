@@ -31,7 +31,14 @@
 				ctx = myCanvas.getContext('2d'),
 				spritesheet = new Image(),
 				bg = new Image(),
+				sky = new Image(),
+				hill1 = new Image(),
+				hill2 = new Image(),
+				hill3 = new Image(),
+				clouds = new Image(),
 				pattern,
+				skyPattern,
+				cloudPattern,
 				loadcount = 0,
 				delta = 0,
 				speed = 10,
@@ -53,8 +60,23 @@
 			spritesheet.src = "mario_sprite.png";
 			spritesheet.addEventListener('load', handle_LOAD);
 			
-			bg.src = "bg1.png";
+			bg.src = "ground.png";
 			bg.addEventListener('load', handle_LOAD);
+			
+			sky.src = "sky.png";
+			sky.addEventListener('load', handle_LOAD);
+			
+			hill1.src = "hill1.png";
+			hill1.addEventListener('load', handle_LOAD);
+			
+			hill2.src = "hill2.png";
+			hill2.addEventListener('load', handle_LOAD);
+			
+			hill3.src = "hill3.png";
+			hill3.addEventListener('load', handle_LOAD);
+			
+			clouds.src = "clouds.png";
+			clouds.addEventListener('load', handle_LOAD);
 			
 			function resize() {
 				canvas.width = window.innerWidth;
@@ -65,6 +87,8 @@
 			}
 			
 			function animate() {
+				
+				_bottom = _y - 250 + 90;
 				
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				ctx.webkitImageSmoothingEnabled = false;
@@ -99,14 +123,50 @@
 						offsetX = frameWidth * (columns - 2);
 					}
 				}
-						
-				ctx.translate(-delta * speed, _y - 250 + 90);
+				
+				//sky
 				ctx.beginPath();		
-				ctx.fillStyle = pattern;
-				ctx.fillRect(delta * speed, -_y + 250 - 90, canvas.width, canvas.height);
+				ctx.fillStyle = skyPattern;
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
 				ctx.fill();
 				ctx.closePath();
-				ctx.translate(delta * speed, -_y + 250 - 90);
+				
+				//hill1
+				_offsetSpeed = delta * 2;
+				drawImage(hill1, 0 - _offsetSpeed % hill1.width);
+				drawImage(hill1, hill1.width - _offsetSpeed % hill1.width);
+				drawImage(hill1, hill1.width * 2 - _offsetSpeed % hill1.width);
+
+				//hill2
+				_offsetSpeed = delta * 3;
+				drawImage(hill2, 0 - _offsetSpeed % hill2.width);
+				drawImage(hill2, hill2.width - _offsetSpeed % hill2.width);
+				drawImage(hill2, hill2.width * 2 - _offsetSpeed % hill2.width);
+				drawImage(hill2, hill2.width * 3 - _offsetSpeed % hill2.width);
+
+				//hill3
+				_offsetSpeed = delta * 5;
+				drawImage(hill3, 0 - _offsetSpeed % hill3.width);
+				drawImage(hill3, hill3.width - _offsetSpeed % hill3.width);
+				drawImage(hill3, hill3.width * 2 - _offsetSpeed % hill3.width);
+
+				//clouds
+				ctx.translate(-delta, _bottom - 100);
+				ctx.beginPath();		
+				ctx.fillStyle = cloudPattern;
+				ctx.fillRect(delta, -_bottom + 100, canvas.width, canvas.height);
+				ctx.fill();
+				ctx.closePath();
+				ctx.translate(delta, -_bottom + 100);
+				
+				//ground
+				ctx.translate(-delta * speed, _bottom);
+				ctx.beginPath();		
+				ctx.fillStyle = pattern;
+				ctx.fillRect(delta * speed, -_bottom, canvas.width, canvas.height);
+				ctx.fill();
+				ctx.closePath();
+				ctx.translate(delta * speed, -_bottom);
 				
 				ctx.drawImage(spritesheet, offsetX, offsetY, frameWidth, frameHeight, _x, _y, frameWidth, frameHeight);	
 
@@ -115,12 +175,19 @@
 				
 				setTimeout(animate, 50);
 			}
+			
+			function drawImage(img, x) {
+				ctx.drawImage(img, 0, 0, img.width, img.height, x, _bottom, img.width, img.height);	
+			}
 
 			function handle_LOAD() {
 				loadcount += 1;
 				
-				if (loadcount == 2) {
-					pattern = ctx.createPattern(bg, 'repeat-x');					
+				if (loadcount == 7) {
+					pattern = ctx.createPattern(bg, 'repeat-x');
+					skyPattern = ctx.createPattern(sky, 'repeat');
+					cloudPattern = ctx.createPattern(clouds, 'repeat-x');
+										
 					animate();
 				}
 			}

@@ -804,7 +804,7 @@ iframe.focus {
 /* custom styles */
 /* line 48, ../sass/screen.scss */
 body {
-  font-family: "Futura PT", "futura-pt", sans-serif;
+  font-family: "Futura PT", "futura-pt", impact, sans-serif;
   font-size: 2rem;
   color: white;
 }
@@ -836,29 +836,28 @@ h4 {
 
 /* line 75, ../sass/screen.scss */
 a {
-  color: #d77604;
+  color: #ccc;
   text-decoration: none;
-  font-size: 1.5rem;
   font-weight: 500;
 }
-/* line 81, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 a:hover {
   color: white;
 }
 
-/* line 86, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 ol {
   font-size: 3rem;
   text-transform: uppercase;
   list-style-type: decimal;
 }
 
-/* line 92, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 li {
   line-height: 1.5;
 }
 
-/* line 96, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 header {
   position: absolute;
   margin-top: 2rem;
@@ -870,12 +869,12 @@ header {
   font-size: 1.2rem;
   line-height: 1.5;
 }
-/* line 107, ../sass/screen.scss */
+/* line 106, ../sass/screen.scss */
 header small {
   font-size: .8rem;
 }
 
-/* line 112, ../sass/screen.scss */
+/* line 111, ../sass/screen.scss */
 footer {
   position: absolute;
   margin-bottom: 1rem;
@@ -888,7 +887,7 @@ footer {
   line-height: 1.5;
 }
 
-/* line 124, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 blockquote {
   padding: 1em;
   font-size: 4rem;
@@ -896,40 +895,40 @@ blockquote {
   line-height: 1.5;
 }
 
-/* line 131, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 em {
   font-weight: bold;
   font-style: italic;
   color: #fff;
 }
 
-/* line 137, ../sass/screen.scss */
+/* line 136, ../sass/screen.scss */
 .slide {
   -webkit-box-sizing: border-box;
   padding: 1rem;
 }
 
-/* line 142, ../sass/screen.scss */
+/* line 141, ../sass/screen.scss */
 .slide--orange {
   background: #f0a964;
 }
 
-/* line 146, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 .slide--orange-swirl {
   background-image: url(../assets/images/patterns/wild-sea.png);
 }
 
-/* line 150, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 .slide--black {
   color: white;
   background: #222;
 }
 
-/* line 155, ../sass/screen.scss */
+/* line 154, ../sass/screen.scss */
 .slide--iframe {
   background: #f2f2f2;
 }
-/* line 158, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 .slide--iframe h2 {
   position: absolute;
   top: 0;
@@ -941,41 +940,49 @@ em {
   color: white;
   z-index: 2;
 }
-/* line 170, ../sass/screen.scss */
+/* line 168, ../sass/screen.scss */
+.slide--iframe h2.desc-ul {
+  top: 3rem;
+  bottom: auto;
+  left: 3rem;
+  right: auto;
+  font-size: 4rem;
+}
+/* line 178, ../sass/screen.scss */
 .slide--iframe header {
   color: black;
 }
-/* line 174, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 .slide--iframe a {
   color: #0cb4a8;
 }
-/* line 176, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 .slide--iframe a:hover {
   color: black;
 }
 
-/* line 182, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .slide--full {
   padding: 0;
 }
-/* line 185, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 .slide--full iframe {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
 }
 
-/* line 192, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 #fixed {
   font-family: helvetica, sans-serif;
 }
 
-/* line 196, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 #cover {
   background-image: url(../assets/images/patterns/kale-salad.jpg);
 }
 
-/* line 200, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 #hi {
   background-image: url(../assets/images/point-reyes.jpg);
   background-position: 30%;
@@ -984,21 +991,73 @@ em {
   font-weight: bold;
 }
 
-/* line 208, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 .head-shot {
   width: 200px;
   margin-bottom: 1em;
   -webkit-clip-path: circle(50%);
 }
 
-/* line 214, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
 #video-games {
   background-image: url(../assets/images/pacman.jpg);
   background-size: cover;
 }
 
-/* line 219, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 #myst {
   background-image: url(../assets/images/myst.jpeg);
   background-size: cover;
+}
+
+/* line 232, ../sass/screen.scss */
+#achievement {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-top: 1em;
+  margin-left: -150px;
+  padding: 1em 1.5em;
+  padding-bottom: 0;
+  border-radius: 2em;
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: helvetica, sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  -webkit-transition-delay: 1s;
+  -moz-transition: -webkit-transform 0.2s ease-out 1s;
+  -o-transition: -webkit-transform 0.2s ease-out 1s;
+  transition: -webkit-transform 0.2s ease-out 1s;
+  -webkit-transform: translateY(-100px);
+  -moz-transform: translateY(-100px);
+  -ms-transform: translateY(-100px);
+  -o-transform: translateY(-100px);
+  transform: translateY(-100px);
+}
+/* line 248, ../sass/screen.scss */
+#achievement svg {
+  display: inline-block;
+  float: left;
+  margin-top: -0.75em;
+  margin-left: -1em;
+}
+/* line 255, ../sass/screen.scss */
+#achievement .achievement-text {
+  float: left;
+}
+/* line 259, ../sass/screen.scss */
+#achievement em {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 100;
+  font-style: normal;
+}
+/* line 266, ../sass/screen.scss */
+#achievement.in {
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+  transform: translateY(0px);
 }

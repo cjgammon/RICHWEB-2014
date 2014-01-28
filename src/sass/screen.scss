@@ -46,7 +46,7 @@ $spinner-color: $teal;
 
 /* custom styles */
 body{
-	font-family: "Futura PT", "futura-pt", sans-serif;
+	font-family: "Futura PT", "futura-pt", impact, sans-serif;
 	font-size: 2rem;
 	color: white;
 }
@@ -73,9 +73,8 @@ h4{
 }
 
 a{
-	color: $orangeish;
+	color: #ccc;
 	text-decoration: none;
-	font-size: 1.5rem;
 	font-weight: 500;
 	
 	&:hover{
@@ -165,6 +164,15 @@ em{
 		height: 100px;
 		color: white;
 		z-index: 2;
+
+        &.desc-ul{
+            top: 3rem;
+            bottom: auto;
+            left: 3rem;
+            right: auto;
+            font-size: 4rem;
+        }
+
 	}
 	
 	header{
@@ -219,4 +227,43 @@ em{
 #myst{
 	background-image: url(../assets/images/myst.jpeg);
 	background-size: cover;
+}
+
+#achievement{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: 1em;
+    margin-left: -150px;
+    padding: 1em 1.5em;
+    padding-bottom: 0;
+    border-radius: 2em;
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.1);
+    @include transition(-webkit-transform 0.2s ease-out 1s);
+    @include transform(translateY(-100px));
+    
+    svg{
+        display: inline-block;
+        float: left;
+        margin-top: -0.75em;
+        margin-left: -1em;
+    }
+
+    .achievement-text{
+        float: left;
+    }
+
+    em{
+        display: block;
+        margin-bottom: 0.5em;
+        font-weight: 100;
+        font-style: normal;
+    }   
+
+    &.in{
+        @include transform(translateY(0px));
+    }
 }
