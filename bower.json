@@ -1,0 +1,11 @@
+{
+    "name": "pres",
+    "version": "1.0.0",
+    "dependencies": {
+        "jquery": null,
+        "backbone-amd": null,
+        "underscore-amd": null,
+        "requirejs": "2.1.10",
+        "threejs": null
+    }
+}

@@ -4,14 +4,17 @@ define(function (require) {
 	var Backbone = require('backbone'),
 		UserEvent = require('pres/events/user-event'),
 		AppEvent = require('pres/events/app-event'),
-		blenderModel = require('text!app/data/scene3.js'),
+		blenderModel = require('text!app/data/island1.js'),
 		Camera = require('pres/models/camera'),
 		CameraPath = require('app/models/camera-path'),
-		BgView;
+		BgView,
+        directionalLight;
 	
 	require('tweenmax');
 	require('three');
-	
+	require('vendor/Mirror');
+	require('vendor/WaterShader');
+
 	BgView = Backbone.View.extend({
 
 		initialize: function () {			
@@ -32,9 +35,9 @@ define(function (require) {
 			
 			//LIGHTS
 				
-			var light = new THREE.DirectionalLight(0xff9966);
-			light.position.set(1, 0, 1);
-			this.scene.add(light);
+			directionalLight = new THREE.DirectionalLight(0xff9966);
+			directionalLight.position.set(1, 0, 1);
+			this.scene.add(directionalLight);
 			
 			var light = new THREE.DirectionalLight(0xcc9966);
 			light.position.set(1, 0, -1);
@@ -57,12 +60,14 @@ define(function (require) {
 			
 			this.addSky();
 			this.addModel();
+            this.addWater();
 			
 			this.renderer.render(this.scene, Camera);
 		},
 		
 		addModel: function () {
-			var mesh,
+			var i,
+                mesh,
 				content,
 				loader,
 				model;
@@ -76,8 +81,8 @@ define(function (require) {
 				model.materials[i].side = THREE.DoubleSide;
 			}
 
-			model.materials[4].transparent = true;
-			model.materials[4].opacity = 0.5;
+			//model.materials[4].transparent = true;
+			//model.materials[4].opacity = 0.5;
 			//model.materials[4].blending = THREE.AdditiveBlending;
 
 			mesh = new THREE.Mesh(model.geometry, new THREE.MeshFaceMaterial(model.materials));
@@ -94,7 +99,7 @@ define(function (require) {
 			
 			geo = new THREE.SphereGeometry(8000, 100, 100);
 			mat = new THREE.MeshBasicMaterial({
- 				color: 0x3377ff, 
+                color: 0x3377ff, 
 				side: THREE.BackSide
 			});
 			
@@ -103,52 +108,40 @@ define(function (require) {
 		},
 		
 		addWater: function () {
-			var mesh,
-				geo,
-				mat,
-				mat2,
-				face,
-				random,
-				vertice,
-				colorArray = [0x9CDCE7, 0x78B8E7],
-				i;
-			
-			geo = new THREE.PlaneGeometry(5000, 5000, 300, 300);
+            var water,
+                mirrorMesh,
+                parameters = {
+                    width: 2000,
+                    height: 2000,
+                    widthSegments: 250,
+                    heightSegments: 250,
+                    depth: 1500,
+                    param: 4,
+                    filterparam: 1
+                },
+                waterNormals = new THREE.ImageUtils.loadTexture('assets/images/textures/waternormals.jpg');
+            
+            waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
 
-			THREE.GeometryUtils.triangulateQuads(geo);
+            water = new THREE.Water(this.renderer, Camera, this.scene, {
+                textureWidth: 512, 
+                textureHeight: 512,
+                waterNormals: waterNormals,
+                alpha: 1.0,
+                sunDirection: directionalLight.position.normalize(),
+                sunColor: 0xffffff,
+                waterColor: 0x001e0f,
+                distortionScale: 50.0
+            });
 
-			for (i = 0; i < geo.vertices.length; i += 1) {
-				vertice = geo.vertices[i];
-				vertice.z = Math.sin(i * vertice.x * vertice.y) * 2;     
-			}
-			
-			for (i = 0; i < geo.faces.length; i += 1) {
-				face = geo.faces[i];
-				random = Math.floor(Math.random() * colorArray.length - 1);
-				face.color.setHex(colorArray[random]);
-			}
+            mirrorMesh = new THREE.Mesh(
+                new THREE.PlaneGeometry(parameters.width * 500, parameters.height * 500, 50, 50),
+                water.material
+            );
 
-			mat = new THREE.MeshLambertMaterial({
-				specular: 0x78B8E7,
-				color: 0x9CDCE7,
-				emissive: 0x006063,
-				transparent: true,
-				opacity: 0.8
-			});
-			
-			mat2 = new THREE.MeshLambertMaterial({
-				vertexColors: THREE.FaceColors
-			});
-			
-			mesh = new THREE.Mesh(geo, mat2);
-			mesh.position.y = 4;
-			mesh.rotation.x = -90 * Math.PI / 180;
-			this.scene.add(mesh);
-			
-			mesh = new THREE.Mesh(geo, mat);
-			mesh.position.y = 5;
-			mesh.rotation.x = -90 * Math.PI / 180;
-			this.scene.add(mesh);
+            this.scene.add(mirrorMesh);
+            mirrorMesh.add(water);
+            mirrorMesh.rotation.x = - Math.PI * 0.5;
 		},
 		
 		render: function () {

@@ -1,5 +1,5 @@
 /*global define createjs TweenMax Box2D Filters requestAnimationFrame*/
-define([], function (require) {
+define(function (require) {
 	
 	require('tweenmax');
 	require('vendor/box2d/Box2dWeb-2.1.a.3');

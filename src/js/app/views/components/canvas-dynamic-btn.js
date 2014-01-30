@@ -1,5 +1,5 @@
 /*global define createjs TweenMax Group Point Path paper project tool*/
-define([], function (require) {
+define(function (require) {
 	
 	var Backbone = require('backbone'),
 		Vars = require('pres/models/vars'),

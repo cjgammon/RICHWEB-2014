@@ -1,5 +1,5 @@
 /*global define createjs TweenMax THREE Bounce Quad*/
-define([], function (require) {
+define(function (require) {
 	
 	var Backbone = require('backbone'),
 		Vars = require('pres/models/vars'),

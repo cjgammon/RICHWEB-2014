@@ -46,7 +46,7 @@ $spinner-color: $teal;
 
 /* custom styles */
 body{
-	font-family: "Futura PT", "futura-pt", impact, sans-serif;
+	font-family: "Futura PT", "futura-pt", "Futura Std", impact, sans-serif;
 	font-size: 2rem;
 	color: white;
 }
@@ -58,6 +58,10 @@ h2, h3, h4{
 	text-align: center;
 	letter-spacing: .1em;
 	margin-bottom: 1rem;
+
+    a{
+        font-weight: bold;
+    }
 }
 
 h2{
@@ -197,12 +201,20 @@ em{
 	}
 }
 
-#fixed{
-	font-family: helvetica, sans-serif;
+#fixed a{
+	font-family: 'avenir', serif;
+    font-weight: 100;
+    font-size: 1.5rem;
+    text-transform: lowercase;
 }
 
 #cover{
-	background-image: url(../assets/images/patterns/kale-salad.jpg);
+	background-image: url(../assets/images/cover.png);
+    background-size: cover;
+
+    // *{
+    //     mix-blend-mode: difference;
+    // }
 }
 
 #hi{
@@ -266,4 +278,30 @@ em{
     &.in{
         @include transform(translateY(0px));
     }
+}
+
+#web{
+
+    h2{
+        color: black;
+        font-family: serif;
+    }
+
+    background: white;
+}
+
+#generative{
+    background-color: white;
+    background-image: url(../assets/images/patterns/square-pattern.svg);
+    background-repeat: repeat;
+    
+    h2{
+        color: #333;
+        // color: white;
+        // mix-blend-mode: difference;
+    }
+}
+
+#pixi{
+    background: #101228;
 }

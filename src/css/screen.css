@@ -457,22 +457,27 @@ aside {
   background-position: center center;
   cursor: pointer;
   outline: 0px rgba(255, 255, 255, 0.5) solid;
-  -webkit-transition: outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
-  -moz-transition: outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
-  -o-transition: outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
-  transition: outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  -webkit-transition: box-shadow 0.7s, -webkit-transform 0.7s ease-in-out, outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
+  -moz-transition: box-shadow 0.7s, -webkit-transform 0.7s ease-in-out, outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
+  -o-transition: box-shadow 0.7s, -webkit-transform 0.7s ease-in-out, outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
+  transition: box-shadow 0.7s, -webkit-transform 0.7s ease-in-out, outline 0.2s ease-out, background-position 1s, background-size 1s, -webkit-filter 1s;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -o-transform: translateZ(0);
   transform: translateZ(0);
 }
-/* line 62, ../sass/components/_buttons.scss */
+/* line 63, ../sass/components/_buttons.scss */
 #ui-button-css-mask:hover {
   -webkit-filter: sepia(0.5) saturate(1) contrast(1.7);
-  outline: 10px rgba(255, 255, 255, 0.75) solid;
-  background-position: 20% center;
-  background-size: auto 150%;
+  -webkit-transform: scale(1.1) translateZ(0);
+  -moz-transform: scale(1.1) translateZ(0);
+  -ms-transform: scale(1.1) translateZ(0);
+  -o-transform: scale(1.1) translateZ(0);
+  transform: scale(1.1) translateZ(0);
+  outline: 10px rgba(225, 225, 225, 0.75) solid;
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* line 71, ../sass/components/_buttons.scss */
@@ -804,7 +809,7 @@ iframe.focus {
 /* custom styles */
 /* line 48, ../sass/screen.scss */
 body {
-  font-family: "Futura PT", "futura-pt", impact, sans-serif;
+  font-family: "Futura PT", "futura-pt", "Futura Std", impact, sans-serif;
   font-size: 2rem;
   color: white;
 }
@@ -818,46 +823,50 @@ h2, h3, h4 {
   letter-spacing: .1em;
   margin-bottom: 1rem;
 }
+/* line 62, ../sass/screen.scss */
+h2 a, h3 a, h4 a {
+  font-weight: bold;
+}
 
-/* line 63, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 h2 {
   font-size: 6rem;
 }
 
-/* line 67, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 h3 {
   font-size: 4rem;
 }
 
-/* line 71, ../sass/screen.scss */
+/* line 75, ../sass/screen.scss */
 h4 {
   font-size: 2rem;
 }
 
-/* line 75, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 a {
   color: #ccc;
   text-decoration: none;
   font-weight: 500;
 }
-/* line 80, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 a:hover {
   color: white;
 }
 
-/* line 85, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 ol {
   font-size: 3rem;
   text-transform: uppercase;
   list-style-type: decimal;
 }
 
-/* line 91, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 li {
   line-height: 1.5;
 }
 
-/* line 95, ../sass/screen.scss */
+/* line 99, ../sass/screen.scss */
 header {
   position: absolute;
   margin-top: 2rem;
@@ -869,12 +878,12 @@ header {
   font-size: 1.2rem;
   line-height: 1.5;
 }
-/* line 106, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 header small {
   font-size: .8rem;
 }
 
-/* line 111, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 footer {
   position: absolute;
   margin-bottom: 1rem;
@@ -887,7 +896,7 @@ footer {
   line-height: 1.5;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 blockquote {
   padding: 1em;
   font-size: 4rem;
@@ -895,40 +904,40 @@ blockquote {
   line-height: 1.5;
 }
 
-/* line 130, ../sass/screen.scss */
+/* line 134, ../sass/screen.scss */
 em {
   font-weight: bold;
   font-style: italic;
   color: #fff;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 .slide {
   -webkit-box-sizing: border-box;
   padding: 1rem;
 }
 
-/* line 141, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 .slide--orange {
   background: #f0a964;
 }
 
-/* line 145, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 .slide--orange-swirl {
   background-image: url(../assets/images/patterns/wild-sea.png);
 }
 
-/* line 149, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 .slide--black {
   color: white;
   background: #222;
 }
 
-/* line 154, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 .slide--iframe {
   background: #f2f2f2;
 }
-/* line 157, ../sass/screen.scss */
+/* line 161, ../sass/screen.scss */
 .slide--iframe h2 {
   position: absolute;
   top: 0;
@@ -940,7 +949,7 @@ em {
   color: white;
   z-index: 2;
 }
-/* line 168, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .slide--iframe h2.desc-ul {
   top: 3rem;
   bottom: auto;
@@ -948,41 +957,45 @@ em {
   right: auto;
   font-size: 4rem;
 }
-/* line 178, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 .slide--iframe header {
   color: black;
 }
-/* line 182, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 .slide--iframe a {
   color: #0cb4a8;
 }
-/* line 184, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 .slide--iframe a:hover {
   color: black;
 }
 
-/* line 190, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .slide--full {
   padding: 0;
 }
-/* line 193, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 .slide--full iframe {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
 }
 
-/* line 200, ../sass/screen.scss */
-#fixed {
-  font-family: helvetica, sans-serif;
-}
-
 /* line 204, ../sass/screen.scss */
-#cover {
-  background-image: url(../assets/images/patterns/kale-salad.jpg);
+#fixed a {
+  font-family: 'avenir', serif;
+  font-weight: 100;
+  font-size: 1.5rem;
+  text-transform: lowercase;
 }
 
-/* line 208, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
+#cover {
+  background-image: url(../assets/images/cover.png);
+  background-size: cover;
+}
+
+/* line 220, ../sass/screen.scss */
 #hi {
   background-image: url(../assets/images/point-reyes.jpg);
   background-position: 30%;
@@ -991,26 +1004,26 @@ em {
   font-weight: bold;
 }
 
-/* line 216, ../sass/screen.scss */
+/* line 228, ../sass/screen.scss */
 .head-shot {
   width: 200px;
   margin-bottom: 1em;
   -webkit-clip-path: circle(50%);
 }
 
-/* line 222, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 #video-games {
   background-image: url(../assets/images/pacman.jpg);
   background-size: cover;
 }
 
-/* line 227, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #myst {
   background-image: url(../assets/images/myst.jpeg);
   background-size: cover;
 }
 
-/* line 232, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 #achievement {
   position: absolute;
   top: 0;
@@ -1035,29 +1048,55 @@ em {
   -o-transform: translateY(-100px);
   transform: translateY(-100px);
 }
-/* line 248, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 #achievement svg {
   display: inline-block;
   float: left;
   margin-top: -0.75em;
   margin-left: -1em;
 }
-/* line 255, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 #achievement .achievement-text {
   float: left;
 }
-/* line 259, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 #achievement em {
   display: block;
   margin-bottom: 0.5em;
   font-weight: 100;
   font-style: normal;
 }
-/* line 266, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
 #achievement.in {
   -webkit-transform: translateY(0px);
   -moz-transform: translateY(0px);
   -ms-transform: translateY(0px);
   -o-transform: translateY(0px);
   transform: translateY(0px);
+}
+
+/* line 283, ../sass/screen.scss */
+#web {
+  background: white;
+}
+/* line 285, ../sass/screen.scss */
+#web h2 {
+  color: black;
+  font-family: serif;
+}
+
+/* line 293, ../sass/screen.scss */
+#generative {
+  background-color: white;
+  background-image: url(../assets/images/patterns/square-pattern.svg);
+  background-repeat: repeat;
+}
+/* line 298, ../sass/screen.scss */
+#generative h2 {
+  color: #333;
+}
+
+/* line 305, ../sass/screen.scss */
+#pixi {
+  background: #101228;
 }

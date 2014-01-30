@@ -70,7 +70,8 @@ define(function (require) {
 			lookAt.copy(position).add(dir);
 
 			camera.matrix.lookAt(camera.position, lookAt, normal);
-			camera.rotation.setEulerFromRotationMatrix(camera.matrix, camera.eulerOrder);
+			camera.rotation.setFromRotationMatrix(camera.matrix, camera.eulerOrder);
+			//camera.rotation.setEulerFromRotationMatrix(camera.matrix, camera.eulerOrder);
 		};
 		
 		this.positionElement = function (element, t) {
@@ -107,7 +108,8 @@ define(function (require) {
 			lookAt.copy(position).add(dir);
 		
 			element.matrix.lookAt(element.position, lookAt, normal);
-			element.rotation.setEulerFromRotationMatrix(element.matrix, element.eulerOrder);
+			element.rotation.setFromRotationMatrix(element.matrix, element.eulerOrder);
+			//element.rotation.setEulerFromRotationMatrix(element.matrix, element.eulerOrder);
 						
 			element.position = geometry.path.getPointAt((t + 30 / pathLength) % 1);
 		};

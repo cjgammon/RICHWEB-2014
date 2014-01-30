@@ -1,5 +1,5 @@
 /*global define createjs TweenMax Savage*/
-define([], function (require) {
+define(function (require) {
 	
 	var Backbone = require('backbone'),
 		Vars = require('pres/models/vars'),

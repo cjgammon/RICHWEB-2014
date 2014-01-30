@@ -1,4 +1,5 @@
-define([], function (require) {
+/*global define*/
+define(function (require) {
 	
 	var Backbone = require('backbone'),
 		Vars = require('pres/models/vars'),
