@@ -1,3 +1,4 @@
+/*global define THREE*/
 define(function (require) {
 		
 	var Backbone = require('backbone'),
@@ -70,7 +71,7 @@ define(function (require) {
 			lookAt.copy(position).add(dir);
 
 			camera.matrix.lookAt(camera.position, lookAt, normal);
-			camera.rotation.setFromRotationMatrix(camera.matrix, camera.eulerOrder);
+			camera.rotation.setFromRotationMatrix(camera.matrix, camera.rotation.order);
 			//camera.rotation.setEulerFromRotationMatrix(camera.matrix, camera.eulerOrder);
 		};
 		
@@ -108,7 +109,7 @@ define(function (require) {
 			lookAt.copy(position).add(dir);
 		
 			element.matrix.lookAt(element.position, lookAt, normal);
-			element.rotation.setFromRotationMatrix(element.matrix, element.eulerOrder);
+			element.rotation.setFromRotationMatrix(element.matrix, element.rotation.order);
 			//element.rotation.setEulerFromRotationMatrix(element.matrix, element.eulerOrder);
 						
 			element.position = geometry.path.getPointAt((t + 30 / pathLength) % 1);

@@ -1,4 +1,4 @@
-/*global define TimelineMax TweenMax $ Quad*/
+/*global define TimelineMax TweenMax $ Quad THREE*/
 define(function (require) {
 	
 	var Backbone = require('backbone'),
@@ -10,7 +10,7 @@ define(function (require) {
 		
 	require('tweenmax');
 	require('three');
-	require('vendor/threejs/examples/js/renderers/CSS3DRenderer');
+	require('vendor/CSS3DRenderer');
 	
     //TODO:: there should be a global timeline object instead of using the deckview??
 	DeckView = Backbone.View.extend({
@@ -69,7 +69,7 @@ define(function (require) {
 					slideElement = new THREE.CSS3DObject(view.el);
 					
 					pos = view.$el.data('pos');
-					CameraPath.positionElement(slideElement, pos)
+					CameraPath.positionElement(slideElement, pos);
 					
 					slideElement.scale.set(0.04, 0.04, 0.04);
 					
