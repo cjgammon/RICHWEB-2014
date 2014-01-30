@@ -8,7 +8,8 @@ define(function (require) {
 		Camera = require('pres/models/camera'),
 		CameraPath = require('app/models/camera-path'),
 		BgView,
-        directionalLight;
+        directionalLight,
+        water;
 	
 	require('tweenmax');
 	require('three');
@@ -108,11 +109,10 @@ define(function (require) {
 		},
 		
 		addWater: function () {
-            var water,
-                mirrorMesh,
+            var mirrorMesh,
                 parameters = {
-                    width: 2000,
-                    height: 2000,
+                    width: 7000,
+                    height: 7000,
                     widthSegments: 250,
                     heightSegments: 250,
                     depth: 1500,
@@ -139,12 +139,20 @@ define(function (require) {
                 water.material
             );
 
-            this.scene.add(mirrorMesh);
             mirrorMesh.add(water);
+
+            //mirrorMesh = new THREE.Mesh(new THREE.PlaneGeometry(8000, 8000), new THREE.MeshBasicMaterial());
+            mirrorMesh.position.y = 7;
             mirrorMesh.rotation.x = - Math.PI * 0.5;
+            
+            this.scene.add(mirrorMesh);
 		},
 		
 		render: function () {
+
+            water.material.uniforms.time.value += 1.0 / 60.0;
+            water.render();
+
 			this.renderer.render(this.scene, Camera);
 		},
 
