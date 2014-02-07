@@ -9,7 +9,8 @@ define(function (require) {
 		CameraPath = require('app/models/camera-path'),
 		BgView,
         directionalLight,
-        water;
+        water,
+        waterGeometry;
 	
 	require('tweenmax');
 	require('three');
@@ -71,7 +72,8 @@ define(function (require) {
                 mesh,
 				content,
 				loader,
-				model;
+				model,
+                mapTexture;
 			
 			content = JSON.parse(blenderModel);
 			loader = new THREE.JSONLoader();
@@ -82,15 +84,21 @@ define(function (require) {
 				model.materials[i].side = THREE.DoubleSide;
 			}
 
-			//model.materials[4].transparent = true;
-			//model.materials[4].opacity = 0.5;
-			//model.materials[4].blending = THREE.AdditiveBlending;
+            //mapTexture = new THREE.ImageUtils.loadTexture('assets/images/textures/ground_grass_gen_07.png');
+            //mapTexture.wrapS = THREE.RepeatWrapping;
+            //mapTexture.wrapT = THREE.RepeatWrapping;
+            //mapTexture.repeat.x = 40;
+            //mapTexture.repeat.y = 40;
+            //mapTexture.offset.x = mapTexture.repeat.x;
+            //mapTexture.offset.y = mapTexture.repeat.y;
+            //model.materials[127] = new THREE.MeshLambertMaterial({map: mapTexture, bumpMap: mapTexture, color: 0x99cccc, ambient: 0x00cc00});
 
 			mesh = new THREE.Mesh(model.geometry, new THREE.MeshFaceMaterial(model.materials));
 			mesh.scale.set(40, 40, 40);
 			this.scene.add(mesh);
 			
 			this.terrain = mesh;
+            
 		},
 		
 		addSky: function () {
@@ -119,10 +127,12 @@ define(function (require) {
                     param: 4,
                     filterparam: 1
                 },
-                waterNormals = new THREE.ImageUtils.loadTexture('assets/images/textures/waternormals.jpg');
+                waterNormals = new THREE.ImageUtils.loadTexture('assets/images/textures/waternormals.jpg'),
+                i;
             
             waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
 
+            /*
             water = new THREE.Water(this.renderer, Camera, this.scene, {
                 textureWidth: 512, 
                 textureHeight: 512,
@@ -133,24 +143,30 @@ define(function (require) {
                 waterColor: 0x001e0f,
                 distortionScale: 50.0
             });
+            */
+
+            waterGeometry = new THREE.PlaneGeometry(parameters.width * 500, parameters.height * 500, 50, 50);
+
+            water = new THREE.Mirror(this.renderer, Camera, {
+                textureWidth: 512, 
+                textureHeight: 512,
+                color: 0x0099cc
+            });
 
             mirrorMesh = new THREE.Mesh(
-                new THREE.PlaneGeometry(parameters.width * 500, parameters.height * 500, 50, 50),
+                waterGeometry,
                 water.material
             );
 
             mirrorMesh.add(water);
-
-            //mirrorMesh = new THREE.Mesh(new THREE.PlaneGeometry(8000, 8000), new THREE.MeshBasicMaterial());
             mirrorMesh.position.y = 7;
             mirrorMesh.rotation.x = - Math.PI * 0.5;
             
             this.scene.add(mirrorMesh);
-		},
+        },
 		
 		render: function () {
-
-            water.material.uniforms.time.value += 1.0 / 60.0;
+            //water.material.uniforms.time.value += 1.0 / 60.0;
             water.render();
 
 			this.renderer.render(this.scene, Camera);

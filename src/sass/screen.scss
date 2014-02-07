@@ -168,15 +168,6 @@ em{
 		height: 100px;
 		color: white;
 		z-index: 2;
-
-        &.desc-ul{
-            top: 3rem;
-            bottom: auto;
-            left: 3rem;
-            right: auto;
-            font-size: 4rem;
-        }
-
 	}
 	
 	header{
@@ -198,6 +189,7 @@ em{
 		width: 100vw;
 		height: 100vh;
         pointer-events: none;
+        background-color: black;
 	}
 }
 
@@ -218,8 +210,9 @@ em{
 }
 
 #hi{
-	background-image: url(../assets/images/point-reyes.jpg);
-	background-position: 30%;
+    background-image: url(../assets/images/yosemite.jpg);
+	// background-image: url(../assets/images/point-reyes.jpg);
+	// background-position: 30%;
 	background-size: cover;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -229,6 +222,15 @@ em{
 	width: 200px;
 	margin-bottom: 1em;
 	-webkit-clip-path: circle(50%);
+}
+
+#rich{
+    background-image: url(../assets/images/invaders.png);
+	background-size: cover;
+}
+
+#definition{
+    background-color: #394466;
 }
 
 #video-games{
@@ -290,6 +292,43 @@ em{
     background: white;
 }
 
+#mobile{
+    background-image: url(../assets/images/point-reyes2.jpg);
+	background-size: cover;
+}
+
+#filters{
+    background-image: url(../assets/images/filters.jpg);
+	background-size: cover;
+}
+
+#masks{
+    background-image: url(../assets/images/mask.jpg);
+	background-size: cover;
+}
+
+#clip{
+    background-image: url(../assets/images/clippath.jpg);
+	background-size: cover;
+}
+
+#blend{
+    background-image: url(../assets/images/blend.jpg);
+	background-size: cover;
+}
+
+#snap{
+    background-color: white;
+    background-image: url(../assets/images/snap-croc.svg);
+	background-size: auto 100%;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    h2{
+        color: #333;
+    }
+}
+
 #generative{
     background-color: white;
     background-image: url(../assets/images/patterns/square-pattern.svg);
@@ -305,3 +344,29 @@ em{
 #pixi{
     background: #101228;
 }
+
+#dynamic-mask{
+    background-image: url(../assets/images/maskdynamic.jpg);
+	background-size: cover;
+}
+
+#semantics{
+    background-image: url(../assets/images/wes2.jpg);
+	background-size: cover;
+
+    h2{
+        color: #fc5050;
+    }
+}
+
+h2.top-left{
+    position: absolute;
+    top: 3rem;
+    bottom: auto;
+    left: 3rem;
+    right: auto;
+    max-width: 50%;
+    text-align: left;
+    font-size: 4rem;
+}
+

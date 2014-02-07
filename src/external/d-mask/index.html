@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>mask 2</title>
+
+		<style>
+			body{
+				margin: 0;
+				background: black;
+				color: #333;
+				font-size: 2rem;
+				font-family: sans-serif;
+			}
+
+			section{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+			}
+
+			h1{
+				margin: 0;
+				font-size: 7rem;
+			}
+
+			p{
+				margin: 0;
+				padding: .3em .5em;
+				color: #999999;
+				background: #333;
+				border-radius: .2em;
+			}
+
+			#bg{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: url(alchemy.gif);
+				-webkit-mask-image: url(mask.png);
+				-webkit-mask-repeat: no-repeat;
+				min-height: 5000px;
+				z-index: -1;
+			}
+
+			#ui{
+				position: fixed;
+				top: 0;
+				padding: .2em .5em;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<div id="bg"></div>
+
+		<section>
+			<h1>HELLO</h1>
+			<p>This is a mask demo.</p>
+		</section>
+		<section>
+			<h1>MASKS</h1>
+		</section>
+		<section>
+			<h1>ARE</h1>
+		</section>
+		<section>
+			<h1>FUN</h1>
+		</section>
+
+		<div id="ui">
+			<button id="toggleBtn">toggle</button>
+		</div>
+
+		<script>
+			var state = 0,
+				bg = document.getElementById('bg'),
+				toggleBtn = document.getElementById('toggleBtn');
+
+			toggleBtn.addEventListener('click', handle_CLICK);
+			window.addEventListener('scroll', scroll);
+			scroll();
+
+			function scroll() {
+				bg.style['-webkit-mask-position'] = '50% ' + (window.pageYOffset - 100) + 'px';
+			}
+
+			function handle_CLICK() {
+				state = state < 1 ? state + 1 : 0;
+
+				if (state == 0) {
+					bg.style['-webkit-mask-image'] = 'url(mask.png)';
+				} else if (state == 1) {
+					bg.style['-webkit-mask-image'] = 'url(mask2.png)';
+				}
+				
+			}
+		</script>
+	</body>
+</html>

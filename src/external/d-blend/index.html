@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>blending</title>
+		<style>
+			body{
+				margin: 0;
+				min-height: 2000px;
+				background-image: url(bg-yellow.svg), url(bg-blue.svg), url(bg-orange.svg), url(bg-purple.svg), url(bg-teal.svg);
+				background-position: top center;
+				background-attachment: fixed, scroll, scroll, scroll, scroll;
+				background-blend-mode: multiply;
+			}
+
+			h2{
+				margin-top: 2em;
+				text-align: center;
+				font-size: 7rem;
+				font-family: 'Helvetica Rounded LT Std', 'ariel round';
+				line-height: 1em;
+			}
+
+			.overlap {
+				letter-spacing: -.2em;
+				margin-bottom: 500px;
+			}
+
+			h2 span {
+   				mix-blend-mode: multiply;
+			}
+
+			section{
+				box-sizing: border-box;
+				min-height: 500px;
+				padding: 2em;
+			}
+
+			.difference{
+				mix-blend-mode: difference;
+				background-color: #70c1a2;
+			}
+
+			.overlay{
+				color: #e96626;
+				mix-blend-mode: difference;
+			}
+
+h2 span:nth-child(1) {
+  color: #e96626;
+}
+h2 span:nth-child(2) {
+  color: #2db5cb;
+}
+h2 span:nth-child(3) {
+  color: #c92f8b;
+}
+h2 span:nth-child(4) {
+  color: #98c33c;
+}
+h2 span:nth-child(5) {
+  color: #2db5cb;
+}
+h2 span:nth-child(6) {
+  color: #c92f8b;
+}
+h2 span:nth-child(7) {
+  color: #e96626;
+}
+h2 span:nth-child(8) {
+  color: #98c33c;
+}
+h2 span:nth-child(9) {
+  color: #2db5cb;
+}
+h2 span:nth-child(10) {
+  color: #c92f8b;
+}
+
+		</style>
+	</head>
+	<body>
+		<h2 class="overlap">
+			<span>B</span><span>L</span><span>E</span><span>N</span><span>D</span> <span>M</span><span>O</span><span>D</span><span>E</span><span>S</span>
+		</h2>
+
+		<section class="difference">
+			<h2>PLAY WITH COLOR</h2>
+		</section>
+
+		<section class="teal">
+			<h2 class="overlay">THIS IS FUN</h2>
+		</section>
+
+	</body>
+</html>

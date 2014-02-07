@@ -28,7 +28,7 @@ define(function (require) {
 			{id: 'svg', view: UIButtonSVGView},
 			{id: 'canvas', view: UIButtonCanvasView},
 			{id: 'webgl', view: UIButtonWebglView},
-            {id: 'filters', view: FilterDemoView},
+            {id: 'filters-demo', view: FilterDemoView},
             {id: 'gamification', view: GamificationView}
 		],
 	
