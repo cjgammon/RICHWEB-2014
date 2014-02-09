@@ -1,0 +1,14 @@
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40" height="40"
+	 viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="20" y1="0.5714" x2="20" y2="40.2857" gradientTransform="matrix(-1 0 0 -1 40 40)">
+	<stop  offset="0" style="stop-color:#B1E1EA"/>
+	<stop  offset="1" style="stop-color:#6CC8BE"/>
+</linearGradient>
+<rect fill="url(#SVGID_1_)" width="40" height="40"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="20" y1="4.1333" x2="20" y2="36.5667">
+	<stop  offset="0" style="stop-color:#B1E1EA"/>
+	<stop  offset="1" style="stop-color:#6CC8BE"/>
+</linearGradient>
+<circle fill="url(#SVGID_2_)" cx="20" cy="20" r="16.333"/>
+</svg>

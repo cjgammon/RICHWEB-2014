@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				margin: 0;
+				text-align: center;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 100;
+				background: url(blur.jpg);
+			}
+
+			h2, p{
+				margin: 0;
+				line-height: 1em;
+			}
+
+			.orb{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: .25em;
+				cursor: pointer;
+				margin: 1em;
+				background: #efefef;
+				color: rgba(0, 0, 0, 0.04);
+				height: 300px;
+				width: 300px;
+				font-family: 'Open Sans Condensed';
+				font-size: 2rem;
+				-webkit-transition: -webkit-clip-path .4s, color .2s;
+				-webkit-clip-path: ellipse(50%, 50%, 10%, 10%);
+			}
+
+			.orb:hover{
+				color: black;
+				-webkit-clip-path: ellipse(50%, 50%, 50%, 50%);
+			}
+
+			.img{
+				background-image: url(pinnacles.jpg);
+				background-size: cover;
+			}
+
+			.img:hover{
+				-webkit-clip-path: ellipse(50%, 50%, 30%, 30%);
+			}
+
+			.left{
+				float: left;
+			}
+
+			.right{
+				float: right;
+			}
+
+			#burst{
+				cursor: pointer;
+				position: fixed;
+				bottom: -950px;
+				margin: auto;
+				width: 100%;
+				height: 1000px;
+				padding-top: 20px;
+				background: #333;
+				color: white;
+				-webkit-transition: -webkit-clip-path .2s ease-in, bottom 1s;
+				-webkit-clip-path: polygon(0px 10px, 45% 10px, 50% 10px, 55% 10px, 100% 10px, 100% 100%, 0px 100%);	
+			}
+
+			#burst:hover{
+				-webkit-clip-path: polygon(0px 10px, 48% 10px, 50% 0px, 52% 10px, 100% 10px, 100% 100%, 0px 100%);	
+			}
+
+			#button{
+				position: fixed;
+				box-sizing: border-box;
+				bottom: 70px;
+				right: 10px;
+				width: 200px;
+				height: 50px;
+				padding: .75em;
+				text-align: left;
+				background: white;
+				border-radius: .3em;
+				cursor: pointer;
+				font-weight: 800;
+				color: #999;
+				-webkit-transition: -webkit-clip-path .6s ease-in-out;
+				-webkit-clip-path: ellipse(175px, 25px, 25px, 25px);
+			}
+
+			#button:hover{
+				-webkit-clip-path: ellipse(175px, 25px, 200px, 200px);
+
+			}
+
+			#button svg{
+				position: absolute;
+				right: 10px;
+				top: 10px;
+			}
+
+			#hexagon{
+				position: fixed;
+				top: 0px;
+				left: 35%;
+				box-sizing: border-box;
+				padding: 1em;
+				cursor: pointer;
+				background: #efefef;
+				color: rgba(0, 0, 0, 0.2);
+				height: 300px;
+				width: 300px;
+				font-family: 'Open Sans Condensed';
+				font-size: 1rem;
+				-webkit-transition: -webkit-clip-path .4s ease-in-out, color .2s, top 1s .5s, height 1s;
+				-webkit-clip-path: polygon(0 0, 100% 0, 80% 25%, 20% 25%);
+			}
+
+			#hexagon:hover{
+				top: 0px;
+				color: black;
+				-webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+			}
+
+			ul{
+				margin: 4em;
+				margin-top: 2em;
+				padding: 0;
+			}
+
+			li{
+				list-style: none;
+				background: #333;
+				margin: .2em;
+				padding: .2em;
+				color: #efefef;
+				border-radius: .2em;
+			}
+
+			li:hover{
+				background: #999;
+			}
+		</style>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+
+		<section>
+			<div class="orb left">
+				<h2>FINNIGAN'S IRISH PUB</h2>
+				<p>clip paths allow you to hide and animate areas</p>
+			</div>
+
+			<div class="orb img right">
+			</div>
+
+			<div id="hexagon">
+				<h2>MAP OF THE STARS</h2>
+				<p>This is a test</p>
+				<ul>
+					<li>One</li>
+					<li>Two</li>
+					<li>Three</li>
+					<li>Four</li>
+					<li>Five</li>
+				</ul>
+			</div>
+
+			<div id="button">
+				MORE INFO
+				<svg width="30" height="30">
+					<circle cx="15" cy="15" r="13" fill="transparent" stroke="#999" stroke-width="2"></circle>
+					<circle cx="15" cy="15" r="9" fill="#999"></circle>
+				</svg>
+			</div>
+
+			<div id="burst">
+				<b>Do Make Say Think</b>
+				<p>The Universe!</p>
+			</div>
+		</section>
+
+		<script>
+			burst.addEventListener('click', function () {
+				if (burst.style.bottom !== '-500px') {
+					burst.style.bottom = '-500px';
+				} else {
+					burst.style.bottom = '-950px';
+				}
+			});
+		</script>
+	</body>
+</html>
