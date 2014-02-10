@@ -19,13 +19,13 @@
 			#ghost{
 				width: 100px;
 				height: 100px;
-				background: #f8edcc;
+				background-color: rgba(248, 237, 204, 0.9);
 				-webkit-mask-image: url(ghost_eyes.svg), url(ghost_bottom.svg), url(ghost.svg);
-				-webkit-mask-size: contain;
+				-webkit-mask-size: auto;
 				-webkit-mask-repeat: no-repeat, repeat-x, no-repeat;
 				-webkit-mask-composite: destination-out, destination-in, source-over;
 
-				-webkit-transition: -webkit-mask 1s;
+				-webkit-transition: -webkit-mask 2s;
 				-webkit-transform-origin: center top;
 				-webkit-transform: scale(1.5);
 				cursor: pointer;
