@@ -24,6 +24,11 @@
 				top: 100px;
 			}
 
+			#mg2{
+				top: 400px;
+				left: -50px;
+			}
+
 			#fg{
 				top: 400px;
 			}
@@ -32,6 +37,7 @@
 	<body>
 		<section id="container">
 			<img id="bg" class="panel" src="bg.svg" width="1024px">
+			<img id="mg2" class="panel" src="mg2.svg" width="1124px">
 			<img id="mg" class="panel" src="mg.svg" width="1024px">
 			<img id="fg" class="panel" src="fg.svg" width="1024px">
 		</section>
@@ -43,18 +49,17 @@
 			document.body.addEventListener('keydown', handle_KEY_DOWN);
 
 			function handle_MOUSE_MOVE(e) {
-				/*
-				mg.style.webkitTransform = 'translateX(' + ((e.pageX / 4) - (window.innerWidth / 8)) +'px)';
-				fg.style.webkitTransform = 'translateX(' + ((e.pageX / 2) - (window.innerWidth / 4)) +'px)';
-				*/
 
 				bgblur = Math.abs((e.pageY)) / 100;
-				mgblur = Math.abs((e.pageY) - (window.innerHeight / 3)) / 100;
-				fgblur = Math.abs((e.pageY) - ((window.innerHeight / 3) * 2)) / 100;
+				mg2blur = Math.abs((e.pageY) - (window.innerHeight / 3)) / 100;
+				mgblur = Math.abs((e.pageY) - (window.innerHeight / 3) * 2) / 100;
+				fgblur = Math.abs((e.pageY) - (window.innerHeight)) / 100;
 
 				bg.style.webkitFilter = "blur(" + bgblur + "px)";
+				mg2.style.webkitFilter = "blur(" + mg2blur + "px)";
 				mg.style.webkitFilter = "blur(" + mgblur + "px)";
 				fg.style.webkitFilter = "blur(" + fgblur + "px)";
+				
 			}
 
 			function handle_KEY_DOWN(e) {

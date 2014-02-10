@@ -192,11 +192,20 @@
 
 		<script>
 			burst.addEventListener('click', function () {
+				/*
+				if (burst.style.webkitTransform !== 'translateY(-450px)') {
+					burst.style.webkitTransform = 'translateY(-450px)';
+				} else {
+					burst.style.webkitTransform = 'none';
+				}
+				*/
+				
 				if (burst.style.bottom !== '-500px') {
 					burst.style.bottom = '-500px';
 				} else {
 					burst.style.bottom = '-950px';
 				}
+				
 			});
 		</script>
 	</body>
