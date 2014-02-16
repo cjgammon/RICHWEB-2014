@@ -203,7 +203,8 @@ em{
 #cover{
 	background-image: url(../assets/images/cover.png);
     background-size: cover;
-
+	background-position: center;
+	
     // *{
     //     mix-blend-mode: difference;
     // }
@@ -214,6 +215,7 @@ em{
 	// background-image: url(../assets/images/point-reyes.jpg);
 	// background-position: 30%;
 	background-size: cover;
+	background-position: center;
 	text-transform: uppercase;
 	font-weight: bold;
 }
@@ -227,6 +229,7 @@ em{
 #rich{
     background-image: url(../assets/images/invaders.png);
 	background-size: cover;
+	background-position: center;
 }
 
 #definition{
@@ -236,11 +239,13 @@ em{
 #video-games{
     background-image: url(../assets/images/pacman.jpg);
 	background-size: cover;
+	background-position: center;
 }
 
 #myst{
 	background-image: url(../assets/images/myst.jpeg);
 	background-size: cover;
+	background-position: center;
 }
 
 #achievement{
@@ -251,11 +256,11 @@ em{
     margin-left: -150px;
     padding: 1em 1.5em;
     padding-bottom: 0;
-    border-radius: 2em;
+    border-radius: 3em;
     font-size: 1rem;
     font-weight: normal;
     font-family: helvetica, sans-serif;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.8);
     @include transition(-webkit-transform 0.2s ease-out 1s);
     @include transform(translateY(-100px));
     
@@ -282,8 +287,13 @@ em{
     }
 }
 
-#web{
+#gamification{
+    background-image: url(../assets/images/game.jpg);
+	background-size: cover;
+	background-position: center;	
+}
 
+#web{
     h2{
         color: black;
         font-family: serif;
@@ -295,26 +305,31 @@ em{
 #mobile{
     background-image: url(../assets/images/point-reyes2.jpg);
 	background-size: cover;
+	background-position: center;
 }
 
 #filters{
     background-image: url(../assets/images/filters.jpg);
 	background-size: cover;
+	background-position: center;
 }
 
 #masks{
     background-image: url(../assets/images/mask.jpg);
 	background-size: cover;
+	background-position: center;
 }
 
 #clip{
     background-image: url(../assets/images/clippath.jpg);
 	background-size: cover;
+	background-position: center;
 }
 
 #blend{
     background-image: url(../assets/images/blend.jpg);
 	background-size: cover;
+	background-position: center;
 }
 
 #snap{
@@ -348,11 +363,13 @@ em{
 #dynamic-mask{
     background-image: url(../assets/images/maskdynamic.jpg);
 	background-size: cover;
+	background-position: center;
 }
 
 #semantics{
     background-image: url(../assets/images/wes2.jpg);
 	background-size: cover;
+	background-position: center bottom;
 
     h2{
         color: #fc5050;

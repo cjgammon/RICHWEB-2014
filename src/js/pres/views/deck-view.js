@@ -3,6 +3,7 @@ define(function (require) {
 	
 	var Backbone = require('backbone'),
 		Vars = require('pres/models/vars'),
+		UserEvent = require('pres/events/user-event'),
 		AppEvent = require('pres/events/app-event'),
 		CameraPath = require('app/models/camera-path'),
 		Camera = require('pres/models/camera'),
@@ -12,11 +13,11 @@ define(function (require) {
 	require('three');
 	require('vendor/CSS3DRenderer');
 	
-    //TODO:: there should be a global timeline object instead of using the deckview??
 	DeckView = Backbone.View.extend({
 		
 		initialize: function () {
-			this.$el = $('#deck');			
+			this.$el = $('#deck');	
+			UserEvent.on('resize', this.resize, this);		
 		},
 		
 		render: function () {
@@ -80,6 +81,11 @@ define(function (require) {
 
 			}
 			
+		},
+		
+		resize: function () {
+			this.renderer.setSize(window.innerWidth, window.innerHeight);
+			this.renderer.render(this.scene, Camera);
 		}
 	});
 	

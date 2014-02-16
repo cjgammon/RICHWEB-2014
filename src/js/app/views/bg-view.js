@@ -168,12 +168,14 @@ define(function (require) {
 		render: function () {
             //water.material.uniforms.time.value += 1.0 / 60.0;
             water.render();
-
+			
+			console.log(Camera);
 			this.renderer.render(this.scene, Camera);
 		},
 
 		resize: function () {
-
+			this.renderer.setSize(window.innerWidth, window.innerHeight);
+			this.render();
 		}
 	});
 		

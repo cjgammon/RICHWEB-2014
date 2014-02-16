@@ -257,7 +257,7 @@ define([], function (require) {
 				material,
 				geometry;
 					
-			geometry = new THREE.PlaneGeometry(17000, 20000, 10, 10);
+			geometry = new THREE.PlaneGeometry(window.innerWidth * 50, 20000, 10, 10);
 			
 			skyUniforms = {
             	time: {
@@ -618,26 +618,7 @@ define([], function (require) {
 			}
 
 			if (this.water) {
-				/*
-				if (Math.round(this.d * 10) % 10 == 0) {	
 
-					var colorArray = [0x142c4c, 0x132a49, 0x1a3a65, 0x112541];
-		
-					for (var i = this.water.geometry.faces.length - 1; i > -1; i -= 1) {
-						var face = this.water.geometry.faces[i],
-							face2;
-
-						if (this.water.geometry.faces[i - 1]) {
-							face2 = this.water.geometry.faces[i - 1];
-							face.color.set(face2.color);						
-						} else {
-							random = Math.floor(Math.random() * colorArray.length);
-							face.color.setHex(colorArray[random]);
-						}
-					}
-					this.water.geometry.colorsNeedUpdate = true;
-				}
-				*/
 				for (var i = 0; i < this.water.geometry.vertices.length; i += 1) {
 					var vertice = this.water.geometry.vertices[i];
 					if (vertice.y > 3480) {
@@ -678,6 +659,7 @@ define([], function (require) {
 			if (this.renderer) {
 				SCREEN_WIDTH = window.innerWidth;
 				SCREEN_HEIGHT = window.innerHeight;
+								
 				this.renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 				this.camera = new THREE.PerspectiveCamera(35, SCREEN_WIDTH / SCREEN_HEIGHT * 2, 2, 10000);
 				this.camera.position.set(0, 850, 2000 );

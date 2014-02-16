@@ -986,47 +986,52 @@ em {
 #cover {
   background-image: url(../assets/images/cover.png);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 212, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 #hi {
   background-image: url(../assets/images/yosemite.jpg);
   background-size: cover;
+  background-position: center;
   text-transform: uppercase;
   font-weight: bold;
 }
 
-/* line 221, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 .head-shot {
   width: 200px;
   margin-bottom: 1em;
   -webkit-clip-path: circle(50%);
 }
 
-/* line 227, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 #rich {
   background-image: url(../assets/images/invaders.png);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 232, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 #definition {
   background-color: #394466;
 }
 
-/* line 236, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #video-games {
   background-image: url(../assets/images/pacman.jpg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 241, ../sass/screen.scss */
+/* line 245, ../sass/screen.scss */
 #myst {
   background-image: url(../assets/images/myst.jpeg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 246, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 #achievement {
   position: absolute;
   top: 0;
@@ -1035,11 +1040,11 @@ em {
   margin-left: -150px;
   padding: 1em 1.5em;
   padding-bottom: 0;
-  border-radius: 2em;
+  border-radius: 3em;
   font-size: 1rem;
   font-weight: normal;
   font-family: helvetica, sans-serif;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.8);
   -webkit-transition: -webkit-transform 0.2s ease-out;
   -webkit-transition-delay: 1s;
   -moz-transition: -webkit-transform 0.2s ease-out 1s;
@@ -1051,25 +1056,25 @@ em {
   -o-transform: translateY(-100px);
   transform: translateY(-100px);
 }
-/* line 262, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 #achievement svg {
   display: inline-block;
   float: left;
   margin-top: -0.75em;
   margin-left: -1em;
 }
-/* line 269, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 #achievement .achievement-text {
   float: left;
 }
-/* line 273, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
 #achievement em {
   display: block;
   margin-bottom: 0.5em;
   font-weight: 100;
   font-style: normal;
 }
-/* line 280, ../sass/screen.scss */
+/* line 285, ../sass/screen.scss */
 #achievement.in {
   -webkit-transform: translateY(0px);
   -moz-transform: translateY(0px);
@@ -1078,47 +1083,59 @@ em {
   transform: translateY(0px);
 }
 
-/* line 285, ../sass/screen.scss */
+/* line 290, ../sass/screen.scss */
+#gamification {
+  background-image: url(../assets/images/game.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 296, ../sass/screen.scss */
 #web {
   background: white;
 }
-/* line 287, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 #web h2 {
   color: black;
   font-family: serif;
 }
 
-/* line 295, ../sass/screen.scss */
+/* line 305, ../sass/screen.scss */
 #mobile {
   background-image: url(../assets/images/point-reyes2.jpg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 300, ../sass/screen.scss */
+/* line 311, ../sass/screen.scss */
 #filters {
   background-image: url(../assets/images/filters.jpg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 305, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 #masks {
   background-image: url(../assets/images/mask.jpg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 310, ../sass/screen.scss */
+/* line 323, ../sass/screen.scss */
 #clip {
   background-image: url(../assets/images/clippath.jpg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 315, ../sass/screen.scss */
+/* line 329, ../sass/screen.scss */
 #blend {
   background-image: url(../assets/images/blend.jpg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 320, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 #snap {
   background-color: white;
   background-image: url(../assets/images/snap-croc.svg);
@@ -1126,44 +1143,46 @@ em {
   background-position: bottom left;
   background-repeat: no-repeat;
 }
-/* line 327, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 #snap h2 {
   color: #333;
 }
 
-/* line 332, ../sass/screen.scss */
+/* line 347, ../sass/screen.scss */
 #generative {
   background-color: white;
   background-image: url(../assets/images/patterns/square-pattern.svg);
   background-repeat: repeat;
 }
-/* line 337, ../sass/screen.scss */
+/* line 352, ../sass/screen.scss */
 #generative h2 {
   color: #333;
 }
 
-/* line 344, ../sass/screen.scss */
+/* line 359, ../sass/screen.scss */
 #pixi {
   background: #101228;
 }
 
-/* line 348, ../sass/screen.scss */
+/* line 363, ../sass/screen.scss */
 #dynamic-mask {
   background-image: url(../assets/images/maskdynamic.jpg);
   background-size: cover;
+  background-position: center;
 }
 
-/* line 353, ../sass/screen.scss */
+/* line 369, ../sass/screen.scss */
 #semantics {
   background-image: url(../assets/images/wes2.jpg);
   background-size: cover;
+  background-position: center bottom;
 }
-/* line 357, ../sass/screen.scss */
+/* line 374, ../sass/screen.scss */
 #semantics h2 {
   color: #fc5050;
 }
 
-/* line 362, ../sass/screen.scss */
+/* line 379, ../sass/screen.scss */
 h2.top-left {
   position: absolute;
   top: 3rem;
