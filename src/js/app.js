@@ -11,6 +11,7 @@ define(function (require) {
 		IframeView = require('app/views/iframe-view'),
 		IframeFullView = require('app/views/iframe-full-view'),
 		GameView = require('app/views/game-view'),
+		VideoView = require('app/views/video-view'),
 		GamificationView = require('app/views/gamification-view'),
         FilterDemoView = require('app/views/filter-demo-view'),
 		UIButtonSVGView = require('app/views/ui-button-svg-view'),
@@ -29,7 +30,8 @@ define(function (require) {
 			{id: 'canvas', view: UIButtonCanvasView},
 			{id: 'webgl', view: UIButtonWebglView},
             {id: 'filters-demo', view: FilterDemoView},
-            {id: 'gamification', view: GamificationView}
+            {id: 'gamification', view: GamificationView},
+            {id: 'video', view: VideoView}
 		],
 	
         initialize: function () {

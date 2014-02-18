@@ -1091,51 +1091,72 @@ em {
 }
 
 /* line 296, ../sass/screen.scss */
+#history {
+  background-image: url(../assets/images/patterns/wallpaper_orange.jpg);
+  background-position: center;
+}
+
+/* line 301, ../sass/screen.scss */
 #web {
   background: white;
 }
-/* line 297, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 #web h2 {
   color: black;
   font-family: serif;
 }
 
-/* line 305, ../sass/screen.scss */
+/* line 310, ../sass/screen.scss */
 #mobile {
   background-image: url(../assets/images/point-reyes2.jpg);
   background-size: cover;
   background-position: center;
 }
+/* line 315, ../sass/screen.scss */
+#mobile h2 {
+  color: white;
+  text-shadow: 0px 0px 20px rgba(0, 50, 100, 0.5);
+}
 
-/* line 311, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
+#html5 {
+  background-image: url(../assets/images/patterns/wallpaper_purple.jpg);
+  background-position: center;
+}
+/* line 325, ../sass/screen.scss */
+#html5 h2, #html5 h4 {
+  text-shadow: 0px 0px 5px black;
+}
+
+/* line 330, ../sass/screen.scss */
 #filters {
   background-image: url(../assets/images/filters.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 317, ../sass/screen.scss */
+/* line 336, ../sass/screen.scss */
 #masks {
   background-image: url(../assets/images/mask.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 323, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 #clip {
   background-image: url(../assets/images/clippath.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 329, ../sass/screen.scss */
+/* line 348, ../sass/screen.scss */
 #blend {
   background-image: url(../assets/images/blend.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 335, ../sass/screen.scss */
+/* line 354, ../sass/screen.scss */
 #snap {
   background-color: white;
   background-image: url(../assets/images/snap-croc.svg);
@@ -1143,46 +1164,59 @@ em {
   background-position: bottom left;
   background-repeat: no-repeat;
 }
-/* line 342, ../sass/screen.scss */
+/* line 361, ../sass/screen.scss */
 #snap h2 {
   color: #333;
 }
 
-/* line 347, ../sass/screen.scss */
+/* line 366, ../sass/screen.scss */
 #generative {
   background-color: white;
   background-image: url(../assets/images/patterns/square-pattern.svg);
   background-repeat: repeat;
 }
-/* line 352, ../sass/screen.scss */
+/* line 371, ../sass/screen.scss */
 #generative h2 {
   color: #333;
 }
 
-/* line 359, ../sass/screen.scss */
+/* line 376, ../sass/screen.scss */
 #pixi {
   background: #101228;
 }
 
-/* line 363, ../sass/screen.scss */
+/* line 380, ../sass/screen.scss */
 #dynamic-mask {
   background-image: url(../assets/images/maskdynamic.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 369, ../sass/screen.scss */
+/* line 387, ../sass/screen.scss */
+#video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 393, ../sass/screen.scss */
+#video h2 {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+/* line 399, ../sass/screen.scss */
 #semantics {
   background-image: url(../assets/images/wes2.jpg);
   background-size: cover;
   background-position: center bottom;
 }
-/* line 374, ../sass/screen.scss */
+/* line 404, ../sass/screen.scss */
 #semantics h2 {
   color: #fc5050;
+  text-shadow: 0 5px 0px white;
 }
 
-/* line 379, ../sass/screen.scss */
+/* line 410, ../sass/screen.scss */
 h2.top-left {
   position: absolute;
   top: 3rem;

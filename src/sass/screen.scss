@@ -293,6 +293,11 @@ em{
 	background-position: center;	
 }
 
+#history{
+	background-image: url(../assets/images/patterns/wallpaper_orange.jpg);
+	background-position: center;
+}
+
 #web{
     h2{
         color: black;
@@ -306,6 +311,20 @@ em{
     background-image: url(../assets/images/point-reyes2.jpg);
 	background-size: cover;
 	background-position: center;
+	
+	h2{
+		color: white;
+		text-shadow: 0px 0px 20px rgba(0, 50, 100, 0.5);
+	}
+}
+
+#html5{
+	background-image: url(../assets/images/patterns/wallpaper_purple.jpg);
+	background-position: center;
+	
+	h2, h4 {
+		text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);	
+	}
 }
 
 #filters{
@@ -351,8 +370,6 @@ em{
     
     h2{
         color: #333;
-        // color: white;
-        // mix-blend-mode: difference;
     }
 }
 
@@ -366,6 +383,19 @@ em{
 	background-position: center;
 }
 
+#video{
+	video{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	h2{
+		color: white;
+		mix-blend-mode: difference;
+	}
+}
+
 #semantics{
     background-image: url(../assets/images/wes2.jpg);
 	background-size: cover;
@@ -373,6 +403,7 @@ em{
 
     h2{
         color: #fc5050;
+		text-shadow: 0 5px 0px rgba(255, 255, 255, 1);
     }
 }
 
