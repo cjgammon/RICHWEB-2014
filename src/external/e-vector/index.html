@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				overflow: hidden;
+				margin: 0;
+				text-align: center;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 100;
+				background: #222;
+			}
+
+			h3{
+				font-size: 2rem;
+				color: #efefef;
+				text-transform: uppercase;
+			}
+
+			section{
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+			}
+
+			.panel{
+				flex: 1;
+				position: relative;
+				overflow: hidden;
+			}
+
+			#raster{
+				background: blue;
+			}
+
+			#vector{
+				background: red;
+			}
+
+			@-webkit-keyframes rot{
+				0%, 100%{
+					-webkit-transform: rotate(0deg) scale(1);
+				}
+
+				50%{
+					-webkit-transform: rotate(40deg) scale(10);
+				}
+			}
+
+			.image{
+				-webkit-animation: rot 10s infinite;
+				-webkit-transform-origin: 454px 320px;
+			}
+
+			img, svg{
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -440px;
+			}
+
+			#dividor{
+				background: #999;
+				height: 100vh;
+				width: 3px;
+			}
+		</style>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+
+		<section>
+
+			<div class="panel">
+				<h3>RASTER</h3>
+				<img class="image" src="icon.png" width="881px" height="643px"/>
+			</div>
+
+			<div id="dividor"></div>
+
+			<div class="panel">
+				<h3>VECTOR</h3>
+<svg width="881px" height="843px">
+	<g id="arrow" class="image">
+		<polygon fill="#FFFFFF" points="489.772,325.046 452.017,281.877 414.262,325.046 433.396,325.046 433.396,341.341 
+		470.638,341.341 470.638,325.046 	"/>
+		<rect x="433.396" y="346.536" fill="#FFFFFF" width="37.241" height="7.609"/>
+	</g>
+</svg>
+			</div>
+
+		</section>
+
+		<script>
+
+		</script>
+	</body>
+</html>

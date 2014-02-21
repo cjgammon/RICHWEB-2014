@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				overflow: hidden;
+				margin: 0;
+				text-align: center;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 100;
+				background: #222;
+			}
+
+			h3{
+				position: absolute;
+				font-size: 2rem;
+				color: #efefef;
+				left: 300%;
+				top: -100%;
+				width: 500px;
+				text-align: left;
+				text-transform: uppercase;
+			}
+
+			section{
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-around;	
+
+			}
+
+			section div{
+				position: relative;
+				perspective: 300px;
+			}
+
+
+			@-webkit-keyframes slide2{
+				0%, 100%{
+				-webkit-mask-position: 0 0, -81px 0;
+				}
+
+				50%{
+					-webkit-mask-position: 0 0, -62px 0;
+				}
+			}
+
+			.slider{
+				-webkit-mask-image: url(slider.svg), url(slider.svg);
+				-webkit-mask-size: 100px, 100px;
+				-webkit-mask-position: 0 0, -81px 0;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-composite: source-out;
+				
+				-webkit-transition: background .2s, -webkit-mask .2s;
+				-webkit-transform-origin: center top;
+				-webkit-transform: scale(2.5);
+				background-image: 
+					-webkit-radial-gradient( 10px 9px, 12px 12px, rgba(0, 0, 40, 1) 20%, rgba(0, 0, 100, 0.1) 80%, rgba(0, 0, 100, 0.0) 90%),
+					-webkit-radial-gradient( 20px 10px, 50px 30px, rgba(0, 0, 40, 0), rgba(0, 0, 100, 0.2) 30%, rgba(0, 0, 100, 0.7) 40%), 
+					-webkit-linear-gradient(left, #d3ebff -1%,#9ed3ff 14%,#479dff 41%,#3294e5 61%,#9ed3ff 82%,#d3ebff 97%);
+				background-position: 0 0, 0 0, 0 0;
+				cursor: pointer;
+				-webkit-animation: slide2 1s infinite;
+			}
+
+
+			.slider:hover{
+				background-position: 18px 0px, 0 0, 62px 0px;
+				-webkit-mask-position: 0 0, -62px 0;
+			}
+
+			.mask-1{
+				-webkit-mask-image: url(slider.svg);
+				-webkit-mask-size: 100px, 100px;
+				-webkit-mask-position: 0 0;
+				-webkit-mask-composite: source-over;
+				-webkit-mask-repeat: no-repeat;
+			}
+
+			@-webkit-keyframes slide1{
+				0%, 100%{
+					-webkit-mask-position: -81px 0;
+				}
+
+				50%{
+					-webkit-mask-position: -62px 0;
+
+				}
+			}
+
+			.mask-2{
+				-webkit-mask-image: url(slider.svg);
+				-webkit-mask-size: 100px, 100px;
+				-webkit-mask-position: -81px 0;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-composite: source-out;
+				-webkit-animation: slide1 1s infinite;
+			}
+
+
+			.button{
+				width: 50px;
+				height: 30px;
+				background: white;
+				-webkit-transform: scale(3) rotateX(40deg) rotateZ(20deg);
+			}
+
+		</style>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+
+		<section>
+
+			<div>
+				<h3>element</h3>
+				<div id="slider" class="button"></div>
+			</div>
+
+			<div>
+				<h3>source-over</h3>
+				<div id="slider" class="button mask-1"></div>
+			</div>
+
+			<div>
+				<h3>source-out</h3>
+				<div id="slider" class="button mask-2"></div>
+			</div>
+			
+			<div>
+				<h3>result</h3>
+				<div id="slider" class="button slider"></div>
+			</div>
+
+		</section>
+
+		<script>
+
+		</script>
+	</body>
+</html>

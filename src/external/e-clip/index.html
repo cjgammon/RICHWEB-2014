@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				margin: 0;
+				text-align: center;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 100;
+				background: #222;
+			}
+
+			h2, p{
+				margin: 0;
+				line-height: 1em;
+			}
+
+			h3{
+				font-size: 2rem;
+				color: #efefef;
+			}
+
+			section{
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-around;				
+			}
+
+			.content{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				background: #efefef;
+				color: #333;
+				font-family: 'Open Sans Condensed';
+
+			}
+
+			@-webkit-keyframes clip{
+				0%, 100%{
+					-webkit-clip-path: ellipse(50%, 50%, 10%, 10%);
+				}
+
+				50%{
+					-webkit-clip-path: ellipse(50%, 50%, 50%, 50%);
+				}
+			}
+
+			.clip{
+				-webkit-clip-path: ellipse(50%, 50%, 10%, 10%);
+				-webkit-animation: clip 2s infinite;
+			}
+
+			@-webkit-keyframes scale{
+				0%, 100%{
+					-webkit-transform: scale(.1);
+				}
+
+				50%{
+					-webkit-transform: scale(1);
+				}
+			}
+
+			.svg{
+				display: block;
+				-webkit-transform: scale(.1);
+				-webkit-animation: scale 2s infinite;
+			}
+
+			.circle{
+				margin: 1rem;
+				font-size: 1rem;
+				padding: .25em;
+				height: 200px;
+				width: 200px;
+			}
+
+		</style>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+
+		<section>
+
+			<div>
+				<h3>RESULT</h3>
+				<div class="circle content clip">
+					<h2>FINNIGAN'S IRISH PUB</h2>
+					<p>clip paths allow you to hide and animate areas</p>
+				</div>
+			</div>
+
+			<div>
+				<h3>CLIP-PATH</h3>
+				<svg class="circle svg">
+					<circle cx="100" cy="100" r="100" fill="transparent" stroke="white" stroke-width="4"></circle>
+				</svg>
+			</div>
+			
+			<div>
+				<h3>CONTENT</h3>
+				<div class="circle content">
+					<h2>FINNIGAN'S IRISH PUB</h2>
+					<p>clip paths allow you to hide and animate areas</p>
+				</div>
+			</div>
+
+		</section>
+
+		<script>
+
+		</script>
+	</body>
+</html>
