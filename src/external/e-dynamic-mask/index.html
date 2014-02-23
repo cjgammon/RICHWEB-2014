@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				overflow: hidden;
+				margin: 0;
+				text-align: center;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 100;
+				background: #222;
+			}
+
+			h3{
+				position: absolute;
+				font-size: 2rem;
+				color: #efefef;
+				left: 120%;
+				top: 30%;
+				width: 500px;
+				text-align: left;
+				text-transform: uppercase;
+			}
+
+			section{
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-around;	
+
+			}
+
+			.holder{
+				position: relative;
+				perspective: 300px;
+			}
+
+			.button{
+				width: 300px;
+				height: 200px;
+				background: white;
+				-webkit-transform: rotateX(40deg) rotateZ(20deg);
+			}
+
+			.pad{
+				padding: 2rem;
+				box-sizing: border-box;
+				background-color: #00efee;
+			}
+
+			#result{
+				-webkit-mask: -webkit-canvas(dynamic-canvas-mask);
+			}
+
+		</style>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+
+		<section>
+
+			<div class="holder">
+				<h3>element</h3>
+				<div id="slider" class="button pad">
+					<h2>TEST</h2>
+					<p>This is some copy.</p>
+				</div>
+			</div>
+
+			<div class="holder">
+				<h3>canvas mask</h3>
+				<canvas id="mask-dynamic-canvas" class="button" width="300px" height="200px"></canvas>
+			</div>
+			
+			<div class="holder">
+				<h3>result</h3>
+				<div id="result" class="button pad">
+					<h2>TEST</h2>
+					<p>This is some copy.</p>
+				</div>
+			</div>
+
+		</section>
+
+		<script src="three.js"></script>
+		<script src="boid.js"></script>
+		<script>
+				var canvas = document.getElementById('mask-dynamic-canvas'),
+					ctx = canvas.getContext('2d'),
+					maskctx = document.getCSSCanvasContext('2d', 'dynamic-canvas-mask', canvas.width, canvas.height),
+					boids = [];
+                
+               	for (var i = 0; i < 50; i += 1) {
+					var boid = boids[ i ] = new Boid();
+					boid.position.x = 150;
+					boid.position.y = 100;
+					boid.position.z = Math.random() * 100;
+					boid.velocity.x = Math.random() * 1 - 0.5;
+					boid.velocity.y = Math.random() * 1 - 0.5;
+					boid.velocity.z = Math.random() * 1 - 0.5;
+					boid.setAvoidWalls(true);
+					boid.setWorldSize(0, 0, 300, 200, 200);
+				}
+
+				render();
+
+				function render() {
+					draw(ctx);
+					draw(maskctx);
+           			requestAnimationFrame(render);
+				}
+
+				function draw(c) {
+					c.clearRect(0, 0, canvas.width, canvas.height);
+			
+					for (var i = 0; i < boids.length; i += 1) {
+						boids[i].run(boids);
+                	
+						c.beginPath();
+						c.fillStyle = "black";
+						c.arc(boids[i].position.x, boids[i].position.y, boids[i].position.y / 10, 0, 2 * Math.PI, false);
+						c.fill();
+						c.closePath();
+				
+					}
+				}
+		</script>
+	</body>
+</html>

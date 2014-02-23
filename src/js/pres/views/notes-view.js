@@ -39,7 +39,7 @@ define(function (require) {
         handle_KEYDOWN: function (e) {
 
             //CTRL + k triggers notes
-            if (e.keyCode == 17) {
+            if (e.keyCode == 17) { //K
                 this.CTR = true;
             }
             else if (e.keyCode == 75 && this.CTR === true) 
