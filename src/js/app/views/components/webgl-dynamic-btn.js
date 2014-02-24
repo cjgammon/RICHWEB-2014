@@ -21,7 +21,7 @@ define(function (require) {
                 circle,
                 face,
                 random,
-				colorArray = [0x9bc9a8, 0x7e4b83];
+				colorArray = [0xF1953C, 0xcccccc];
 
             this.el = document.getElementById('ui-button-webgl');
 			this.el.style.opacity = '1';
@@ -29,6 +29,7 @@ define(function (require) {
 			this.delta = 0;
 			
             this.renderer = new THREE.WebGLRenderer({canvas: this.el, antialias: true});
+			this.renderer.setClearColor(0xffffff);
 			this.camera = new THREE.PerspectiveCamera(35, 200 / 200, 2, 10000);
             this.scene = new THREE.Scene();
 

@@ -31,8 +31,28 @@ define(function (require) {
         },
 
         populate: function () {
-            var asides = document.getElementsByTagName('aside');
-            this.popup.populateSlides(asides);
+            var slides = document.getElementsByClassName('slide'),
+				aside,
+				slide,
+				note,
+				notes = [],
+				i,
+				slideURL;
+			
+			for (i = 0; i < slides.length; i += 1) {
+				aside = slides[i].getElementsByTagName('aside');
+				slideURL = "http://" + window.location.hostname + "/#slide/" + slides[i].id;
+				
+				if (aside.length > 0) {
+					note = {text: aside[0].innerHTML, url: slideURL};
+				} else {
+					note = {url: slideURL};
+				}
+				
+				notes.push(note);
+			}
+			
+            this.popup.populateSlides(notes);
             this.resolve();
         },
 

@@ -9,17 +9,32 @@
         <style>
 
             body{
+				margin: 0;
+				padding: 0;
                 background: #efefef;
                 color: #333;
                 font-family: sans-serif;
                 font-size: 2rem;
+				font-weight: bold;
+				
+				height: 100%;
             }
+			
+			#container{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
 
             .slide{
                 position: absolute;
                 display: none;
-                width: 100vw;
-                height: 100vh;
+				box-sizing: border-box;
+				padding: 1em;
+                width: 100%;
+                height: 100%;
             }
 
             .slide.in{
@@ -28,14 +43,24 @@
                 align-items: center;
                 justify-content: center;
             }
+
+			iframe{
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				opacity: 0.2;
+			}
         </style>
 	</head>
     <body>
-
+		
+		<iframe id="iframe" src=""></iframe>
         <div id="container"></div>
 
         <script>
-            var container = document.getElementById('container');
+            var container = document.getElementById('container'),
+				iframe = document.getElementById('iframe'),
+				urls = [];
 
             window.populateSlides = function (slideArray) {
                 var i,
@@ -44,7 +69,13 @@
                 for (i = 0; i < slideArray.length; i += 1) {
                     d = document.createElement('div');
                     d.className = 'slide';
-                    d.innerHTML = slideArray[i].innerHTML;
+					
+					if (slideArray[i].text) {
+						d.innerHTML = slideArray[i].text;
+					}
+					
+					urls.push(slideArray[i].url);
+					
                     container.appendChild(d);
                 }
             }
@@ -59,6 +90,7 @@
                             slides[i].className = 'slide';
                         } else {
                             slides[i].className = 'slide in';
+							iframe.src = urls[i];
                         }
                     }
                 }

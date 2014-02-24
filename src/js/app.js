@@ -17,6 +17,7 @@ define(function (require) {
 		UIButtonSVGView = require('app/views/ui-button-svg-view'),
 		UIButtonCanvasView = require('app/views/ui-button-canvas-view'),
 		UIButtonWebglView = require('app/views/ui-button-webgl-view'),
+		UIButtonShaderView = require('app/views/ui-button-shader-view'),
         AppBase = require('pres/views/app-base');
 
     App = AppBase.extend({
@@ -29,6 +30,7 @@ define(function (require) {
 			{id: 'svg', view: UIButtonSVGView},
 			{id: 'canvas', view: UIButtonCanvasView},
 			{id: 'webgl', view: UIButtonWebglView},
+			{id: 'webgl-shader', view: UIButtonShaderView},
             {id: 'filters-demo', view: FilterDemoView},
             {id: 'gamification', view: GamificationView},
             {id: 'video', view: VideoView}

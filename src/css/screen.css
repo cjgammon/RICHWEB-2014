@@ -701,6 +701,12 @@ aside {
 }
 
 /* line 245, ../sass/components/_buttons.scss */
+#ui-button-vert-shader, #ui-button-frag-shader {
+  display: block;
+  margin: auto;
+}
+
+/* line 250, ../sass/components/_buttons.scss */
 .button_base {
   margin: 0;
   border: 0;
@@ -716,7 +722,7 @@ aside {
   cursor: default;
 }
 
-/* line 260, ../sass/components/_buttons.scss */
+/* line 265, ../sass/components/_buttons.scss */
 .button_base:hover {
   cursor: pointer;
 }
@@ -919,7 +925,7 @@ em {
 
 /* line 145, ../sass/screen.scss */
 .slide--orange {
-  background: #f0a964;
+  background: #F1953C;
 }
 
 /* line 149, ../sass/screen.scss */

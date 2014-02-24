@@ -242,6 +242,11 @@
 	opacity: 0;
 }
 
+#ui-button-vert-shader, #ui-button-frag-shader{
+	display: block;
+	margin: auto;
+}
+
 .button_base {
     margin: 0;
     border: 0;
