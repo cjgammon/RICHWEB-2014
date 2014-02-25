@@ -4,8 +4,8 @@ define(function (require) {
 	var Backbone = require('backbone'),
 		Vars = require('pres/models/vars'),
 		AppEvent = require('pres/events/app-event'),
-		VShader = require('text!app/shaders/basic.vs'),
-		//FShader = require('text!app/shaders/basic.fs'),
+		VShader = require('text!app/shaders/sin.vs'),
+		FShader = require('text!app/shaders/sin.fs'),
 		UIView;
 
 	require('tweenmax');
@@ -35,22 +35,22 @@ define(function (require) {
 			ambientLight = new THREE.AmbientLight(0xffffff);
 			this.scene.add(ambientLight);           
 
-            //this.geometry = new THREE.PlaneGeometry(130, 130, 30, 30);
             this.geometry = new THREE.SphereGeometry(50, 10, 10);
 
 			this.uniforms = {
 				time: {type: 'f', value: 0.0},
-				resolution: {type: 'v2', value: new THREE.Vector2(100, 100)}
+				resolution: {type: 'v2', value: new THREE.Vector2(100, 100)},
+				displacement: {type: 'v3', value: new THREE.Vector3(100, 100, 100)},
+				customColor: {type: 'v3', value: new THREE.Vector3(100, 100, 100)},
+				customAlpha: {type: 'f', value: 1.0}
 			}
-			/*
+			
             this.material = new THREE.ShaderMaterial({
 				uniforms: this.uniforms,
 				vertexShader: VShader,
 				fragmentShader: FShader
             });
-			*/
-			this.material = new THREE.MeshBasicMaterial({wireframe: true, color: 0x000000});
-
+			
             this.mesh = new THREE.Mesh(this.geometry, this.material);
             this.mesh.position.z = -200;
             this.scene.add(this.mesh);
@@ -69,7 +69,6 @@ define(function (require) {
 
 		render: function () {
 			if (this.animating) {
-				//this.uniforms.time.value += 0.05;
 				this.delta += .01;
 				this.uniforms.time.value = Math.sin(this.delta) * 20;
 			}
