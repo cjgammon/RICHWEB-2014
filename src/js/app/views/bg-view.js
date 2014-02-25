@@ -5,6 +5,7 @@ define(function (require) {
 		UserEvent = require('pres/events/user-event'),
 		AppEvent = require('pres/events/app-event'),
 		blenderModel = require('text!app/data/island1.js'),
+		cloudModel = require('text!app/data/cloud1.js'),
 		Camera = require('pres/models/camera'),
 		CameraPath = require('app/models/camera-path'),
 		BgView,
@@ -34,9 +35,7 @@ define(function (require) {
 						
 			this.scene = new THREE.Scene();
 			
-			
-			//LIGHTS
-				
+			//LIGHTS				
 			directionalLight = new THREE.DirectionalLight(0xff9966);
 			directionalLight.position.set(1, 0, 1);
 			this.scene.add(directionalLight);
@@ -63,6 +62,7 @@ define(function (require) {
 			this.addSky();
 			this.addModel();
             this.addWater();
+			this.addClouds();
 			
 			this.renderer.render(this.scene, Camera);
 		},
@@ -83,15 +83,6 @@ define(function (require) {
 				model.materials[i].shading = THREE.FlatShading;
 				model.materials[i].side = THREE.DoubleSide;
 			}
-
-            //mapTexture = new THREE.ImageUtils.loadTexture('assets/images/textures/ground_grass_gen_07.png');
-            //mapTexture.wrapS = THREE.RepeatWrapping;
-            //mapTexture.wrapT = THREE.RepeatWrapping;
-            //mapTexture.repeat.x = 40;
-            //mapTexture.repeat.y = 40;
-            //mapTexture.offset.x = mapTexture.repeat.x;
-            //mapTexture.offset.y = mapTexture.repeat.y;
-            //model.materials[127] = new THREE.MeshLambertMaterial({map: mapTexture, bumpMap: mapTexture, color: 0x99cccc, ambient: 0x00cc00});
 
 			mesh = new THREE.Mesh(model.geometry, new THREE.MeshFaceMaterial(model.materials));
 			mesh.scale.set(40, 40, 40);
@@ -132,19 +123,6 @@ define(function (require) {
             
             waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
 
-            /*
-            water = new THREE.Water(this.renderer, Camera, this.scene, {
-                textureWidth: 512, 
-                textureHeight: 512,
-                waterNormals: waterNormals,
-                alpha: 1.0,
-                sunDirection: directionalLight.position.normalize(),
-                sunColor: 0xffffff,
-                waterColor: 0x001e0f,
-                distortionScale: 50.0
-            });
-            */
-
             waterGeometry = new THREE.PlaneGeometry(parameters.width * 500, parameters.height * 500, 50, 50);
 
             water = new THREE.Mirror(this.renderer, Camera, {
@@ -164,12 +142,39 @@ define(function (require) {
             
             this.scene.add(mirrorMesh);
         },
+
+		addClouds: function () {
+			var content,
+				loader,
+				model,
+				mesh,
+				scale,
+				rotation,
+				i;
+			
+			content = JSON.parse(cloudModel);
+			loader = new THREE.JSONLoader();
+			model = loader.parse(content);
+			
+			for (i = 0; i < model.materials.length; i += 1) {
+				model.materials[i].shading = THREE.FlatShading;
+				//model.materials[i].side = THREE.DoubleSide;
+			}
+			
+			for (i = 0; i < 50; i += 1) {
+				scale = 10 + Math.random() * 50;
+				rotation = Math.random() * 180;
+				mesh = new THREE.Mesh(model.geometry, new THREE.MeshFaceMaterial(model.materials));
+				mesh.scale.set(scale, scale, scale);
+				mesh.rotation.set(0, rotation, 0);
+				mesh.position.set(-3500 + Math.random() * 7000, 200 + Math.random() * 200, -3500 + Math.random() * 7000);
+				this.scene.add(mesh);			
+			}
+
+		},
 		
 		render: function () {
-            //water.material.uniforms.time.value += 1.0 / 60.0;
             water.render();
-			
-			console.log(Camera);
 			this.renderer.render(this.scene, Camera);
 		},
 

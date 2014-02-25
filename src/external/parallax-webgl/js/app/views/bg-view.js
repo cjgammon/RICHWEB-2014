@@ -108,7 +108,7 @@ define([], function (require) {
 			
 			this.addBg();
 			this.addSky();
-			this.addStars();
+			//this.addStars();
 			this.addTerrain();
 			this.addWater();
 			//this.addWater2();
