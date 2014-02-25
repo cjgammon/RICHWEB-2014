@@ -4,8 +4,8 @@ define(function (require) {
 	var Backbone = require('backbone'),
 		Vars = require('pres/models/vars'),
 		AppEvent = require('pres/events/app-event'),
-		VShader = require('text!app/shaders/basic.vs'),
-		FShader = require('text!app/shaders/swirls.fs'),
+		VShader = require('text!app/shaders/frag.vs'),
+		FShader = require('text!app/shaders/frag.fs'),
 		UIView;
 
 	require('tweenmax');
@@ -38,12 +38,20 @@ define(function (require) {
             //this.geometry = new THREE.PlaneGeometry(130, 130, 30, 30);
             this.geometry = new THREE.SphereGeometry(50, 10, 10);
 
+			this.attr = {
+				displacement: {type: 'f', value: []}
+			}
+			
 			this.uniforms = {
-				time: {type: 'f', value: 0.0},
-				resolution: {type: 'v2', value: new THREE.Vector2(100, 100)}
+				time: {type: 'f', value: 1}
+			}
+			
+			for (var v = 0; v < this.geometry.vertices.length; v++) {
+				this.attr.displacement.value.push(5 + Math.sin(this.delta + v) * 10);
 			}
 			
             this.material = new THREE.ShaderMaterial({
+				attributes: this.attr,
 				uniforms: this.uniforms,
 				vertexShader: VShader,
 				fragmentShader: FShader
@@ -68,8 +76,8 @@ define(function (require) {
 		render: function () {
 			if (this.animating) {
 				//this.uniforms.time.value += 0.05;
-				this.delta += .01;
-				this.uniforms.time.value = Math.sin(this.delta) * 20;
+				this.delta += .1;
+				this.uniforms.time.value = Math.sin(this.delta) * 2;
 			}
 			
             this.renderer.render(this.scene, this.camera);
