@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                         src: [
 							'assets/**', 
 							'templates/*',
-							'external/*'
+							'external/**'
 							],
                         dest: './site/'
                     }
