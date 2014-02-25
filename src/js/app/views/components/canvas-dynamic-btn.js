@@ -6,9 +6,7 @@ define(function (require) {
 		AppEvent = require('pres/events/app-event'),
 		UIView;
 
-	require('vendor/paper');
 	require('tweenmax');
-    paper.install(window);
 
 	UIView = Backbone.View.extend({
 		

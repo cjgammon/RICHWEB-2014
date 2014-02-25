@@ -22,7 +22,11 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: './src',
-                        src: ['assets/**'],
+                        src: [
+							'assets/**', 
+							'templates/*',
+							'external/*'
+							],
                         dest: './site/'
                     }
                 ]

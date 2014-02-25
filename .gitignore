@@ -1,3 +1,6 @@
+.sass-cache
+node_modules
+site
 src/.sass-cache
 src/external/wtf/wtf_greenscreen_combined.mov
 src/assets/videos/
