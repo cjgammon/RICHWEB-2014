@@ -1233,3 +1233,16 @@ h2.top-left {
   text-align: left;
   font-size: 4rem;
 }
+
+/* line 421, ../sass/screen.scss */
+#resources {
+  font-size: 1rem;
+}
+/* line 424, ../sass/screen.scss */
+#resources h2 {
+  font-size: 3rem;
+}
+/* line 428, ../sass/screen.scss */
+#resources h3 {
+  font-size: 2rem;
+}
