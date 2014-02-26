@@ -223,7 +223,7 @@ em{
 .head-shot{
 	width: 200px;
 	margin-bottom: 1em;
-	-webkit-clip-path: circle(50%);
+	-webkit-clip-path: ellipse(50%, 50%, 50%, 50%);
 }
 
 #rich{

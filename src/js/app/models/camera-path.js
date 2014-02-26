@@ -67,12 +67,12 @@ define(function (require) {
 			camera.position = position;
 			pathLength = geometry.path.getLength();
 			
-			lookAt = geometry.path.getPointAt((t + 30 / pathLength) % 1);
+			//lookAt = geometry.path.getPointAt((t + 30 / pathLength) % 1);
+			lookAt = geometry.path.getPointAt((t / pathLength) % 1);
 			lookAt.copy(position).add(dir);
 
 			camera.matrix.lookAt(camera.position, lookAt, normal);
 			camera.rotation.setFromRotationMatrix(camera.matrix, camera.rotation.order);
-			//camera.rotation.setEulerFromRotationMatrix(camera.matrix, camera.eulerOrder);
 		};
 		
 		this.positionElement = function (element, t) {
@@ -85,6 +85,8 @@ define(function (require) {
 				segments,
 				pickt,
 				pick,
+				point,
+				point2,
 				pickNext,
 				pathLength;
 			
@@ -105,14 +107,16 @@ define(function (require) {
 			element.position = position;
 			pathLength = geometry.path.getLength();
 			
-			lookAt = geometry.path.getPointAt((t + 30 / pathLength) % 1);
+			point = (t + 30 / pathLength) % 1;
+			
+			lookAt = geometry.path.getPointAt(point);
 			lookAt.copy(position).add(dir);
 		
 			element.matrix.lookAt(element.position, lookAt, normal);
 			element.rotation.setFromRotationMatrix(element.matrix, element.rotation.order);
-			//element.rotation.setEulerFromRotationMatrix(element.matrix, element.eulerOrder);
-						
-			element.position = geometry.path.getPointAt((t + 30 / pathLength) % 1);
+			
+			element.position = geometry.path.getPointAt(point);		
+			//TODO:: need to alter positioning to be correctly cenetered	
 		};
 		
 		this.length = function () {
