@@ -136,6 +136,7 @@
 				drawImage(hill1, 0 - _offsetSpeed % hill1.width);
 				drawImage(hill1, hill1.width - _offsetSpeed % hill1.width);
 				drawImage(hill1, hill1.width * 2 - _offsetSpeed % hill1.width);
+				drawImage(hill1, hill1.width * 3 - _offsetSpeed % hill1.width);
 
 				//hill2
 				_offsetSpeed = delta * 3;
@@ -143,12 +144,14 @@
 				drawImage(hill2, hill2.width - _offsetSpeed % hill2.width);
 				drawImage(hill2, hill2.width * 2 - _offsetSpeed % hill2.width);
 				drawImage(hill2, hill2.width * 3 - _offsetSpeed % hill2.width);
+				drawImage(hill2, hill2.width * 4 - _offsetSpeed % hill2.width);
 
 				//hill3
 				_offsetSpeed = delta * 5;
 				drawImage(hill3, 0 - _offsetSpeed % hill3.width);
 				drawImage(hill3, hill3.width - _offsetSpeed % hill3.width);
 				drawImage(hill3, hill3.width * 2 - _offsetSpeed % hill3.width);
+				drawImage(hill3, hill3.width * 3 - _offsetSpeed % hill3.width);
 
 				//clouds
 				ctx.translate(-delta, _bottom - 100);
