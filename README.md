@@ -37,6 +37,6 @@ http://www.pixijs.com/
 
 Concepts Discussed
 ==================
-https://www.webkit.org/blog/176/css-canvas-drawing/ | CSS Canvas Drawing
+CSS Canvas Drawing | https://www.webkit.org/blog/176/css-canvas-drawing/
 
-http://blogs.adobe.com/webplatform/2014/01/16/making-the-web-sweeter/ | Food Network Project
+Food Network Project | http://blogs.adobe.com/webplatform/2014/01/16/making-the-web-sweeter/
