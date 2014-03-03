@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>no styling</title>
+		
+		<style>
+			html, body{
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			body{
+				display: -webkit-flex;
+			}
+			
+			canvas{
+				display: block;
+				position: relative;
+				width: 97%;
+				height: auto;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas"></canvas>
+		
+		<script id="frag" type="text/shader">
+		uniform vec3 color;
+		uniform float opacity;
+
+		varying vec3 vColor;
+		varying float vAlpha;
+
+		void main() {
+
+			gl_FragColor = vec4( vColor * color, vAlpha * opacity );
+
+		}
+		</script>
+		
+		<script id="vert" type="text/shader">
+		uniform float amplitude;
+
+		attribute vec3 displacement;
+		attribute vec3 customColor;
+		attribute float customAlpha;
+
+		varying vec3 vColor;
+		varying float vAlpha;
+
+		void main() {
+
+			vec3 newPosition = position + amplitude * displacement;
+
+			vColor = customColor;
+			vAlpha = customAlpha;
+
+			gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+
+		}
+		</script>
+		
+		<script src="js/greensock/TweenMax.js"></script>
+		<script src="js/threejs/build/three.js"></script>
+		<script src="js/shaders/BokehShader.js"></script>
+		<script src="js/post/BloomPass.js"></script>
+		<script src="js/post/EffectComposer.js"></script>
+		<script src="js/post/MaskPass.js"></script>
+		<script src="js/post/RenderPass.js"></script>
+		<script src="js/post/SavePass.js"></script>
+		<script src="js/post/ShaderPass.js"></script>
+		<script src="js/shaders/CopyShader.js"></script>
+		<script src="js/shaders/HorizontalTiltShiftShader.js"></script>
+		<script src="js/shaders/LuminosityShader.js"></script>
+		<script src="js/shaders/NormalMapShader.js"></script>
+		<script src="js/shaders/VerticalTiltShiftShader.js"></script>
+		
+		<script>
+	
+			var NodeGarden = {
+				
+				setup: function () {
+					var width = 1280,
+						height = 720,
+						attributes,
+						uniforms;
+
+					this.delta = 1000;
+					this.multiplier = 100000;
+						
+					this.canvas = document.getElementById('myCanvas');
+
+					this.renderer = new THREE.WebGLRenderer({canvas: this.canvas});
+					this.renderer.setSize(width, height);
+					this.renderer.setClearColor(0x324448, 1);
+
+					this.scene = new THREE.Scene();
+					this.scene.fog = new THREE.Fog(0xcccccc, 100, 10000);
+
+					this.camera = new THREE.PerspectiveCamera(70, width / height, 2, 10000);
+					this.camera.position.set(-600, 1000, 3000);
+					this.camera.rotation.x = -30 * Math.PI / 180;
+
+					this.projector = new THREE.Projector();
+					this.mouse = new THREE.Vector2();
+
+					var pointLight = new THREE.AmbientLight(0xffffff);
+					this.scene.add(pointLight)
+
+					var pointLight = new THREE.PointLight(0xffffff, 1.0);
+					pointLight.position.z = 3490;
+					this.scene.add(pointLight)
+
+					this.addDome();
+
+					this.mesh = new THREE.Object3D();
+					this.addWires();
+					this.addPlane();
+					this.addParticles();
+					this.scene.add(this.mesh);
+
+					this.material_depth = new THREE.MeshDepthMaterial();
+
+					this.addPostProcessing();
+
+					document.body.addEventListener('mousedown', this.handle_MOUSE_DOWN.bind(this));
+					document.body.addEventListener('mouseup', this.handle_MOUSE_UP.bind(this));
+					document.body.addEventListener('mousemove', this.handle_MOUSE_MOVE.bind(this));
+
+					requestAnimationFrame(this.render.bind(this));
+				},
+				
+				render: function () {
+					this.update();
+					
+					this.renderer.clear();
+
+					if (postprocessing) {
+						//postprocessing.bokeh_uniforms[ "focus" ].value = .5 + Math.sin(this.delta / 2) * 0.1;
+						postprocessing.bokeh_uniforms[ "focus" ].value = this.mesh.rotation.x + 0.5;
+
+						// Render scene into texture
+						this.scene.overrideMaterial = null;
+						this.renderer.render( this.scene, this.camera, postprocessing.rtTextureColor, true );
+						// Render depth into texture
+						this.scene.overrideMaterial = this.material_depth;
+						this.renderer.render( this.scene, this.camera, postprocessing.rtTextureDepth, true );
+						// Render bokeh composite
+						this.renderer.render( postprocessing.scene, postprocessing.camera );
+					} else {
+						this.renderer.render( this.scene, this.camera );
+					}
+						
+					requestAnimationFrame(this.render.bind(this));
+				},
+				
+				update: function () {
+					this.delta += 0.1;
+
+					this.camera.position.z = 2000 + Math.sin(this.delta / 10) * 1000;
+
+					for (var i = 0; i < this.wireGeometry.vertices.length; i += 1) {
+						var wireV = this.wireGeometry.vertices[i], 
+							planeV = this.planeGeometry.vertices[i], 
+							particleV = this.particleGeometry.vertices[i],
+	                        newZ;
+
+	                    //sombrero function
+						var _x = particleV.x + (this.mouse.x / 100);
+						var _y = particleV.y + (this.mouse.y / 100);
+	                    var r = Math.sqrt(_x * _x + _y * _y) + this.delta;
+	                    var value = Math.sin(r) / r;
+
+						if (this.mousedown) {
+							this.multiplier = 2000000;
+						} else {
+							this.multiplier = 500000 + Math.sin(this.delta / 10) * 400000;
+						}
+
+	                    newZ = value * this.multiplier;
+	                    planeV.z = particleV.z = wireV.z = newZ;
+					}
+
+					this.wireGeometry.verticesNeedUpdate = true;
+					this.planeGeometry.verticesNeedUpdate = true;
+					this.particleGeometry.verticesNeedUpdate = true;
+				},
+				
+				handle_MOUSE_DOWN: function (e) {
+		            e.preventDefault();
+
+					this.mousedown = true;
+					this.mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+					this.mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+		            var vector = new THREE.Vector3( this.mouse.x, this.mouse.y, 0.5 );
+		            this.projector.unprojectVector( vector, this.camera );
+
+		            var ray = new THREE.Raycaster( this.camera.position, vector.sub( this.camera.position ).normalize() );
+		            var intersects = ray.intersectObject(this.plane);
+
+					if ( intersects.length > 0) {
+						this.dragging = intersects[0].face;
+					}
+
+					// Parse all the faces
+					for ( var i in intersects ) {
+						this.planeMaterials[intersects[i].face.materialIndex] = new THREE.MeshLambertMaterial({ambient: 0xffffff, opacity: 0.4, transparent: true, vertexColors: THREE.FaceColors});				
+					}			
+				},
+
+				handle_MOUSE_UP: function (e) {
+					this.mousedown = false;
+				},
+
+				handle_MOUSE_MOVE: function (e) {
+					this.mouse.x = e.pageX;
+
+					this.mesh.rotation.y = Math.sin(e.pageX / 1000);
+					this.mesh.rotation.x = Math.sin(e.pageY / 1000);
+				},
+
+				addDome: function () {
+					var geometry = new THREE.SphereGeometry(3500, 10, 10);
+					var material = new THREE.MeshLambertMaterial({ambient: 0x0a262b, color: 0x000000, side: THREE.DoubleSide});
+					var dome = new THREE.Mesh( geometry, material );
+					this.scene.add(dome);
+				},
+
+				addWires: function () {
+
+					this.wireGeometry = new THREE.PlaneGeometry( 4000, 4000, 10, 10 );
+		            THREE.GeometryUtils.triangulateQuads(this.wireGeometry);
+
+					this.wireAttributes = {
+						displacement: 	{ type: 'v3', value: [] },
+						customColor: 	{ type: 'c', value: [] },
+						customAlpha: 	{ type: 'f', value: [] }
+					};
+
+					this.wireUniforms = {
+						amplitude: 	{ type: "f", value: 5.0 },
+						opacity:   	{ type: "f", value: 0.3 },
+						color:     	{ type: "c", value: new THREE.Color( 0xffffff ) },
+						fogColor: 	{ type: "c", value: new THREE.Color( 0x020d17 )},
+						fogNear:  	{ type: "f", value: 500.0},
+						fogFar:  	{ type: "f", value: 1000.0}
+					};
+					
+					this.wireMaterial = new THREE.ShaderMaterial( {
+						uniforms:       this.wireUniforms,
+						attributes:     this.wireAttributes,
+						vertexShader:   document.getElementById('vert').innerHTML,
+						fragmentShader: document.getElementById('frag').innerHTML,
+						blending:       THREE.AdditiveBlending,
+						fog: 			true,
+						depthTest:      false,
+						transparent:    true,
+						wireframe: 		true,
+						wireframeLinewidth: 1.0
+					});            
+
+					this.wires = new THREE.Mesh(this.wireGeometry, this.wireMaterial);
+					this.wires.rotation.set(-90 * Math.PI / 180, 0, -90 * Math.PI / 180);
+					this.mesh.add(this.wires);
+
+					//color
+					var vertices = this.wireGeometry.vertices;
+					var displacement = this.wireAttributes.displacement.value;
+					var color = this.wireAttributes.customColor.value;
+					var opacity = this.wireAttributes.customAlpha.value;
+
+					for( var v = 0; v < vertices.length; v += 1 ) {
+						displacement[v] = new THREE.Vector3();
+						color[v] = new THREE.Color( 0xffffff );
+						//opacity[ v ] = 0.2 + (vertices[v].x / 3000) - (vertices[v].y / 4000);
+						opacity[v] = 0.1;
+					}
+				},
+
+				addPlane: function () {
+
+					this.planeGeometry = new THREE.PlaneGeometry( 4000, 4000, 10, 10 );
+					THREE.GeometryUtils.triangulateQuads(this.planeGeometry);
+
+					this.planeMaterials = [];
+					for (var i = 0; i < this.planeGeometry.faces.length; i += 1) {
+						var material = new THREE.MeshLambertMaterial({
+							ambient: 0xffffff, 
+							opacity: 0.0, 
+							blending: THREE.AdditiveBlending, 
+							transparent: true, 
+							vertexColors: THREE.FaceColors
+						});
+						this.planeMaterials.push(material);
+						this.planeGeometry.faces[i].materialIndex = i;
+					}
+
+					this.plane = new THREE.Mesh(this.planeGeometry, new THREE.MeshFaceMaterial( this.planeMaterials ));
+					this.plane.rotation.set(-90 * Math.PI / 180, 0, -90 * Math.PI / 180);
+					this.mesh.add(this.plane);
+
+					for (var i = 0; i < this.planeGeometry.faces.length; i += 1) {
+						var face = this.planeGeometry.faces[i];
+						if (face.centroid.x < 0 && face.centroid.x > -400 ||
+							face.centroid.x < 800 && face.centroid.x > 400) 
+						{
+							this.planeMaterials[face.materialIndex] = new THREE.MeshLambertMaterial({
+								ambient: 0xffffff, 
+								opacity: 0.4, 
+								transparent: true, 
+								vertexColors: THREE.FaceColors
+							});
+						}
+					}
+
+					this.planeGeometry.colorsNeedUpdate = true;
+				},
+
+				addParticles: function () {
+					this.particleGeometry = new THREE.PlaneGeometry( 4000, 4000, 10, 10 );
+
+					var sprite = THREE.ImageUtils.loadTexture( "images/disc.png" );
+					this.particleMaterial = new THREE.ParticleBasicMaterial({
+						color: 0xffffff, 
+						size: 30, 
+						map: sprite, 
+						blending: THREE.AdditiveBlending, 
+						transparent: true, 
+						opacity: 0.9, 
+						fog: true
+					});
+
+					this.particles = new THREE.ParticleSystem(this.particleGeometry, this.particleMaterial);
+					this.particles.rotation.set(-90 * Math.PI / 180, 0, -90 * Math.PI / 180);
+					this.mesh.add(this.particles);
+				},
+
+				addPostProcessing: function () {
+					var width = window.innerWidth,
+						height = window.innerHeight;
+
+					postprocessing = {};
+					postprocessing.scene = new THREE.Scene();
+					postprocessing.camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2,  window.innerHeight / 2, window.innerHeight / - 2, -10000, 10000 );
+					postprocessing.scene.add( postprocessing.camera );
+
+					var pars = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat };
+					postprocessing.rtTextureDepth = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, pars );
+					postprocessing.rtTextureColor = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, pars );
+
+					var bokeh_shader = THREE.BokehShader;
+					postprocessing.bokeh_uniforms = THREE.UniformsUtils.clone( bokeh_shader.uniforms );
+					postprocessing.bokeh_uniforms[ "tColor" ].value = postprocessing.rtTextureColor;
+					postprocessing.bokeh_uniforms[ "tDepth" ].value = postprocessing.rtTextureDepth;
+					postprocessing.bokeh_uniforms[ "focus" ].value = 0.6;//0.6;
+					postprocessing.bokeh_uniforms[ "aspect" ].value = window.innerWidth / window.innerHeight;
+
+					postprocessing.materialBokeh = new THREE.ShaderMaterial( {
+						uniforms: postprocessing.bokeh_uniforms,
+						vertexShader: bokeh_shader.vertexShader,
+						fragmentShader: bokeh_shader.fragmentShader
+					} );
+
+					postprocessing.quad = new THREE.Mesh( new THREE.PlaneGeometry( window.innerWidth, window.innerHeight ), postprocessing.materialBokeh );
+					//postprocessing.quad.position.z = -500;
+					postprocessing.scene.add( postprocessing.quad );
+				},
+			};
+			
+			NodeGarden.setup();
+		</script>
+	</body>
+</html>
