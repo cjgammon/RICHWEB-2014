@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>mask 2</title>
+
+		<style>
+			body{
+				margin: 0;
+				color: #efefef;
+				font-size: 2rem;
+				font-family: 'Open Sans', sans-serif;
+				background: url(bg.png);
+			}
+
+			section{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+			}
+
+			h1{
+				margin: 0;
+				font-size: 7rem;
+			}
+			
+			@-webkit-keyframes pulse{
+				0%, 100%{
+					-webkit-mask-size: 100%;
+					
+				}
+				
+				50%{
+					-webkit-mask-size: 200%;
+					
+				}
+			}
+
+			#bg{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: #333;
+				background-image: url(blur.jpg);
+				-webkit-mask-image: url(splatter.png);
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-size: 100%;
+				-webkit-mask-position: center;
+			}
+			
+			.group{
+				position: absolute;
+				width: 100%;
+			}
+			
+			.distressed{
+				color: white;
+				border: .1em white solid;
+				border-radius: .2em;
+				padding: 0em .2em;
+				font-family: helvetica;
+				-webkit-mask-image: url(texture.png);
+				-webkit-mask-size: cover;
+				-webkit-transform: rotate(-10deg) scale(0.75);
+			}
+			
+		</style>
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+		<div id="group-1" class="group">
+			<section></section>
+			<section></section>
+			<section></section>
+			<section></section>
+		</div>
+		
+		<div id="bg"></div>
+
+		<div id="group-2" class="group">
+			<section>
+				<h1 class="distressed">MASKS</h1>
+			</section>
+			<section>
+				<h1 class="distressed">USE</h1>
+			</section>
+			<section>
+				<h1 class="distressed">TRANSPARENCY</h1>
+			</section>
+			<section>
+				<h1 class="distressed">CREATIVELY</h1>
+			</section>
+		</div>
+	</body>
+</html>
