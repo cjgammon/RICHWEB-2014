@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>no styling</title>
+		<style>
+			body{
+				margin: 0;
+				text-align: center;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 100;
+				background: #222;
+			}
+
+			h2, p{
+				margin: 0;
+				line-height: 1em;
+			}
+
+			h3{
+				font-size: 2rem;
+				color: #efefef;
+			}
+
+			section{
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-around;				
+			}
+
+			.content{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				background: #efefef;
+				color: #cc0000;
+				font-family: 'Open Sans Condensed';
+			}
+
+			.clip{
+				-webkit-mask: url(texture.png);
+				-webkit-mask-size: cover;
+			}
+
+			.circle{
+				margin: 1rem;
+				font-size: 1rem;
+				padding: .25em;
+				height: 200px;
+				width: 200px;
+			}
+			
+			.img{
+				background-image: url(texture.png);
+				background-size: cover;
+			}
+
+		</style>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
+	</head>
+	<body>
+
+		<section>
+
+			<div>
+				<h3>RESULT</h3>
+				<div class="circle content clip">
+					<h2>FINNIGAN'S IRISH PUB</h2>
+					<p>masks allow you to hide and animate areas</p>
+				</div>
+			</div>
+
+			<div>
+				<h3>MASK</h3>
+				<div class="circle img">
+				</div>
+			</div>
+			
+			<div>
+				<h3>CONTENT</h3>
+				<div class="circle content">
+					<h2>FINNIGAN'S IRISH PUB</h2>
+					<p>masks allow you to hide and animate areas</p>
+				</div>
+			</div>
+
+		</section>
+
+		<script>
+
+		</script>
+	</body>
+</html>

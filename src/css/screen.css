@@ -913,32 +913,38 @@ code {
 }
 
 /* line 152, ../sass/screen.scss */
+.code-red {
+  font-weight: bold;
+  color: #cc0000;
+}
+
+/* line 157, ../sass/screen.scss */
 .slide {
   -webkit-box-sizing: border-box;
   padding: 1rem;
 }
 
-/* line 157, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 .slide--orange {
   background: #F1953C;
 }
 
-/* line 161, ../sass/screen.scss */
+/* line 166, ../sass/screen.scss */
 .slide--orange-swirl {
   background-image: url(../assets/images/patterns/wild-sea.png);
 }
 
-/* line 165, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 .slide--black {
   color: white;
   background: #222;
 }
 
-/* line 170, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 .slide--iframe {
   background: #f2f2f2;
 }
-/* line 173, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 .slide--iframe h2 {
   position: absolute;
   top: 0;
@@ -950,24 +956,24 @@ code {
   color: white;
   z-index: 2;
 }
-/* line 185, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .slide--iframe header {
   color: black;
 }
-/* line 189, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .slide--iframe a {
   color: #0cb4a8;
 }
-/* line 191, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 .slide--iframe a:hover {
   color: black;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 .slide--full {
   padding: 0;
 }
-/* line 200, ../sass/screen.scss */
+/* line 205, ../sass/screen.scss */
 .slide--full iframe {
   width: 100vw;
   height: 100vh;
@@ -975,7 +981,7 @@ code {
   background-color: black;
 }
 
-/* line 208, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 #fixed a {
   font-family: 'avenir', serif;
   font-weight: 100;
@@ -983,14 +989,14 @@ code {
   text-transform: lowercase;
 }
 
-/* line 215, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 #cover {
   background-image: url(../assets/images/cover.png);
   background-size: cover;
   background-position: center;
 }
 
-/* line 225, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 #hi {
   background-image: url(../assets/images/yosemite.jpg);
   background-size: cover;
@@ -999,40 +1005,40 @@ code {
   font-weight: bold;
 }
 
-/* line 235, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 .head-shot {
   width: 200px;
   margin-bottom: 1em;
   -webkit-clip-path: ellipse(50%, 50%, 50%, 50%);
 }
 
-/* line 241, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 #rich {
   background-image: url(../assets/images/invaders.png);
   background-size: cover;
   background-position: center;
 }
 
-/* line 247, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 #definition {
   background-color: #394466;
 }
 
-/* line 251, ../sass/screen.scss */
+/* line 256, ../sass/screen.scss */
 #video-games {
   background-image: url(../assets/images/pacman.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 257, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 #myst {
   background-image: url(../assets/images/myst.jpeg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 263, ../sass/screen.scss */
+/* line 268, ../sass/screen.scss */
 #achievement {
   position: absolute;
   top: 0;
@@ -1057,25 +1063,25 @@ code {
   -o-transform: translateY(-100px);
   transform: translateY(-100px);
 }
-/* line 279, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 #achievement svg {
   display: inline-block;
   float: left;
   margin-top: -0.75em;
   margin-left: -1em;
 }
-/* line 286, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 #achievement .achievement-text {
   float: left;
 }
-/* line 290, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 #achievement em {
   display: block;
   margin-bottom: 0.5em;
   font-weight: 100;
   font-style: normal;
 }
-/* line 297, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 #achievement.in {
   -webkit-transform: translateY(0px);
   -moz-transform: translateY(0px);
@@ -1084,80 +1090,80 @@ code {
   transform: translateY(0px);
 }
 
-/* line 302, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 #gamification {
   background-image: url(../assets/images/game.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 308, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 #history {
   background-image: url(../assets/images/patterns/wallpaper_orange.jpg);
   background-position: center;
 }
 
-/* line 313, ../sass/screen.scss */
+/* line 318, ../sass/screen.scss */
 #web {
   background: white;
 }
-/* line 314, ../sass/screen.scss */
+/* line 319, ../sass/screen.scss */
 #web h2 {
   color: black;
   font-family: serif;
 }
 
-/* line 322, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 #mobile {
   background-image: url(../assets/images/point-reyes2.jpg);
   background-size: cover;
   background-position: center;
 }
-/* line 327, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 #mobile h2 {
   color: white;
   text-shadow: 0px 0px 20px rgba(0, 50, 100, 0.5);
 }
 
-/* line 333, ../sass/screen.scss */
+/* line 338, ../sass/screen.scss */
 #html5 {
   background-image: url(../assets/images/patterns/wallpaper_purple.jpg);
   background-position: center;
 }
-/* line 337, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 #html5 h2, #html5 h4 {
   text-shadow: 0px 0px 5px black;
 }
 
-/* line 342, ../sass/screen.scss */
+/* line 347, ../sass/screen.scss */
 #filters {
   background-image: url(../assets/images/filters.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 348, ../sass/screen.scss */
+/* line 353, ../sass/screen.scss */
 #masks {
   background-image: url(../assets/images/mask.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 354, ../sass/screen.scss */
+/* line 359, ../sass/screen.scss */
 #clip {
   background-image: url(../assets/images/clippath.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 360, ../sass/screen.scss */
+/* line 365, ../sass/screen.scss */
 #blend {
   background-image: url(../assets/images/blend.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 366, ../sass/screen.scss */
+/* line 371, ../sass/screen.scss */
 #snap {
   background-color: white;
   background-image: url(../assets/images/snap-croc.svg);
@@ -1165,41 +1171,41 @@ code {
   background-position: bottom left;
   background-repeat: no-repeat;
 }
-/* line 373, ../sass/screen.scss */
+/* line 378, ../sass/screen.scss */
 #snap h2 {
   color: #333;
 }
 
-/* line 378, ../sass/screen.scss */
+/* line 383, ../sass/screen.scss */
 #generative {
   background-color: white;
   background-image: url(../assets/images/patterns/square-pattern.svg);
   background-repeat: repeat;
 }
-/* line 383, ../sass/screen.scss */
+/* line 388, ../sass/screen.scss */
 #generative h2 {
   color: #333;
 }
 
-/* line 388, ../sass/screen.scss */
+/* line 393, ../sass/screen.scss */
 #pixi {
   background: #101228;
 }
 
-/* line 392, ../sass/screen.scss */
+/* line 397, ../sass/screen.scss */
 #dynamic-mask {
   background-image: url(../assets/images/maskdynamic.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 399, ../sass/screen.scss */
+/* line 404, ../sass/screen.scss */
 #video video {
   position: absolute;
   top: 0;
   left: 0;
 }
-/* line 405, ../sass/screen.scss */
+/* line 410, ../sass/screen.scss */
 #video h2 {
   color: #e81e6f;
   -webkit-transform: translateZ(0);
@@ -1209,19 +1215,19 @@ code {
   transform: translateZ(0);
 }
 
-/* line 411, ../sass/screen.scss */
+/* line 416, ../sass/screen.scss */
 #semantics {
   background-image: url(../assets/images/wes2.jpg);
   background-size: cover;
   background-position: center bottom;
 }
-/* line 416, ../sass/screen.scss */
+/* line 421, ../sass/screen.scss */
 #semantics h2 {
   color: #fc5050;
   text-shadow: 0 5px 0px white;
 }
 
-/* line 422, ../sass/screen.scss */
+/* line 427, ../sass/screen.scss */
 h2.top-left {
   position: absolute;
   top: 3rem;
@@ -1233,15 +1239,15 @@ h2.top-left {
   font-size: 4rem;
 }
 
-/* line 433, ../sass/screen.scss */
+/* line 438, ../sass/screen.scss */
 #resources {
   font-size: 1rem;
 }
-/* line 436, ../sass/screen.scss */
+/* line 441, ../sass/screen.scss */
 #resources h2 {
   font-size: 3rem;
 }
-/* line 440, ../sass/screen.scss */
+/* line 445, ../sass/screen.scss */
 #resources h3 {
   font-size: 2rem;
 }

@@ -30,12 +30,12 @@
 			
 			@-webkit-keyframes pulse{
 				0%, 100%{
-					-webkit-mask-size: 100%;
+					background-size: 100%;
 					
 				}
 				
 				50%{
-					-webkit-mask-size: 200%;
+					background-size: 200%;
 					
 				}
 			}
@@ -48,10 +48,12 @@
 				height: 100vh;
 				background: #333;
 				background-image: url(blur.jpg);
+				background-position: center;
 				-webkit-mask-image: url(splatter.png);
 				-webkit-mask-repeat: no-repeat;
 				-webkit-mask-size: 100%;
 				-webkit-mask-position: center;
+				-webkit-animation: pulse 3s infinite;
 			}
 			
 			.group{
