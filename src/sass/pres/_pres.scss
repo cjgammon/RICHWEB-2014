@@ -134,9 +134,9 @@ aside{
 	color: $menu-input-text-color;
 	background-color: $menu-input-bg-color;
 	z-index: 20;
-	@include transition(all .2s ease-out);
-	@include transform(translateZ(0) rotateX(-90deg));
-	@include transform-origin(top, center);
+	//@include transition(all .2s ease-out);
+	//@include transform(translateZ(0) rotateX(-90deg));
+	//@include transform-origin(top, center);
 	
 	&.in{
 		@include transform(translateZ(0));
@@ -161,15 +161,15 @@ aside{
 	
 	background-color: $menu-item-color;
 	@include transform(scale(.9));
-	@include transition(all .2s linear);
+	@include transition(transform .2s linear, -webkit-transform .2s linear, background-color .2s linear);
 	z-index: 1;
 	
 	&.prev{
-		@include transform(scale(1) rotateX(60deg));
+		@include transform(scale(1));
 	}
 	
 	&.next{
-		@include transform(scale(1) rotateX(-60deg));
+		@include transform(scale(1));
 	}
 	
 	&.primed{

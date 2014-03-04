@@ -31,9 +31,7 @@ define(function (require) {
 				slide,
 				url,
 				character = String.fromCharCode(e.keyCode);
-			
-			console.log(e.keyCode);
-			
+						
 			switch (e.keyCode) {
 			case 8: //DELETE
 				e.preventDefault();
@@ -159,10 +157,10 @@ define(function (require) {
 		
 		toggle: function () {
 			if (this._visible == true) {
-				this.$el.fadeOut();
+				this.$el.hide();
 				this.deactivate();
 			} else {
-				this.$el.fadeIn();
+				this.$el.show();
 				this.activate();
 			}
 			

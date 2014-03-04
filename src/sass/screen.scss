@@ -137,6 +137,18 @@ em{
 	color: #fff;
 }
 
+code{
+	display: block;
+	background: white;
+	padding: 1em;
+	margin-top: 1em;
+	max-width: 100%;
+	color: black;
+	line-height: 1.5;
+	font-family: courier, monospace;
+	white-space: pre;
+}
+
 .slide{
 	-webkit-box-sizing: border-box;
 	padding: 1rem;

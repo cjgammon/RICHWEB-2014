@@ -4,7 +4,7 @@ iframe{
 	z-index: 0;
 	background: white;
 	outline: 0em solid rgba(0, 0, 0, 0);
-	@include transition(outline 1s);
+	//@include transition(outline 1s);
 	
 	&.focus{
 		outline: 100px solid rgba(0, 0, 0, .75);

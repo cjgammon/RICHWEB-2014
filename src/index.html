@@ -102,6 +102,12 @@
 				<iframe src="about:blank" width="100%" height="100%" data-src="external/e-clip"></iframe>
 			</section>
 
+			<section id="clip-code" class="slide slide--black" data-class="basic">
+				<h3>clip paths</h3>
+				<code>clip-path: ellipse(50%, 50%, 50%, 50%);</code>
+				<code>clip-path: polygon(0 0, 100% 0, 80% 25%, 20% 25%);</code>
+			</section>
+
             <section id="clip-demo" class="slide slide--iframe" data-class="iframe">
 				<iframe src="about:blank" width="100%" height="100%" data-src="external/d-clip"></iframe>
             </section>
@@ -109,20 +115,13 @@
             <section id="masks" class="slide slide--black" data-class="basic">
 				<h2>masks</h2>
 			</section>
-            
-			<!--
-            <section id="compositing" class="slide slide--black" data-class="basic">
-				<h2>compositing</h2>
-			</section>
-			
-			<section id="mask-example" class="slide slide--iframe slide--full" data-class="iframe-full">
-				<iframe src="about:blank" width="100%" height="100%" data-src="external/e-mask"></iframe>
-			</section>
 
-            <section id="mask-demo" class="slide slide--iframe" data-class="iframe">
-				<iframe src="about:blank" width="100%" height="100%" data-src="external/d-mask-2"></iframe>
+			<section id="mask-code" class="slide slide--black" data-class="basic">
+				<h3>masks</h3>
+				<code>mask-image: url(...);
+mask-position: center;
+mask-repeat: no-repeat;</code>
 			</section>
-			-->
 
             <section id="mask-demo" class="slide slide--iframe" data-class="iframe">
 				<iframe src="about:blank" width="100%" height="100%" data-src="external/d-mask"></iframe>
@@ -131,9 +130,16 @@
 			<section id="blend" class="slide slide--black" data-class="basic">
 				<h2>blend modes</h2>
 			</section>
-			
+
             <section id="blend-demo" class="slide slide--iframe" data-class="iframe">
 				<iframe src="about:blank" width="100%" height="100%" data-src="external/d-blend"></iframe>
+			</section>
+
+			<section id="blend-code" class="slide slide--black" data-class="basic">
+				<h3>blend modes</h3>
+				<code>background-image: url(...), url(...);
+background-blend-mode: multiply, screen;</code>
+				<code>mix-blend-mode: difference;</code>
 			</section>
 
             <section id="filters" class="slide slide--black" data-class="basic">
@@ -238,7 +244,13 @@
 			
 			<section id="css-canvas" class="slide slide--black" data-class="black">
                 <h2>CSS Canvas Drawing</h2>
-                <a href="https://www.webkit.org/blog/176/css-canvas-drawing/" target="_blank">https://www.webkit.org/blog/176/css-canvas-drawing/</a>
+                <a href="https://www.webkit.org/blog/176/css-canvas-drawing/" target="_blank">http://bit.ly/csscanvas</a>
+			</section>
+			
+			<section id="css-canvas-code" class="slide slide--black" data-class="basic">
+				<h3>CSS Canvas Drawing</h3>
+				<code>var ctx = document.getCSSCanvasContext(canvas, 'id');</code>
+				<code>mask: -webkit-canvas(id);</code>
 			</section>
 			
 			<section id="dynamic-mask-demo" class="slide slide--black" data-class="black">
