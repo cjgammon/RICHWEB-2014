@@ -1193,19 +1193,26 @@ code {
 }
 
 /* line 397, ../sass/screen.scss */
+#canvas-blend {
+  background-image: url(../assets/images/blend.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* line 403, ../sass/screen.scss */
 #dynamic-mask {
   background-image: url(../assets/images/maskdynamic.jpg);
   background-size: cover;
   background-position: center;
 }
 
-/* line 404, ../sass/screen.scss */
+/* line 410, ../sass/screen.scss */
 #video video {
   position: absolute;
   top: 0;
   left: 0;
 }
-/* line 410, ../sass/screen.scss */
+/* line 416, ../sass/screen.scss */
 #video h2 {
   color: #e81e6f;
   -webkit-transform: translateZ(0);
@@ -1215,19 +1222,19 @@ code {
   transform: translateZ(0);
 }
 
-/* line 416, ../sass/screen.scss */
+/* line 422, ../sass/screen.scss */
 #semantics {
   background-image: url(../assets/images/wes2.jpg);
   background-size: cover;
   background-position: center bottom;
 }
-/* line 421, ../sass/screen.scss */
+/* line 427, ../sass/screen.scss */
 #semantics h2 {
   color: #fc5050;
   text-shadow: 0 5px 0px white;
 }
 
-/* line 427, ../sass/screen.scss */
+/* line 433, ../sass/screen.scss */
 h2.top-left {
   position: absolute;
   top: 3rem;
@@ -1239,15 +1246,15 @@ h2.top-left {
   font-size: 4rem;
 }
 
-/* line 438, ../sass/screen.scss */
+/* line 444, ../sass/screen.scss */
 #resources {
   font-size: 1rem;
 }
-/* line 441, ../sass/screen.scss */
+/* line 447, ../sass/screen.scss */
 #resources h2 {
   font-size: 3rem;
 }
-/* line 445, ../sass/screen.scss */
+/* line 451, ../sass/screen.scss */
 #resources h3 {
   font-size: 2rem;
 }
