@@ -108,7 +108,8 @@ define(function (require) {
 		},
 		
 		addWater: function () {
-            var mirrorMesh,
+            var i,
+				mirrorMesh,
                 parameters = {
                     width: 7000,
                     height: 7000,
@@ -118,13 +119,10 @@ define(function (require) {
                     param: 4,
                     filterparam: 1
                 },
-                waterNormals = new THREE.ImageUtils.loadTexture('assets/images/textures/waternormals.jpg'),
-                i;
+                waterNormals = new THREE.ImageUtils.loadTexture('assets/images/textures/waternormals.jpg');
             
             waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
-
             waterGeometry = new THREE.PlaneGeometry(parameters.width * 500, parameters.height * 500, 50, 50);
-
             water = new THREE.Mirror(this.renderer, Camera, {
                 textureWidth: 512, 
                 textureHeight: 512,
