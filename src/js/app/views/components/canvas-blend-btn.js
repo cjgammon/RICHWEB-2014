@@ -48,7 +48,7 @@ define(function (require) {
             this.fxctx = this.fxcanvas.getContext('2d');
 
             this.img = new Image();
-            this.img.src = '../assets/images/buttons/blend_btn.png';
+            this.img.src = './assets/images/buttons/blend_btn.png';
 
             this.world = new b2World(
                 new b2Vec2(0, 60),    //gravity
