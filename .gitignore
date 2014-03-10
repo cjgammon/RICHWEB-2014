@@ -4,4 +4,7 @@ site
 src/.sass-cache
 src/external/wtf/wtf_greenscreen_combined.mov
 src/assets/videos/
-src/js/vendor/
+src/js/vendor/backbone-amd/
+src/js/vendor/requirejs/
+src/js/vendor/underscore-amd/
+src/js/vendor/threejs/
