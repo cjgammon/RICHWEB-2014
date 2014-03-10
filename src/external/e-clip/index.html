@@ -27,17 +27,33 @@
 			section{
 				width: 100vw;
 				height: 100vh;
+				display: -webkit-flex;
+				display: -moz-flex;
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				justify-content: space-around;				
+				justify-content: space-around;
+				-webkit-flex-direction: row;
+				-webkit-align-items: center;
+				-webkit-justify-content: space-around;
+				-moz-flex-direction: row;
+				-moz-align-items: center;
+				-moz-justify-content: space-around;		
 			}
 
 			.content{
+				display: -webkit-flex;
+				display: -moz-flex;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
+				-webkit-flex-direction: column;
+				-webkit-align-items: center;
+				-webkit-justify-content: center;
+				-moz-flex-direction: column;
+				-moz-align-items: center;
+				-moz-justify-content: center;
 				cursor: pointer;
 				background: #efefef;
 				color: #333;
@@ -48,16 +64,20 @@
 			@-webkit-keyframes clip{
 				0%, 100%{
 					-webkit-clip-path: ellipse(50%, 50%, 10%, 10%);
+					-moz-clip-path: ellipse(50%, 50%, 10%, 10%);
 				}
 
 				50%{
 					-webkit-clip-path: ellipse(50%, 50%, 50%, 50%);
+					-moz-clip-path: ellipse(50%, 50%, 50%, 50%);
 				}
 			}
 
 			.clip{
 				-webkit-clip-path: ellipse(50%, 50%, 10%, 10%);
 				-webkit-animation: clip 2s infinite;
+				-moz-clip-path: ellipse(50%, 50%, 10%, 10%);
+				-moz-animation: clip 2s infinite;
 			}
 
 			@-webkit-keyframes scale{
@@ -69,11 +89,23 @@
 					-webkit-transform: scale(1);
 				}
 			}
+			
+			@-moz-keyframes scale{
+				0%, 100%{
+					-moz-transform: scale(.1);
+				}
+
+				50%{
+					-moz-transform: scale(1);
+				}
+			}
 
 			.svg{
 				display: block;
 				-webkit-transform: scale(.1);
 				-webkit-animation: scale 2s infinite;
+				-moz-transform: scale(.1);
+				-moz-animation: scale 2s infinite;
 			}
 
 			.circle{
