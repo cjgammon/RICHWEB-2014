@@ -2,9 +2,9 @@
     "name": "pres",
     "version": "1.0.0",
     "dependencies": {
-        "jquery": null,
-        "backbone-amd": null,
-        "underscore-amd": null,
+        "jquery": "2.1.0",
+        "backbone-amd": "1.1.0",
+        "underscore-amd": "1.5.2",
         "requirejs": "2.1.10",
         "threejs": null
     }
