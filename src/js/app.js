@@ -50,7 +50,18 @@ define(function (require) {
         },
 
 		passTest: function () {	
-            return true;
+			if (Modernizr.flexbox !== true) {
+				return false;
+			} else if (Modernizr.touch === true) {
+				$('video').each(function () {
+					$(this).attr({
+						'src': $(this).data('src')
+					});
+				})
+				return false;
+			} else {
+				return true;
+			}
         },
 
         render: function () {
