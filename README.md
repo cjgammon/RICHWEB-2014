@@ -6,7 +6,6 @@ System Requirements:
 - [Node.js](http://nodejs.org/)
 - [Ruby](https://www.ruby-lang.org/en/)
 - [Compass](http://compass-style.org/install/)
->>>>>>> 4556f84d1838cdcbcd6110c984831f35afece7d7
 
 To build run:
 
