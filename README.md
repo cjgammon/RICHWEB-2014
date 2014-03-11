@@ -4,6 +4,14 @@ Presentation on Rich Web Experiences.
 
 Requires running on a server for most demos
 
+To build run:
+
+npm install
+
+bower install
+
+grunt
+
 
 Frameworks Discussed
 ====================
