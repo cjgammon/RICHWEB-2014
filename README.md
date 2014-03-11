@@ -2,15 +2,26 @@ rich-experiences-future-web
 ============================
 Presentation on Rich Web Experiences.
 
-Requires running on a server for most demos
+Requires running on a server for most demos.
+
+System Requirements:
+- [Node.js](http://nodejs.org/)
+- [Ruby](https://www.ruby-lang.org/en/)
+- [Compass](http://compass-style.org/install/)
 
 To build run:
 
+```
 npm install
+```
 
+```
 bower install
+```
 
+```
 grunt
+```
 
 
 Frameworks Discussed
