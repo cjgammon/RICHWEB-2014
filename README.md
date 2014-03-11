@@ -1,8 +1,6 @@
 rich-experiences-future-web
 ============================
-Presentation on Rich Web Experiences.
-
-Requires running on a server for most demos
+Presentation on Rich Web Experiences. Requires running on a server for most demos
 
 To build run:
 
