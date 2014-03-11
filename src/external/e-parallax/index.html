@@ -39,6 +39,26 @@
 				}
 			}
 
+			@-moz-keyframes canvas{
+				10%, 80%{
+					-moz-transform: translateY(0px);
+				}
+
+				30%, 60%{
+					-moz-transform: rotateY(-40deg) rotateX(40deg) scale(0.2) translateY(200px) translateZ(-100px);
+				}
+			}
+
+			@-moz-keyframes main{
+				10%, 80%{
+					-moz-transform: translateY(0px);
+				}
+
+				30%, 60%{
+					-moz-transform: rotateY(-40deg) rotateX(40deg) scale(0.2);
+				}
+			}
+
 			canvas{
 				position: fixed;
 				top: 0;
@@ -47,16 +67,19 @@
 				width: 100vw;
 				height: 100vh;
 				-webkit-animation: canvas 20s infinite 10s;
+				-moz-animation: canvas 20s infinite 10s;
 			}
 
 			main{
 				position: fixed;
 				box-sizing: border-box;
+				-moz-box-sizing: border-box;
 				border: 10px solid #00ccff;
 				width: 100vw;
 				height: 100vh;
 				z-index: 1;
 				-webkit-animation: main 20s infinite 10s;
+				-moz-animation: main 20s infinite 10s;
 			}
 
 			section{
@@ -89,6 +112,14 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
+				display: -webkit-flex;
+				-webkit-flex-direction: column;
+				-webkit-align-items: center;
+				-webkit-justify-content: center;
+				display: -moz-flex;
+				-moz-flex-direction: column;
+				-moz-align-items: center;
+				-moz-justify-content: center;
 				width: 100vw;
 				height: 100vh;
 				color: white;
@@ -183,7 +214,7 @@
 				}
 
 				content.style.webkitTransform = 'translateY(' + scrollPosition + 'px) translateZ(0)';
-
+				content.style.MozTransform = 'translateY(' + scrollPosition + 'px) translateZ(0)';
 
 				ctx.save();
 				ctx.translate(0, scrollPosition / 3);

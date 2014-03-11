@@ -25,10 +25,15 @@
 				width: 100vw;
 				height: 100vh;
 				display: flex;
+				display: -webkit-flex;
+				display: -moz-flex;
+				
 			}
 
 			.panel{
 				flex: 1;
+				-webkit-flex: 1;
+				-moz-flex: 1;
 				position: relative;
 				overflow: hidden;
 			}
@@ -50,10 +55,22 @@
 					-webkit-transform: rotate(40deg) scale(10);
 				}
 			}
+			
+			@-moz-keyframes rot{
+				0%, 100%{
+					-moz-transform: rotate(0deg) scale(1);
+				}
+
+				50%{
+					-moz-transform: rotate(40deg) scale(10);
+				}
+			}
 
 			.image{
 				-webkit-animation: rot 10s infinite;
 				-webkit-transform-origin: 454px 320px;
+				-moz-animation: rot 10s infinite;
+				-moz-transform-origin: 454px 320px;
 			}
 
 			img, svg{

@@ -27,10 +27,21 @@
 			section{
 				width: 100vw;
 				height: 100vh;
+				
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-				justify-content: space-around;				
+				justify-content: space-around;	
+				
+				display: -webkit-flex;
+				-webkit-flex-direction: row;
+				-webkit-align-items: center;
+				-webkit-justify-content: space-around;
+				
+				display: -moz-flex;
+				-moz-flex-direction: row;
+				-moz-align-items: center;
+				-moz-justify-content: space-around;			
 			}
 
 			.content{
@@ -38,6 +49,17 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
+				
+				display: -webkit-flex;
+				-webkit-flex-direction: column;
+				-webkit-align-items: center;
+				-webkit-justify-content: center;
+				
+				display: -moz-flex;
+				-moz-flex-direction: column;
+				-moz-align-items: center;
+				-moz-justify-content: center;
+				
 				cursor: pointer;
 				background: #efefef;
 				color: #cc0000;
@@ -47,6 +69,10 @@
 			.clip{
 				-webkit-mask: url(texture.png);
 				-webkit-mask-size: cover;
+				-moz-mask: url(texture.png);
+				-moz-mask-size: cover;
+				mask: url(texture.png);
+				mask-size: cover;
 			}
 
 			.circle{
